@@ -33,5 +33,4 @@ public class Player : KinematicBody2D
             tilemap.SetCell((int)coordinates.x, (int)coordinates.y, 1);
         }
     }
-
 }
