@@ -9,7 +9,7 @@ public class Main : Node2D
 
     }
 
-  public override async void _Process(float delta)
+  public override void _Process(float delta)
   {
         if (Input.IsActionJustReleased("fullscreen"))
         {
