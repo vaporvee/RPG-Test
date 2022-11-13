@@ -4,7 +4,6 @@ using System;
 public class Player : KinematicBody2D
 {
     private Vector2 velocity;
-
     [Export]
     public int speed = 400;
 
@@ -13,7 +12,7 @@ public class Player : KinematicBody2D
         GetInput();
         MoveAndCollide(velocity * delta);
     }
-  
+
     public void GetInput()
     {
         velocity = new Vector2();
@@ -35,5 +34,14 @@ public class Player : KinematicBody2D
         }
     }
 
+    public override async void _Process(float delta)
+    {
+        //player coordinates on foregroundgrid
+        var coordinates = GetNode<TileMap>("/root/Main/World/Foreground").WorldToMap(Position);
+        if (Input.IsKeyPressed((int)KeyList.F3))
+        { 
+        GD.Print(coordinates);
+        }
+    }
 
 }
