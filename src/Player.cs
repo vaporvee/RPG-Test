@@ -4,7 +4,7 @@ using System;
 public class Player : KinematicBody2D
 {
     [Export]
-    public int speed = 500;
+    public int speed = 600;
 
     public override void _PhysicsProcess(float delta)
     {
