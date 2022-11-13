@@ -34,13 +34,9 @@ public class Player : KinematicBody2D
         {
             velocity.y += speed;
         }
-        if (Input.IsKeyPressed((int)KeyList.F1))
-        {
-            GD.Print(strength);
-        }
     }
 
-    public override async void _Process(float delta)
+    public override void _Process(float delta)
     {
         //debug the grid
         var tilemap = GetNode<TileMap>("/root/Main/World/Foreground");
