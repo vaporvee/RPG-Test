@@ -11,13 +11,13 @@ outlines = [ PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 ) ]
 [sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
-[sub_resource type="ConcavePolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
-[sub_resource type="ConcavePolygonShape2D" id=9]
-segments = PoolVector2Array( 0, 0, 64, 0, 64, 0, 64, 64, 64, 64, 0, 64, 0, 64, 0, 0 )
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
-[sub_resource type="ConcavePolygonShape2D" id=10]
-segments = PoolVector2Array( 64, 64, 0, 64, 0, 64, 0, 0, 0, 0, 64, 0, 64, 0, 64, 64 )
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="NavigationPolygon" id=6]
 vertices = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
