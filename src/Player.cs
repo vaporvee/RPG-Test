@@ -28,6 +28,10 @@ public class Player : KinematicBody2D
         { 
         GD.Print(coordinates);
         }
+        if (Input.IsKeyPressed((int)KeyList.F1))
+        {
+            tilemap.SetCell((int)coordinates.x, (int)coordinates.y, -1);
+        }
         if (Input.IsKeyPressed((int)KeyList.F2))
         {
             tilemap.SetCell((int)coordinates.x, (int)coordinates.y, 1);
