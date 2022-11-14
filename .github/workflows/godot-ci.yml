@@ -2,7 +2,7 @@ name: "godot-ci export"
 on: push
 
 env:
-  GODOT_VERSION: 3.5.1
+  GODOT_VERSION: mono-3.5.1
   EXPORT_NAME: RPG-Test
 
 jobs:
