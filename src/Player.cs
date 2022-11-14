@@ -22,6 +22,7 @@ public class Player : KinematicBody2D
     public override void _Process(float delta)
     {
         //debug the grid
+        int currentCellID = 1;
         var tilemap = GetNode<TileMap>("/root/Main/World/Foreground");
         Vector2 coordinates = tilemap.WorldToMap(Position);
         if (Input.IsKeyPressed((int)KeyList.F3))
@@ -34,7 +35,10 @@ public class Player : KinematicBody2D
         }
         if (Input.IsKeyPressed((int)KeyList.F2))
         {
-            tilemap.SetCell((int)coordinates.x, (int)coordinates.y, 1);
+            if(tilemap.GetCell((int)coordinates.x, (int)coordinates.y) == -1)
+            {
+            tilemap.SetCell((int)coordinates.x, (int)coordinates.y, currentCellID); //place offset coordinates += offset = build coordinates
+            }
         }
     }
 }
