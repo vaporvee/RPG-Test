@@ -27,7 +27,8 @@ public class Player : KinematicBody2D
         Vector2 coordinates = tilemap.WorldToMap(Position);
         if (Input.IsKeyPressed((int)KeyList.F3))
         { 
-        GD.Print(coordinates);
+        GD.Print("All Number 1 tiles: " + tilemap.GetUsedCellsById(1));
+        GD.Print("Player coordinate: " + coordinates);
         }
         if (Input.IsKeyPressed((int)KeyList.F1))
         {
