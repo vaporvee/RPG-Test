@@ -25,7 +25,7 @@ public class Player : KinematicBody2D
         int currentCellID = 1;
         var tilemap = GetNode<TileMap>("/root/Main/World/Foreground");
         Vector2 coordinates = tilemap.WorldToMap(Position);
-        if (Input.IsKeyPressed((int)KeyList.F3))
+        if (Input.IsActionJustReleased("debug"))
         { 
         GD.Print("All Number 1 tiles: " + tilemap.GetUsedCellsById(1));
         GD.Print("Player coordinate: " + coordinates);
