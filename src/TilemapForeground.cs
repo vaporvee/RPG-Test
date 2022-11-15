@@ -20,10 +20,10 @@ public class TilemapForeground : TileMap
 
     public void ReplaceStaticTiles(int CellID)
     {
-       //Vector2[] AllCells = GetUsedCellsById(CellID); //why isnt it just a normal array wtf
-       // for(int i = 0; i == AllCells.Length; i++)
-       // {
-       //     GD.Print(AllCells[i]);
-       // }
+        Godot.Collections.Array allcells = GetUsedCellsById(CellID); //why isnt it just a normal array wtf
+        for(int i = 0; i < allcells.Count; i++)
+        {
+            GD.Print(allcells[i]); //needs a bit more stuff
+        }
     }
 }
