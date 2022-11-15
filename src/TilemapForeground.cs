@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public class TilemapForeground : TileMap
 {
@@ -20,10 +21,10 @@ public class TilemapForeground : TileMap
 
     public void ReplaceStaticTiles(int CellID)
     {
-        Godot.Collections.Array allcells = GetUsedCellsById(CellID); //why isnt it just a normal array wtf
-        for(int i = 0; i < allcells.Count; i++)
+        Vector2[] allcells = GetUsedCellsById(CellID).OfType<Vector2>().ToArray();
+        for(int i = 0; i < allcells.Length; i++)
         {
-            GD.Print(allcells[i]); //needs a bit more stuff
+            GD.Print(allcells[i]); //now you can get the coordination to spawn a replacement node and get x and y seperately for removing this tile
         }
     }
 }
