@@ -6,11 +6,6 @@ public class tilemap_foreground : TileMap
 {
     public override void _Process(float delta)
     {
-
-    }
-
-    public override void _Ready()
-    {
         ReplaceStaticTiles(1, "debug_tile_one");
     }
 
@@ -25,7 +20,7 @@ public class tilemap_foreground : TileMap
             var instance = scene.Instance();
             AddChild(instance);
             var node = GetNode<Node2D>(instance.GetPath());
-            node.Position = allCells[i]; //position changes but doesn't change visible ingame
+            node.Position = allCells[i] * CellSize; //node has to be 2D and can't be centered
             GD.Print(node);
         }
     }
