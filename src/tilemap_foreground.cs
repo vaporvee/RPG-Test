@@ -11,15 +11,22 @@ public class tilemap_foreground : TileMap
 
     public override void _Ready()
     {
-        ReplaceStaticTiles(1);
+        ReplaceStaticTiles(1, "debug_tile_one");
     }
 
-    public void ReplaceStaticTiles(int CellID)
+    public void ReplaceStaticTiles(int CellID, string sceneName)
     {
        Vector2[] allCells = GetUsedCellsById(CellID).OfType<Vector2>().ToArray(); 
         for(int i = 0; i < allCells.Length; i++)
         {
             GD.Print(allCells[i]);
+            SetCell((int)allCells[i].x, (int)allCells[i].y, -1);
+            var scene = GD.Load<PackedScene>("res://scenes/interactable_tiles/" + sceneName + ".tscn");
+            var instance = scene.Instance();
+            AddChild(instance);
+            var node = GetNode<Node2D>(instance.GetPath());
+            node.Position = allCells[i]; //position changes but doesn't change visible ingame
+            GD.Print(node);
         }
     }
 }
