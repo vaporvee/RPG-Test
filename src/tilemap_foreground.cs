@@ -20,7 +20,7 @@ public class tilemap_foreground : TileMap
             var instance = scene.Instance();
             AddChild(instance);
             var node = GetNode<Node2D>(instance.GetPath());
-            node.Position = allCells[i] * CellSize; //node has to be 2D and can't be centered
+            node.Position = allCells[i] * CellSize; //node has to be Node2D and can't be centered
             GD.Print(node);
         }
     }
