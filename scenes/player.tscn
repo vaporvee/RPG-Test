@@ -1,28 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://d4any5ht61f31"]
 
-[ext_resource path="res://assets/textures/banana.png" type="Texture" id=1]
-[ext_resource path="res://src/player.cs" type="Script" id=2]
+[ext_resource type="Script" path="res://src/player.cs" id="1_qehox"]
+[ext_resource type="Texture2D" uid="uid://ciidukjv5k6oa" path="res://assets/textures/debug/banana.png" id="2_1l1co"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ) ],
+[sub_resource type="SpriteFrames" id="SpriteFrames_2x1cy"]
+animations = [{
+"frames": [ExtResource("2_1l1co")],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 19, 29 )
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38v5o"]
+radius = 21.0
+height = 66.0
 
-[node name="Player" type="KinematicBody2D"]
-script = ExtResource( 2 )
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_qehox")
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+frames = SubResource("SpriteFrames_2x1cy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2 )
-shape = SubResource( 2 )
+shape = SubResource("CapsuleShape2D_38v5o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
