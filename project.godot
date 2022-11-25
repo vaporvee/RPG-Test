@@ -27,6 +27,7 @@ project/assembly_name="RPG Test gd4"
 
 [filesystem]
 
+import/blender/enabled=false
 import/fbx/enabled=false
 
 [input]
