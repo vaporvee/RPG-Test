@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://2867aayx0skw"]
 
 [ext_resource type="PackedScene" uid="uid://d4any5ht61f31" path="res://scenes/player.tscn" id="1_p5d84"]
-[ext_resource type="Script" path="res://src/main.cs" id="1_rcoiw"]
+[ext_resource type="Script" path="res://src/main.cs" id="1_pyiif"]
 [ext_resource type="PackedScene" uid="uid://c2eoq4srb238n" path="res://scenes/worlds/first_world.tscn" id="2_x8nyb"]
 
-[node name="Main" type="Node2D"]
-script = ExtResource("1_rcoiw")
+[node name="main" type="Node2D"]
+script = ExtResource("1_pyiif")
 
 [node name="first_world" parent="." instance=ExtResource("2_x8nyb")]
 
