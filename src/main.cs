@@ -12,6 +12,7 @@ public partial class main : Node2D
     public override void _Process(double delta)
     {
         //CHANGE INPUT FOR NINTENDO CONTROLLER
+        //TODO: set currentController to keyboard if keyboard for UI purposes and more
         currentController = Input.GetJoyName(0);
         if (currentController.StartsWith("Nintendo"))
         {
