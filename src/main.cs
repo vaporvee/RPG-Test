@@ -20,18 +20,20 @@ public partial class main : Node2D
             currentController = Input.GetJoyName(0);
 
         //CHANGE INPUT FOR NINTENDO CONTROLLER
+        InputEventJoypadButton JoyButtonA = new InputEventJoypadButton() { ButtonIndex = JoyButton.A };
+        InputEventJoypadButton JoyButtonB = new InputEventJoypadButton() { ButtonIndex = JoyButton.A };
         if (currentController.StartsWith("Nintendo"))
         {
-            InputMap.ActionEraseEvent("ui_accept", new InputEventJoypadButton() { ButtonIndex = JoyButton.A });
-            InputMap.ActionEraseEvent("ui_cancel", new InputEventJoypadButton() { ButtonIndex = JoyButton.B });
-            InputMap.ActionAddEvent("ui_accept", new InputEventJoypadButton() { ButtonIndex = JoyButton.B });
-            InputMap.ActionAddEvent("ui_cancel", new InputEventJoypadButton() { ButtonIndex = JoyButton.A });
+            InputMap.ActionEraseEvent("ui_accept", JoyButtonA);
+            InputMap.ActionEraseEvent("ui_cancel", JoyButtonB);
+            InputMap.ActionAddEvent("ui_accept", JoyButtonB);
+            InputMap.ActionAddEvent("ui_cancel", JoyButtonA);
         } else
         {
-            InputMap.ActionEraseEvent("ui_accept", new InputEventJoypadButton() { ButtonIndex = JoyButton.B });
-            InputMap.ActionEraseEvent("ui_cancel", new InputEventJoypadButton() { ButtonIndex = JoyButton.A });
-            InputMap.ActionAddEvent("ui_accept", new InputEventJoypadButton() { ButtonIndex = JoyButton.A });
-            InputMap.ActionAddEvent("ui_cancel", new InputEventJoypadButton() { ButtonIndex = JoyButton.B });
+            InputMap.ActionEraseEvent("ui_accept", JoyButtonB);
+            InputMap.ActionEraseEvent("ui_cancel", JoyButtonA);
+            InputMap.ActionAddEvent("ui_accept", JoyButtonA);
+            InputMap.ActionAddEvent("ui_cancel", JoyButtonB);
         }
 
         if (Input.IsActionJustPressed("ui_accept")) GD.Print(currentController + " accept");
@@ -40,7 +42,8 @@ public partial class main : Node2D
         //FULLSCREEN HOTKEY
         if (Input.IsActionJustPressed("hotkey_fullscreen"))
         {
-            if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen) DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+            if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen) 
+                  DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
             else  DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
         }
     }
