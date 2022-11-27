@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ujfhvssvbgpg"]
+[gd_scene load_steps=6 format=3 uid="uid://ujfhvssvbgpg"]
 
 [ext_resource type="Script" path="res://src/scene-scripts/player.cs" id="1_qehox"]
 [ext_resource type="Texture2D" uid="uid://ciidukjv5k6oa" path="res://assets/textures/debug/banana.png" id="2_1l1co"]
@@ -15,6 +15,9 @@ animations = [{
 radius = 21.0
 height = 66.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ppa"]
+size = Vector2(108, 119)
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_qehox")
 
@@ -26,3 +29,11 @@ shape = SubResource("CapsuleShape2D_38v5o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="DialogInteractArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogInteractArea"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_f1ppa")
