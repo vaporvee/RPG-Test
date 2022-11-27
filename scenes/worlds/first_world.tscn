@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2eoq4srb238n"]
+[gd_scene load_steps=3 format=3 uid="uid://cld0jncmsk1bj"]
 
-[ext_resource type="TileSet" uid="uid://bduttqwwbt6lq" path="res://tiilesets/main_background.tres" id="1_71wsi"]
-[ext_resource type="TileSet" uid="uid://txl24cadn8t4" path="res://tiilesets/main_foreground.tres" id="2_v3ju2"]
+[ext_resource type="TileSet" uid="uid://bduttqwwbt6lq" path="res://tilesets/main_background.tres" id="1_a172k"]
+[ext_resource type="TileSet" uid="uid://txl24cadn8t4" path="res://tilesets/main_foreground.tres" id="2_kvjhj"]
 
 [node name="first_world" type="Node2D"]
 
 [node name="background" type="TileMap" parent="."]
-tile_set = ExtResource("1_71wsi")
+tile_set = ExtResource("1_a172k")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65535, 65536, 1, -131071, 65536, 0, -65536, 65536, 1, -131072, 65536, 0, -1, 65536, 1, -65537, 65536, 0, 3, 131072, 2, -65533, 131072, 1, -131069, 131072, 0, 2, 65536, 2, -65534, 65536, 1, -131070, 65536, 0, 1, 65536, 2, 0, 65536, 2, 65535, 65536, 2, 65534, 0, 2, -2, 0, 1, -65538, 0, 0)
 
 [node name="foreground" type="TileMap" parent="."]
-tile_set = ExtResource("2_v3ju2")
+tile_set = ExtResource("2_kvjhj")
 cell_quadrant_size = 64
 format = 2
 layer_0/z_index = 1
