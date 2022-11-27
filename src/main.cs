@@ -14,7 +14,7 @@ public partial class main : Node2D
     {
         //CHANGE INPUT FOR NINTENDO CONTROLLER
         //Checks if using Keyboard or controller and giving out current controller
-        if(Input.IsMouseButtonPressed(MouseButton.Left) || Input.IsMouseButtonPressed(MouseButton.Right))//this is a terrible way of doing this will be reworked
+        if(Input.IsMouseButtonPressed(MouseButton.Left) || currentController == null)//this is a terrible way of doing this will be reworked
         {
             currentController = "PC";
         }
