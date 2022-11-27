@@ -21,7 +21,7 @@ public partial class main : Node2D
 
         //CHANGE INPUT FOR NINTENDO CONTROLLER
         InputEventJoypadButton JoyButtonA = new InputEventJoypadButton() { ButtonIndex = JoyButton.A };
-        InputEventJoypadButton JoyButtonB = new InputEventJoypadButton() { ButtonIndex = JoyButton.A };
+        InputEventJoypadButton JoyButtonB = new InputEventJoypadButton() { ButtonIndex = JoyButton.B };
         if (currentController.StartsWith("Nintendo"))
         {
             InputMap.ActionEraseEvent("ui_accept", JoyButtonA);
