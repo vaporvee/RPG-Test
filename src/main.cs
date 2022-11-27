@@ -8,12 +8,21 @@ public partial class main : Node2D
 
     public override void _Ready()
     {
+        GD.Print(Input.GetConnectedJoypads());
     }
     public override void _Process(double delta)
     {
         //CHANGE INPUT FOR NINTENDO CONTROLLER
-        //TODO: set currentController to keyboard if keyboard for UI purposes and more
-        currentController = Input.GetJoyName(0);
+        //Checks if using Keyboard or controller and giving out current controller
+        if(Input.IsMouseButtonPressed(MouseButton.Left) || Input.IsMouseButtonPressed(MouseButton.Right))//this is a terrible way of doing this will be reworked
+        {
+            currentController = "PC";
+        }
+        if (Input.IsJoyButtonPressed(0, JoyButton.A) || Input.IsJoyButtonPressed(0, JoyButton.B))
+        {
+            currentController = Input.GetJoyName(0);
+        }
+
         if (currentController.StartsWith("Nintendo"))
         {
             InputMap.ActionAddEvent("ui_accept", new InputEventJoypadButton() { ButtonIndex = JoyButton.B});
