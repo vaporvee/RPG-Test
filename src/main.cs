@@ -12,9 +12,9 @@ public partial class main : Node2D
     }
     public override void _Process(double delta)
     {
-        //CHANGE INPUT FOR NINTENDO CONTROLLER
         //Checks if using Keyboard or controller and giving out current controller
-        if(Input.IsMouseButtonPressed(MouseButton.Left) || currentController == null)//this is a terrible way of doing this will be reworked
+        //this is a terrible way of doing this and will be reworked
+        if (Input.IsMouseButtonPressed(MouseButton.Left) || currentController == "" || currentController == null)
         {
             currentController = "PC";
         }
@@ -23,6 +23,7 @@ public partial class main : Node2D
             currentController = Input.GetJoyName(0);
         }
 
+        //CHANGE INPUT FOR NINTENDO CONTROLLER
         if (currentController.StartsWith("Nintendo"))
         {
             InputMap.ActionAddEvent("ui_accept", new InputEventJoypadButton() { ButtonIndex = JoyButton.B});
@@ -46,7 +47,7 @@ public partial class main : Node2D
             GD.Print(currentController + " cancel");
         }
 
-        //FULLSCREEN
+        //FULLSCREEN HOTKEY
         if (Input.IsActionJustPressed("hotkey_fullscreen"))
         {
             if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen)
