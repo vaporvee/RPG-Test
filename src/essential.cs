@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class main : Node2D
+public partial class essential : Node
 {
     [Export]
     public string currentController = Input.GetJoyName(0);

@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4any5ht61f31"]
+[gd_scene load_steps=5 format=3 uid="uid://ujfhvssvbgpg"]
 
-[ext_resource type="Script" path="res://src/player.cs" id="1_qehox"]
+[ext_resource type="Script" path="res://src/scene-scripts/player.cs" id="1_qehox"]
 [ext_resource type="Texture2D" uid="uid://ciidukjv5k6oa" path="res://assets/textures/debug/banana.png" id="2_1l1co"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2x1cy"]
