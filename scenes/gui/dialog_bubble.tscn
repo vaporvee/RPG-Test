@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d6ngurhq1r5y"]
+[gd_scene load_steps=3 format=3 uid="uid://d6ngurhq1r5y"]
 
+[ext_resource type="Script" path="res://src/scene-scripts/gui/dialog_bubble.cs" id="1_txwv4"]
 [ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/font/urbane-rounded-medium.otf" id="1_vlvkg"]
 
 [node name="dialog_bubble" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_txwv4")
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -15,7 +18,6 @@ offset_top = -190.0
 offset_right = -210.0
 offset_bottom = -20.0
 grow_horizontal = 2
-grow_vertical = 0
 
 [node name="TextLabel" type="Label" parent="."]
 anchors_preset = -1
@@ -26,10 +28,20 @@ anchor_bottom = 0.972
 offset_left = 0.319977
 offset_top = -19.64
 offset_right = 0.380005
-offset_bottom = -19.84
+offset_bottom = -4.84003
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_vlvkg")
 theme_override_font_sizes/font_size = 32
 text = "This is test text"
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = 252.0
+offset_top = 532.0
+offset_right = 302.0
+offset_bottom = 558.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vlvkg")
+theme_override_font_sizes/font_size = 16
+text = "Name"
