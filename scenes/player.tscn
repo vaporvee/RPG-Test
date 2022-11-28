@@ -26,3 +26,4 @@ shape = SubResource("CapsuleShape2D_38v5o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2(0.8, 0.8)
