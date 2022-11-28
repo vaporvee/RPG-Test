@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjqwrkx04evnr"]
+[gd_scene load_steps=5 format=3 uid="uid://42f1sggm2w0g"]
 
 [ext_resource type="Texture2D" uid="uid://p5ubildre2tg" path="res://assets/textures/debug/cupcake.png" id="1_qmvgm"]
-[ext_resource type="PackedScene" uid="uid://d14pjtkh0xmrk" path="res://scenes/gui/trigger/dialog_object_area.tscn" id="2_m1t8o"]
+[ext_resource type="PackedScene" path="res://scenes/gui/trigger/dialog_object_area.tscn" id="2_m1t8o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2d5dy"]
 radius = 30.8058
