@@ -32,9 +32,6 @@ public partial class essential : Node
             InputMap.ActionAddEvent("ui_cancel", JoyButtonB);
         }
 
-        if (Input.IsActionJustPressed("ui_accept")) GD.Print(currentController + " accept");
-        if (Input.IsActionJustPressed("ui_cancel")) GD.Print(currentController + " cancel");
-
         //FULLSCREEN HOTKEY
         if (Input.IsActionJustPressed("hotkey_fullscreen"))
         {
