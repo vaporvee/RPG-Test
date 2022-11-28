@@ -3,22 +3,18 @@ using System;
 
 public partial class essential : Node
 {
-    [Export]
     public string currentController = Input.GetJoyName(0);
 
-    public override void _Ready()
+    public override void _Input(InputEvent @event) 
     {
-        GD.Print(Input.GetConnectedJoypads());
+        //Checks if using Keyboard or controller and giving out current controller
+        if (@event is InputEventKey || @event is InputEventMouseButton || currentController == "")
+            currentController = "PC";
+        if (@event is InputEventJoypadButton)
+            currentController = Input.GetJoyName(0);
     }
     public override void _Process(double delta)
     {
-        //Checks if using Keyboard or controller and giving out current controller
-        //this is a terrible way of doing this and will be reworked
-        if (Input.IsMouseButtonPressed(MouseButton.Left) || currentController == "" || currentController == null)
-            currentController = "PC";
-        if (Input.IsJoyButtonPressed(0, JoyButton.A) || Input.IsJoyButtonPressed(0, JoyButton.B))
-            currentController = Input.GetJoyName(0);
-
         //CHANGE INPUT FOR NINTENDO CONTROLLER
         InputEventJoypadButton JoyButtonA = new InputEventJoypadButton() { ButtonIndex = JoyButton.A };
         InputEventJoypadButton JoyButtonB = new InputEventJoypadButton() { ButtonIndex = JoyButton.B };
