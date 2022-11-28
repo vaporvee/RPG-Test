@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Essential="*res://src/essential.cs"
-SignalBus="*res://src/signal_bus.cs"
 
 [display]
 
