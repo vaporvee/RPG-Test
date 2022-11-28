@@ -8,7 +8,6 @@ public partial class essential : Node
     public override void _Input(InputEvent @event) 
     {
         //Checks if using Keyboard or controller and giving out current controller
-        //Issue: Consuming first input for some reason
         if (@event is InputEventKey || @event is InputEventMouseButton || currentController == "")
             currentController = "PC";
         if (@event is InputEventJoypadButton)
