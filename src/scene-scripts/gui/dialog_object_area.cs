@@ -11,7 +11,7 @@ public partial class dialog_object_area : Area2D
     {
         if(areaActive && @event.IsActionPressed("ui_accept"))
         {
-            signal_bus.EmitSignal("DialogDisplay", dialogKey);
+           // signal_bus.EmitSignal("DialogDisplay", dialogKey);
         }
     }
     public void onDialogAreaEntered()
