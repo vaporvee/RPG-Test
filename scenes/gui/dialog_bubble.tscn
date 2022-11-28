@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://d6ngurhq1r5y"]
+
+[ext_resource type="Script" path="res://src/scene-scripts/gui/dialog_bubble.cs" id="1_snqhg"]
+[ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/font/urbane-rounded-medium.otf" id="1_vlvkg"]
+
+[node name="dialog_bubble" type="CanvasLayer"]
+script = ExtResource("1_snqhg")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.211
+anchor_top = 0.786
+anchor_right = 0.846
+anchor_bottom = 1.0
+offset_left = 0.139984
+offset_top = -19.92
+offset_right = 0.0400391
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="TextLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.218
+anchor_top = 0.812
+anchor_right = 0.837
+anchor_bottom = 0.972
+offset_left = 0.319977
+offset_top = -19.64
+offset_right = 0.380005
+offset_bottom = -19.84
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vlvkg")
+theme_override_font_sizes/font_size = 32
+text = "This is test text"

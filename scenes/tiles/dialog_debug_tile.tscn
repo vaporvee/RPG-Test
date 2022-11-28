@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjqwrkx04evnr"]
+
+[ext_resource type="Texture2D" uid="uid://p5ubildre2tg" path="res://assets/textures/debug/cupcake.png" id="1_qmvgm"]
+[ext_resource type="PackedScene" uid="uid://d14pjtkh0xmrk" path="res://scenes/gui/trigger/dialog_object_area.tscn" id="2_m1t8o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2d5dy"]
+radius = 30.8058
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nu5em"]
+size = Vector2(68, 65)
+
+[node name="first_debug_tile" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qmvgm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
+shape = SubResource("CircleShape2D_2d5dy")
+
+[node name="dialog_area" parent="." instance=ExtResource("2_m1t8o")]
+dialogKey = "cupcake"
+
+[node name="CollisionShape2D" parent="dialog_area" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_nu5em")
+
+[editable path="dialog_area"]

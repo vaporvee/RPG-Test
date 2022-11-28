@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Runtime.CompilerServices;
 
 public partial class dialog_object_area : Area2D
 {
@@ -12,14 +11,14 @@ public partial class dialog_object_area : Area2D
     {
         if(areaActive && @event.IsActionPressed("ui_accept"))
         {
-            EmitSignal("DialogDisplayEventHandler", dialogKey);
+            signal_bus.EmitSignal("DialogDisplay", dialogKey);
         }
     }
-    public void onAreaEntered()
+    public void onDialogAreaEntered()
     {
         areaActive = true;
     }
-    public void onAreaExited()
+    public void onDialogAreaExited()
     {
         areaActive = false;
     }
