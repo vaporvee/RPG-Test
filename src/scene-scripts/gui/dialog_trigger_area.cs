@@ -15,15 +15,10 @@ public partial class dialog_trigger_area : Area2D
 
         var jsonFile = JSON.ParseString(text);
         Dictionary allDialog = (Dictionary)jsonFile;
-        try
-        {
+        if (currentKey.BeginsWith("random")) { 
             string[] dialogPart = allDialog[currentKey].AsStringArray();
             GD.Print(dialogPart[GD.Randi() % dialogPart.Length]);
-        } 
-        catch 
-        { 
-            GD.Print(allDialog[currentKey]);
-        }
+        } else GD.Print(allDialog[currentKey]);
     }
 
 }
