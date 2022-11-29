@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://h8na2j1qthm4"]
+[gd_scene load_steps=5 format=3 uid="uid://h8na2j1qthm4"]
 
 [ext_resource type="Texture2D" uid="uid://p5ubildre2tg" path="res://assets/textures/debug/cupcake.png" id="1_imilm"]
+[ext_resource type="PackedScene" uid="uid://hkcebwbua6wm" path="res://scenes/gui/dialog_trigger_area.tscn" id="2_blpmd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pchpi"]
 size = Vector2(64, 58.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d78tr"]
+size = Vector2(64, 58)
 
 [node name="dialogdebug_cupcake" type="StaticBody2D"]
 
@@ -12,3 +16,11 @@ texture = ExtResource("1_imilm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pchpi")
+
+[node name="dialog_trigger_area" parent="." instance=ExtResource("2_blpmd")]
+dialogFile = "res://dialog/npcs/villagers.json"
+
+[node name="collision_shape_2d" parent="dialog_trigger_area" index="0"]
+shape = SubResource("RectangleShape2D_d78tr")
+
+[editable path="dialog_trigger_area"]
