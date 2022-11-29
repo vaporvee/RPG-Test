@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 public partial class dialog_trigger_area : Area2D
 {
@@ -8,7 +9,14 @@ public partial class dialog_trigger_area : Area2D
 	{
         using var file = FileAccess.Open(dialogFile, FileAccess.ModeFlags.Read);
         string text = file.GetAsText();
-        GD.Print(text);
-	}
+
+        var jsonFile = JSON.ParseString(text);
+        Dictionary allDialog = (Dictionary)jsonFile;
+
+        Dictionary firsChunkDialog = (Dictionary)allDialog["1"];
+
+        GD.Print(firsChunkDialog["debugAnswer"]);
+
+    }
 
 }
