@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://h8na2j1qthm4"]
+
+[ext_resource type="Texture2D" uid="uid://p5ubildre2tg" path="res://assets/textures/debug/cupcake.png" id="1_imilm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pchpi"]
+size = Vector2(64, 58.5)
+
+[node name="dialogdebug_cupcake" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_imilm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pchpi")

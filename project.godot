@@ -21,13 +21,17 @@ Essential="*res://src/essential.cs"
 
 [display]
 
-window/size/viewport_width=1260
-window/size/viewport_height=720
-window/stretch/mode="canvas_items"
+window/size/viewport_width=1537
+window/size/viewport_height=864
+window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="RPG Test gd4"
+
+[editor]
+
+node_naming/name_casing=2
 
 [filesystem]
 

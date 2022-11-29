@@ -4,20 +4,22 @@
 [ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/font/urbane-rounded-medium.otf" id="1_vlvkg"]
 
 [node name="dialog_bubble" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_txwv4")
+MyColor = "White"
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 250.0
-offset_top = -190.0
-offset_right = -210.0
-offset_bottom = -20.0
+anchors_preset = -1
+anchor_left = 0.163
+anchor_top = 0.78
+anchor_right = 0.863
+anchor_bottom = 0.977
+offset_left = -0.531006
+offset_top = 0.0799561
+offset_right = 0.56897
+offset_bottom = -0.128052
 grow_horizontal = 2
+grow_vertical = 0
 
 [node name="TextLabel" type="Label" parent="."]
 anchors_preset = -1
@@ -37,10 +39,15 @@ theme_override_font_sizes/font_size = 32
 text = "This is test text"
 
 [node name="NameLabel" type="Label" parent="."]
-offset_left = 252.0
-offset_top = 532.0
-offset_right = 302.0
-offset_bottom = 558.0
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.782
+anchor_right = 0.197
+anchor_bottom = 0.808
+offset_left = 0.259995
+offset_top = -0.430054
+offset_right = -0.39502
+offset_bottom = 0.0799561
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_vlvkg")
 theme_override_font_sizes/font_size = 16
