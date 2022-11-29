@@ -13,9 +13,7 @@ public partial class dialog_trigger_area : Area2D
         var jsonFile = JSON.ParseString(text);
         Dictionary allDialog = (Dictionary)jsonFile;
 
-        Dictionary firsChunkDialog = (Dictionary)allDialog["1"];
-
-        GD.Print(firsChunkDialog["debugAnswer"]);
+        GD.Print(allDialog["debugAnswer"]);
 
     }
 
