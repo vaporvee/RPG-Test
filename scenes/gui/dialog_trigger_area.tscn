@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://hkcebwbua6wm"]
+[gd_scene load_steps=2 format=3 uid="uid://hkcebwbua6wm"]
+
+[ext_resource type="Script" path="res://src/scene-scripts/gui/dialog_trigger_area.cs" id="1_wosjw"]
 
 [node name="dialog_trigger_area" type="Area2D"]
+script = ExtResource("1_wosjw")
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="."]

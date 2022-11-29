@@ -5,7 +5,6 @@
 
 [node name="dialog_bubble" type="CanvasLayer"]
 script = ExtResource("1_txwv4")
-MyColor = "White"
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
