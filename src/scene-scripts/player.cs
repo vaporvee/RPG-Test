@@ -5,9 +5,6 @@ public partial class player : CharacterBody2D
 	[Export]
 	public int speed = 400;
 
-    public override void _Ready()
-    {
-    }
     public override void _PhysicsProcess(double delta)
 	{
         MoveAndCollide(new Vector2
@@ -22,10 +19,14 @@ public partial class player : CharacterBody2D
     }
     public override void _Process(double delta)
     {
-        //rotates just interaction_area instead of whole player
-        if (Input.IsActionJustPressed("move_right")) GetNode<Area2D>("interaction_area").Rotation = Mathf.Pi / -2;
-        if (Input.IsActionJustPressed("move_left")) GetNode<Area2D>("interaction_area").Rotation = Mathf.Pi / 2;
-        if (Input.IsActionJustPressed("move_down")) GetNode<Area2D>("interaction_area").Rotation = 0;
-        if (Input.IsActionJustPressed("move_up")) GetNode<Area2D>("interaction_area").Rotation = Mathf.Pi;
+        //set ray_cast target position
+        if (Input.IsActionJustPressed("move_right")) GetNode<RayCast2D>("ray_cast_2d").TargetPosition = new Vector2(64, 0);
+        if (Input.IsActionJustPressed("move_left")) GetNode<RayCast2D>("ray_cast_2d").TargetPosition = new Vector2(-64, 0);
+        if (Input.IsActionJustPressed("move_down")) GetNode<RayCast2D>("ray_cast_2d").TargetPosition = new Vector2(0, 64);
+        if (Input.IsActionJustPressed("move_up")) GetNode<RayCast2D>("ray_cast_2d").TargetPosition = new Vector2(0, -64);
+
+        //call event in raycasted object
+        var raycastedObject = GetNode<RayCast2D>("ray_cast_2d").GetCollider();
+        if(Input.IsActionJustPressed("ui_accept") && raycastedObject!=null) raycastedObject.Call("OnInteraction");
     }
 }

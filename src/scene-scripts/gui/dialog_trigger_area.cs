@@ -8,7 +8,7 @@ public partial class dialog_trigger_area : Area2D
     string dialogFile;
 
     public string currentKey = "randomWelcomeText";
-    public override void _Ready()
+    public void OnInteraction()
     {
         using var file = FileAccess.Open(dialogFile, FileAccess.ModeFlags.Read);
         string text = file.GetAsText();
@@ -20,5 +20,4 @@ public partial class dialog_trigger_area : Area2D
             GD.Print(dialogPart[GD.Randi() % dialogPart.Length]);
         } else GD.Print(allDialog[currentKey]);
     }
-
 }
