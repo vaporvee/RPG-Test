@@ -4,14 +4,11 @@ public partial class player : CharacterBody2D
 {
 	[Export]
 	public int speed = 400;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
 
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _PhysicsProcess(double delta)
+    public override void _Ready()
+    {
+    }
+    public override void _PhysicsProcess(double delta)
 	{
         MoveAndCollide(new Vector2
             (
@@ -22,5 +19,13 @@ public partial class player : CharacterBody2D
             ).LimitLength(1)
             * speed * (float)delta
             );
+    }
+    public override void _Process(double delta)
+    {
+        //rotates just interaction_area instead of whole player
+        if (Input.IsActionJustPressed("move_right")) GetNode<Area2D>("interaction_area").Rotation = Mathf.Pi / -2;
+        if (Input.IsActionJustPressed("move_left")) GetNode<Area2D>("interaction_area").Rotation = Mathf.Pi / 2;
+        if (Input.IsActionJustPressed("move_down")) GetNode<Area2D>("interaction_area").Rotation = 0;
+        if (Input.IsActionJustPressed("move_up")) GetNode<Area2D>("interaction_area").Rotation = Mathf.Pi;
     }
 }
