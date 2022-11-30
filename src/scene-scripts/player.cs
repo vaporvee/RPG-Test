@@ -26,7 +26,9 @@ public partial class player : CharacterBody2D
         if (Input.IsActionJustPressed("move_up")) GetNode<RayCast2D>("ray_cast_2d").TargetPosition = new Vector2(0, -64);
 
         //call event in raycasted object
+        if (Input.IsActionJustPressed("ui_accept") && GetNode<RayCast2D>("ray_cast_2d").IsColliding()) {
         var raycastedObject = GetNode<RayCast2D>("ray_cast_2d").GetCollider();
-        if(Input.IsActionJustPressed("ui_accept") && raycastedObject!=null) raycastedObject.Call("OnInteraction");
+            raycastedObject.Call("OnInteraction");
+        }
     }
 }

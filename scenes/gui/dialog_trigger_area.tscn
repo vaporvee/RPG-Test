@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://hkcebwbua6wm"]
+[gd_scene load_steps=2 format=3 uid="uid://hyhe4kitrbt6"]
 
-[ext_resource type="Script" path="res://src/scene-scripts/gui/dialog_trigger_area.cs" id="1_wosjw"]
+[ext_resource type="Script" path="res://src/scene-scripts/dialog_trigger_area.cs" id="1_ujbo8"]
 
 [node name="dialog_trigger_area" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_wosjw")
+script = ExtResource("1_ujbo8")
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]
