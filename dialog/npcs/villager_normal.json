@@ -1,12 +1,12 @@
 {
 	"randomWelcomeText":[
-		"Oh hello, {player}... You look great! What do you want from me?",
-		"Hey, {player}! Hope you have fun today!",
-		"Hi! What's up {player}?"
+		"Oh hello, {0}... You look great! What do you want from me?",
+		"Hey, {0}! Hope you have fun today!",
+		"Hi! What's up {0}?"
 	],
 	"debugAnswer": "This is a debug answer!",
 	"randomGoodbyeText":[
 		"Was nice talking to you goodbye!",
-		"Have a great day, {player}!"
+		"Have a great day, {0}!"
 	]
 }

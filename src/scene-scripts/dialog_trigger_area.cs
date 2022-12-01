@@ -6,10 +6,12 @@ public partial class dialog_trigger_area : Area2D
 {
     [Export(PropertyHint.File, "*json")]
     string dialogFile;
-
-    public string currentKey = "randomWelcomeText";
-    public void OnInteraction()
+    [Export]
+    string dialogTitle;
+    public string printedDialog;
+    public void OnInteraction(string playerName)
     {
+        string currentKey = "randomWelcomeText";
         using var file = FileAccess.Open(dialogFile, FileAccess.ModeFlags.Read);
         string text = file.GetAsText();
 
@@ -17,7 +19,10 @@ public partial class dialog_trigger_area : Area2D
         Dictionary allDialog = (Dictionary)jsonFile;
         if (currentKey.BeginsWith("random")) { 
             string[] dialogPart = allDialog[currentKey].AsStringArray();
-            GD.Print(dialogPart[GD.Randi() % dialogPart.Length]);
-        } else GD.Print(allDialog[currentKey]);
+            printedDialog = dialogPart[GD.Randi() % dialogPart.Length];
+        } else printedDialog = allDialog[currentKey].AsString();
+        printedDialog = String.Format(printedDialog, playerName);
+
+        GetNode("/root/main/dialog_bubble").Call("ImportString",dialogTitle, printedDialog);
     }
 }

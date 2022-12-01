@@ -4,6 +4,8 @@ public partial class player : CharacterBody2D
 {
 	[Export]
 	public int speed = 400;
+    [Export]
+    public string playerName;
 
     public override void _PhysicsProcess(double delta)
 	{
@@ -28,7 +30,7 @@ public partial class player : CharacterBody2D
         //call event in raycasted object
         if (Input.IsActionJustPressed("ui_accept") && GetNode<RayCast2D>("ray_cast_2d").IsColliding()) {
         var raycastedObject = GetNode<RayCast2D>("ray_cast_2d").GetCollider();
-            raycastedObject.Call("OnInteraction");
+        raycastedObject.Call("OnInteraction", playerName);
         }
     }
 }
