@@ -1,11 +1,13 @@
 using Godot;
 using System;
+using System.Diagnostics;
+
 public partial class player : CharacterBody2D
 {
-	[Export]
-	public int speed = 400;
     [Export]
     public string playerName;
+	[Export]
+	public int speed = 400;
 
     public override void _PhysicsProcess(double delta)
 	{
@@ -19,6 +21,7 @@ public partial class player : CharacterBody2D
             * speed * (float)delta
             );
     }
+    public void ChangeProcess(bool process){ if(process) ProcessMode = ProcessModeEnum.Inherit; else ProcessMode = ProcessModeEnum.Disabled; }
     public override void _Process(double delta)
     {
         //set ray_cast target position
@@ -28,9 +31,10 @@ public partial class player : CharacterBody2D
         if (Input.IsActionJustPressed("move_up")) GetNode<RayCast2D>("ray_cast_2d").TargetPosition = new Vector2(0, -64);
 
         //call event in raycasted object
-        if (Input.IsActionJustPressed("ui_accept") && GetNode<RayCast2D>("ray_cast_2d").IsColliding()) {
-        var raycastedObject = GetNode<RayCast2D>("ray_cast_2d").GetCollider();
-        raycastedObject.Call("OnInteraction", playerName);
+        if (Input.IsActionJustPressed("ui_accept") && GetNode<RayCast2D>("ray_cast_2d").IsColliding()) 
+        {
+            var raycastedObject = GetNode<RayCast2D>("ray_cast_2d").GetCollider();
+            raycastedObject.Call("OnInteraction", playerName);
         }
     }
 }
