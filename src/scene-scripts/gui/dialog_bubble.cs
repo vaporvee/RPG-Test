@@ -4,7 +4,7 @@ using System;
 
 public partial class dialog_bubble : CanvasLayer
 {
-    public string printedDialog;
+    public string currentDialogLine;
     public int debugCounter;
     public void ImportString(string dialogTitle, string dialogFile, string playerName)
     {
@@ -14,17 +14,19 @@ public partial class dialog_bubble : CanvasLayer
         string currentKey = "randomWelcomeText";
         using var file = FileAccess.Open(dialogFile, FileAccess.ModeFlags.Read);
         string text = file.GetAsText();
-
         var jsonFile = JSON.ParseString(text);
         Dictionary allDialog = (Dictionary)jsonFile;
-        if (currentKey.BeginsWith("random"))
+
+        //Todo: add multiline text and actual running dialog. And go through string for other dictionaries wich always will be playeranswers
+
+        if (currentKey.StartsWith("random"))
         {
-            string[] dialogPart = allDialog[currentKey].AsStringArray();
-            printedDialog = dialogPart[GD.Randi() % dialogPart.Length];
+            string[] dialogRand = allDialog[currentKey].AsStringArray();
+            currentDialogLine = dialogRand[GD.Randi() % dialogRand.Length];
         }
-        else printedDialog = allDialog[currentKey].AsString();
-        printedDialog = String.Format(printedDialog, playerName);
-        GetNode<Label>("TextLabel").Text = printedDialog;
+        else currentDialogLine = allDialog[currentKey].AsString();
+        currentDialogLine = String.Format(currentDialogLine, playerName);
+        GetNode<Label>("TextLabel").Text = currentDialogLine;
         GetNode<Label>("NameLabel").Text = dialogTitle;
     }
     public void EndDialog()
@@ -38,7 +40,7 @@ public partial class dialog_bubble : CanvasLayer
         {
             debugCounter++;
         }
-        if(debugCounter == 2)
+        if(debugCounter > 1)
         {
             EndDialog();
             debugCounter = 0;

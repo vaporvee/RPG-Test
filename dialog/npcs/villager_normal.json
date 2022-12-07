@@ -4,9 +4,26 @@
 		"Hey, {0}! Hope you have fun today!",
 		"Hi! What's up {0}?"
 	],
-	"debugAnswer": "This is a debug answer!",
 	"randomGoodbyeText":[
 		"Was nice talking to you goodbye!",
 		"Have a great day, {0}!"
+	],
+	"multiDebugTipp00":[
+		"You can walk arround with WASD on PC.",
+		"You can also use your joystick and D-Pad, if",
+		"you have a controller.",
+		"You can interact with cupcakes and",
+		"use the buggy placeholder clouds as a football."
+	],
+	"multiDebugTipp01":[
+		"Lorem ipsum dolor sit amet, consetetur sadipscing elitr,",
+		"sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,",
+		"sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+		"Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+		{
+			"Okay I'm doing that":[
+				"Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+				]
+		}
 	]
 }
