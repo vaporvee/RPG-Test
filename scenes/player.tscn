@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ujfhvssvbgpg"]
 
 [ext_resource type="Script" path="res://src/scene-scripts/player.cs" id="1_qehox"]
-[ext_resource type="Texture2D" uid="uid://c3ep33iycax04" path="res://assets/textures/debug/dummy-player-normal.png" id="2_48656"]
+[ext_resource type="Texture2D" uid="uid://377657cxmdpa" path="res://assets/textures/debug/dummy-player-normal.png" id="2_48656"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2x1cy"]
 animations = [{
@@ -31,6 +31,6 @@ current = true
 zoom = Vector2(0.8, 0.8)
 
 [node name="ray_cast_2d" type="RayCast2D" parent="."]
-target_position = Vector2(0, 128)
+target_position = Vector2(0, 100)
 collision_mask = 2
 collide_with_areas = true
