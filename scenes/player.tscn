@@ -12,18 +12,21 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38v5o"]
-radius = 43.0
-height = 132.0
+radius = 18.057
+height = 56.0051
 
 [node name="player" type="CharacterBody2D"]
 process_mode = 1
 script = ExtResource("1_qehox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.0625, -17.0625)
+scale = Vector2(0.733398, 0.733398)
 frames = SubResource("SpriteFrames_2x1cy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 12)
+rotation = 1.57345
 shape = SubResource("CapsuleShape2D_38v5o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -31,6 +34,6 @@ current = true
 zoom = Vector2(0.8, 0.8)
 
 [node name="ray_cast_2d" type="RayCast2D" parent="."]
-target_position = Vector2(0, 100)
+target_position = Vector2(0, 64)
 collision_mask = 2
 collide_with_areas = true
