@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://ujfhvssvbgpg"]
 
 [ext_resource type="Script" path="res://src/scene-scripts/player.cs" id="1_qehox"]
-[ext_resource type="Texture2D" uid="uid://ciidukjv5k6oa" path="res://assets/textures/debug/banana.png" id="2_1l1co"]
+[ext_resource type="Texture2D" uid="uid://c3ep33iycax04" path="res://assets/textures/debug/dummy-player-normal.png" id="2_48656"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2x1cy"]
 animations = [{
-"frames": [ExtResource("2_1l1co")],
+"frames": [ExtResource("2_48656")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38v5o"]
-radius = 21.0
-height = 66.0
+radius = 43.0
+height = 132.0
 
 [node name="player" type="CharacterBody2D"]
 process_mode = 1
@@ -23,6 +23,7 @@ script = ExtResource("1_qehox")
 frames = SubResource("SpriteFrames_2x1cy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_38v5o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -30,6 +31,6 @@ current = true
 zoom = Vector2(0.8, 0.8)
 
 [node name="ray_cast_2d" type="RayCast2D" parent="."]
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 128)
 collision_mask = 2
 collide_with_areas = true
