@@ -5,12 +5,13 @@ public partial class player : CharacterBody2D
 {
     [Export] public string playerName;
 	[Export] public int speed = 400;
-    [Export] public int rayCastLength = 64;
+    public float rayCastLength;
     public Vector2 movement;
     public AnimatedSprite2D animatedSprite;
 
     public override void _Ready()
     {
+        rayCastLength = GetNode<RayCast2D>("ray_cast_2d").TargetPosition.y;
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
     }
     public void ChangeProcess(bool process) 
@@ -26,11 +27,12 @@ public partial class player : CharacterBody2D
     public override void _Process(double delta)
     {
         //set ray_cast target position
+        RayCast2D rayCast = GetNode<RayCast2D>("ray_cast_2d");
         Vector2 rayCastPosition = new Vector2((float)Math.Round(movement.x), (float)Math.Round(movement.y)) * rayCastLength;
-        if (rayCastPosition.Length() != 0) GetNode<RayCast2D>("ray_cast_2d").TargetPosition = rayCastPosition;
+        if (rayCastPosition.Length() != 0) rayCast.TargetPosition = rayCastPosition;
         //call event in raycasted object
-        if (Input.IsActionJustPressed("ui_accept") && GetNode<RayCast2D>("ray_cast_2d").IsColliding())
-            GetNode<RayCast2D>("ray_cast_2d").GetCollider().Call("OnInteraction", playerName);
+        if (Input.IsActionJustPressed("ui_accept") && rayCast.IsColliding())
+            rayCast.GetCollider().Call("OnInteraction", playerName);
         //animation system (with controller support wcih cant get normalized vector)
         if (movement.Length() != 0)
             animatedSprite.Play();
