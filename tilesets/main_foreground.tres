@@ -1,17 +1,17 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://txl24cadn8t4"]
 
-[ext_resource type="PackedScene" path="res://scenes/tiles/first_debug_tile.tscn" id="1_uxmn6"]
+[ext_resource type="PackedScene" uid="uid://dk7fqaw2b3w1k" path="res://scenes/tiles/first_debug_tile.tscn" id="1_uxmn6"]
 [ext_resource type="PackedScene" uid="uid://h8na2j1qthm4" path="res://scenes/tiles/dialogdebug_cupcake.tscn" id="2_0cov5"]
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_eunvs"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lcrun"]
 resource_name = "test"
 scenes/0/scene = ExtResource("1_uxmn6")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1hlek"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_eskkr"]
 resource_name = "dialogdebug"
 scenes/1/scene = ExtResource("2_0cov5")
 
 [resource]
 tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetScenesCollectionSource_eunvs")
-sources/1 = SubResource("TileSetScenesCollectionSource_1hlek")
+sources/0 = SubResource("TileSetScenesCollectionSource_lcrun")
+sources/1 = SubResource("TileSetScenesCollectionSource_eskkr")
