@@ -7,7 +7,7 @@ public partial class player : CharacterBody2D
     public string playerName;
 	[Export]
 	public int speed = 400;
-    public Vector2 velocity;
+    public Vector2 movement;
     public AnimatedSprite2D animatedSprite;
 
     public override void _Ready()
@@ -21,8 +21,8 @@ public partial class player : CharacterBody2D
     }
     public override void _PhysicsProcess(double delta)
 	{
-        velocity = Input.GetVector("move_left", "move_right", "move_up", "move_down").LimitLength(1);
-        MoveAndCollide(velocity * speed * (float)delta);
+        movement = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+        MoveAndCollide(movement * speed * (float)delta);
     }
     public override void _Process(double delta)
     {
@@ -36,25 +36,25 @@ public partial class player : CharacterBody2D
         if (Input.IsActionJustPressed("ui_accept") && GetNode<RayCast2D>("ray_cast_2d").IsColliding())
             GetNode<RayCast2D>("ray_cast_2d").GetCollider().Call("OnInteraction", playerName);
         //animation system (with controller support wcih cant get normalized vector)
-        if (velocity.Length() != 0) 
+        if (movement.Length() != 0) 
             animatedSprite.Play();
         else
         {
             animatedSprite.Frame = 0;
             animatedSprite.Stop();
         }
-        if (Input.IsActionPressed("move_right") || Input.IsActionPressed("move_left"))
+        if (Math.Round(movement.x, 0) != 0)
         {
             animatedSprite.Animation = "move_side";
-            animatedSprite.FlipH = velocity.x < 0.5;
-            animatedSprite.SpeedScale = Math.Abs(velocity.x);
+            animatedSprite.FlipH = movement.x < 0.5;
+            animatedSprite.SpeedScale = Math.Abs(movement.x);
         }
-        else if (Input.IsActionPressed("move_up") || Input.IsActionPressed("move_down"))
+        else if (Math.Round(movement.y, 0) != 0)
         {
-            if (velocity.y > 0.05) animatedSprite.Animation = "move_down";
-            if (velocity.y < 0.05) animatedSprite.Animation = "move_up";
+            if (movement.y > 0.05) animatedSprite.Animation = "move_down";
+            if (movement.y < 0.05) animatedSprite.Animation = "move_up";
             animatedSprite.FlipH = false;
-            animatedSprite.SpeedScale = Math.Abs(velocity.y);
+            animatedSprite.SpeedScale = Math.Abs(movement.y);
         }
     }
 }
