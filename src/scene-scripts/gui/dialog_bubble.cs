@@ -1,14 +1,19 @@
+//WORK IN PROGRESS this code is very messy and will be fixed when it works
 using Godot;
 using Godot.Collections;
 using System;
+using System.Collections.Generic;
 
 public partial class dialog_bubble : CanvasLayer
 {
+    public List<string> currentDialogList = new List<string>();
     public string currentDialogLine;
-    public int debugCounter;
+    public int dialogCounter;
+    public string userName;
     public void ImportString(string dialogTitle, string dialogFile, string playerName)
     {
-        Visible = true;
+        userName = playerName;
+        GetNode<Label>("NameLabel").Text = dialogTitle;
         GD.Print("test");
         GetNode("/root/main/player").Call("ChangeProcess",false);
         string currentKey = "randomWelcomeText";
@@ -22,15 +27,16 @@ public partial class dialog_bubble : CanvasLayer
         if (currentKey.StartsWith("random"))
         {
             string[] dialogRand = allDialog[currentKey].AsStringArray();
-            currentDialogLine = dialogRand[GD.Randi() % dialogRand.Length];
+            currentDialogList.Add(dialogRand[GD.Randi() % dialogRand.Length]);
+            currentDialogList.Add("Test!");
         }
-        else currentDialogLine = allDialog[currentKey].AsString();
-        currentDialogLine = String.Format(currentDialogLine, playerName);
-        GetNode<Label>("TextLabel").Text = currentDialogLine;
-        GetNode<Label>("NameLabel").Text = dialogTitle;
+        else currentDialogList.Add(allDialog[currentKey].AsString());
+
     }
     public void EndDialog()
     {
+        currentDialogList = new List<string>();
+        dialogCounter = 0;
         Visible = false;
         GetNode("/root/main/player").Call("ChangeProcess", true);
     }
@@ -38,12 +44,17 @@ public partial class dialog_bubble : CanvasLayer
     {
         if (Input.IsActionJustPressed("ui_accept"))
         {
-            debugCounter++;
+            dialogCounter++;
+            if (currentDialogList.Count >= dialogCounter)
+            {
+                Visible = true;
+                currentDialogLine = currentDialogList[dialogCounter - 1];
+                currentDialogLine = String.Format(currentDialogLine, userName);
+                GetNode<Label>("TextLabel").Text = currentDialogLine;
+            }
+            else GD.Print("No valid dialog available");
         }
-        if(debugCounter > 1)
-        {
+        if(dialogCounter > currentDialogList.Count) 
             EndDialog();
-            debugCounter = 0;
-        }
     }
 }
