@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://txl24cadn8t4"]
 
 [ext_resource type="PackedScene" uid="uid://dk7fqaw2b3w1k" path="res://scenes/tiles/first_debug_tile.tscn" id="1_uxmn6"]
-[ext_resource type="PackedScene" uid="uid://h8na2j1qthm4" path="res://scenes/tiles/dialogdebug_cupcake.tscn" id="2_0cov5"]
+[ext_resource type="PackedScene" uid="uid://dckxciecwjfgf" path="res://scenes/tiles/dialogdebug_cupcake.tscn" id="2_0cov5"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lcrun"]
 resource_name = "test"
