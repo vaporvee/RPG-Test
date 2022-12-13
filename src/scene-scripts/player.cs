@@ -4,7 +4,7 @@ using System;
 public partial class player : CharacterBody2D
 {
     [Export] public string playerName;
-	[Export] public int speed = 400;
+	[Export] public int speed = 200;
     public float rayCastLength;
     public Vector2 movement;
     public AnimatedSprite2D animatedSprite;
@@ -45,14 +45,14 @@ public partial class player : CharacterBody2D
         {
             animatedSprite.Animation = "move_side";
             animatedSprite.FlipH = movement.x < 0.5;
-            animatedSprite.SpeedScale = Math.Abs(movement.x);
+            animatedSprite.SpeedScale = Math.Abs(movement.x * speed/150);
         }
         else if (Math.Round(movement.y, 0) != 0)
         {
             if (movement.y > 0.05) animatedSprite.Animation = "move_down";
             if (movement.y < 0.05) animatedSprite.Animation = "move_up";
             animatedSprite.FlipH = false;
-            animatedSprite.SpeedScale = Math.Abs(movement.y);
+            animatedSprite.SpeedScale = Math.Abs(movement.y * speed/150);
         }
     }
 }

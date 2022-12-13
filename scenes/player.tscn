@@ -40,17 +40,17 @@ animations = [{
 "frames": [SubResource("AtlasTexture_tirvd"), SubResource("AtlasTexture_0qv2m"), SubResource("AtlasTexture_tirvd"), SubResource("AtlasTexture_qomfj")],
 "loop": true,
 "name": &"move_down",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [SubResource("AtlasTexture_ulejc"), SubResource("AtlasTexture_1x805")],
 "loop": true,
 "name": &"move_side",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [SubResource("AtlasTexture_x338k"), SubResource("AtlasTexture_6ynw8"), SubResource("AtlasTexture_x338k"), SubResource("AtlasTexture_2yirn")],
 "loop": true,
 "name": &"move_up",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38v5o"]
