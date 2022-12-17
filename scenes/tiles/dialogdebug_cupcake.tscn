@@ -19,7 +19,6 @@ shape = SubResource("RectangleShape2D_pchpi")
 
 [node name="dialog_trigger_area" parent="." instance=ExtResource("2_blpmd")]
 dialogFile = "res://dialog/npcs/villager_normal.json"
-dialogTitle = "Talking Cupcake"
 
 [node name="collision_shape_2d" parent="dialog_trigger_area" index="0"]
 shape = SubResource("RectangleShape2D_d78tr")

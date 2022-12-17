@@ -6,31 +6,25 @@ using System.Collections.Generic;
 
 public partial class dialog_bubble : CanvasLayer
 {
+    public Dictionary allDialog;
     public List<string> currentDialogList = new List<string>();
+    public string currentKey;
     public string currentDialogLine;
     public int dialogCounter;
     public string userName;
-    public void ImportString(string dialogTitle, string dialogFile, string playerName)
+    public void ImportString(string dialogFile, string playerName)
     {
         userName = playerName;
-        GetNode<Label>("NameLabel").Text = dialogTitle;
-        GD.Print("test");
-        GetNode("/root/main/player").Call("ChangeProcess",false);
-        string currentKey = "randomWelcomeText";
+        GetNode("/root/main/player").Call("ChangeProcess", false);
+        currentKey = "multiTipp0";//2 is a selection menu needs to be planned before coding
         using var file = FileAccess.Open(dialogFile, FileAccess.ModeFlags.Read);
         string text = file.GetAsText();
-        var jsonFile = JSON.ParseString(text);
-        Dictionary allDialog = (Dictionary)jsonFile;
+        allDialog = (Dictionary)JSON.ParseString(text);
+        GetNode<Label>("NameLabel").Text = allDialog["dialogTitle"].ToString();
+        addText();
+
 
         //Todo: add multiline text and actual running dialog. And go through string for other dictionaries wich always will be playeranswers
-
-        if (currentKey.StartsWith("random"))
-        {
-            string[] dialogRand = allDialog[currentKey].AsStringArray();
-            currentDialogList.Add(dialogRand[GD.Randi() % dialogRand.Length]);
-            currentDialogList.Add("Test!");
-        }
-        else currentDialogList.Add(allDialog[currentKey].AsString());
 
     }
     public void EndDialog()
@@ -39,6 +33,19 @@ public partial class dialog_bubble : CanvasLayer
         dialogCounter = 0;
         Visible = false;
         GetNode("/root/main/player").Call("ChangeProcess", true);
+    }
+    public void addText()
+    {
+        if (currentKey.StartsWith("random"))
+        {
+            string[] dialogRand = allDialog[currentKey].AsStringArray();
+            currentDialogList.Add(dialogRand[GD.Randi() % dialogRand.Length]);
+        }
+        if (currentKey.StartsWith("multi"))
+        {
+            string[] dialogMulti = allDialog[currentKey].AsStringArray();
+            currentDialogList.AddRange(dialogMulti);
+        }
     }
     public override void _Process(double delta)
     {
@@ -52,9 +59,8 @@ public partial class dialog_bubble : CanvasLayer
                 currentDialogLine = String.Format(currentDialogLine, userName);
                 GetNode<Label>("TextLabel").Text = currentDialogLine;
             }
-            else GD.Print("No valid dialog available");
+            if (dialogCounter > currentDialogList.Count)
+                EndDialog();
         }
-        if(dialogCounter > currentDialogList.Count) 
-            EndDialog();
     }
 }
