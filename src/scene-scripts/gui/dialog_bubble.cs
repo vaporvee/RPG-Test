@@ -16,7 +16,7 @@ public partial class dialog_bubble : CanvasLayer
     {
         userName = playerName;
         GetNode("/root/main/player").Call("ChangeProcess", false);
-        currentKey = "multiTipp0";//2 is a selection menu needs to be planned before coding
+        currentKey = "multiTipp2";//2 is a selection menu needs to be planned before coding
         using var file = FileAccess.Open(dialogFile, FileAccess.ModeFlags.Read);
         string text = file.GetAsText();
         allDialog = (Dictionary)JSON.ParseString(text);
@@ -24,7 +24,7 @@ public partial class dialog_bubble : CanvasLayer
         addText();
 
 
-        //Todo: add multiline text and actual running dialog. And go through string for other dictionaries wich always will be playeranswers
+        //Todo: Implement the better json file structure.
 
     }
     public void EndDialog()
@@ -36,16 +36,11 @@ public partial class dialog_bubble : CanvasLayer
     }
     public void addText()
     {
+        var dialogWithKey = allDialog[currentKey].AsStringArray();
         if (currentKey.StartsWith("random"))
-        {
-            string[] dialogRand = allDialog[currentKey].AsStringArray();
-            currentDialogList.Add(dialogRand[GD.Randi() % dialogRand.Length]);
-        }
+            currentDialogList.Add(dialogWithKey[GD.Randi() % dialogWithKey.Length]);
         if (currentKey.StartsWith("multi"))
-        {
-            string[] dialogMulti = allDialog[currentKey].AsStringArray();
-            currentDialogList.AddRange(dialogMulti);
-        }
+            currentDialogList.AddRange(dialogWithKey);
     }
     public override void _Process(double delta)
     {
