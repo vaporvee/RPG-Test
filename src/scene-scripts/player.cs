@@ -31,8 +31,8 @@ public partial class player : CharacterBody2D
         Vector2 rayCastPosition = new Vector2((float)Math.Round(movement.x), (float)Math.Round(movement.y)) * rayCastLength;
         if (rayCastPosition.Length() != 0) rayCast.TargetPosition = rayCastPosition;
         //call event in raycasted object
-        if (Input.IsActionJustPressed("ui_accept") && rayCast.IsColliding())
-            rayCast.GetCollider().Call("OnInteraction", playerName);
+        /*if (Input.IsActionJustPressed("ui_accept") && rayCast.IsColliding())
+            rayCast.GetCollider().Call("OnInteraction", playerName);*/
         //animation system (with controller support wcih cant get normalized vector)
         if (movement.Length() != 0)
             animatedSprite.Play();

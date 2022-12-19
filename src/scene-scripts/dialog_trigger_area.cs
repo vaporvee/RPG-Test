@@ -7,6 +7,6 @@ public partial class dialog_trigger_area : Area2D
     string dialogFile;
     public void OnInteraction(string playerName)
     {
-        GetNode("/root/main/dialog_bubble").Call("ImportString",dialogFile,playerName);
+        GetNode("/root/main/dialog_bubble").Call("ImportString",dialogFile,playerName);//signal instead of call?
     }
 }
