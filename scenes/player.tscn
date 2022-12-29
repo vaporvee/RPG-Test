@@ -61,22 +61,36 @@ height = 43.9998
 process_mode = 1
 script = ExtResource("1_qehox")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="rotation_center" type="Marker2D" parent="."]
+
+[node name="ray_cast_2d" type="RayCast2D" parent="rotation_center"]
+rotation = 3.14159
+target_position = Vector2(-64, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.0625, -17.0625)
 scale = Vector2(0.733398, 0.733398)
 frames = SubResource("SpriteFrames_2x1cy")
 animation = &"move_down"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
 rotation = 1.57345
 shape = SubResource("CapsuleShape2D_38v5o")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="camera_2d" type="Camera2D" parent="."]
 current = true
 zoom = Vector2(0.8, 0.8)
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.15
+drag_top_margin = 0.15
+drag_right_margin = 0.15
+drag_bottom_margin = 0.15
+editor_draw_drag_margin = true
 
-[node name="ray_cast_2d" type="RayCast2D" parent="."]
-target_position = Vector2(0, 64)
-collision_mask = 2
-collide_with_areas = true
+[node name="audio_listener_2d" type="AudioListener2D" parent="."]
+current = true

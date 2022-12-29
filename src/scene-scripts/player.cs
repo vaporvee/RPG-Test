@@ -5,14 +5,14 @@ public partial class player : CharacterBody2D
 {
     [Export] public string playerName;
 	[Export] public int speed = 200;
-    public float rayCastLength;
     public Vector2 movement;
     public AnimatedSprite2D animatedSprite;
+    public Marker2D rotCenter;
 
     public override void _Ready()
     {
-        rayCastLength = GetNode<RayCast2D>("ray_cast_2d").TargetPosition.y;
-        animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        animatedSprite = GetNode<AnimatedSprite2D>("animated_sprite_2d");
+        rotCenter = GetNode<Marker2D>("rotation_center");
     }
     public void ChangeProcess(bool process) 
     {
@@ -22,18 +22,17 @@ public partial class player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
 	{
         movement = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+        rotCenter.Rotation = movement.Angle();
         MoveAndCollide(movement * speed * (float)delta);
     }
     public override void _Process(double delta)
     {
-        //set ray_cast target position
-        RayCast2D rayCast = GetNode<RayCast2D>("ray_cast_2d");
-        Vector2 rayCastPosition = new Vector2((float)Math.Round(movement.x), (float)Math.Round(movement.y)) * rayCastLength;
-        if (rayCastPosition.Length() != 0) rayCast.TargetPosition = rayCastPosition;
+
         //call event in raycasted object
         /*if (Input.IsActionJustPressed("ui_accept") && rayCast.IsColliding())
             rayCast.GetCollider().Call("OnInteraction", playerName);*/
-        //animation system (with controller support wcih cant get normalized vector)
+
+        //animation system (with controller support wich cant get normalized vector)
         if (movement.Length() != 0)
             animatedSprite.Play();
         else
