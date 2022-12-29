@@ -1,64 +1,52 @@
 {
 	"dialogTitle": "Debug Character",
-	"dialogType": "villager",
-
-	"player": {
-		"talk" : [
+	"playerbeginoptions": {
+		"talk": [
 			"I just wanna talk",
 			"What's up",
 			"Can we talk?"
 		],
-		"goaway" : [
+		"goaway": [
 			"Nevermind!",
 			"Nothing",
 			"Have a great day!"
 		]
 	},
-
-	"welcome":
-	[
+	"welcome": [
 		"Oh hello, {0}... You look great! What do you want from me?",
 		"Hey, {0}! Hope you have fun today! So what do you want?",
 		"Hi! What's up {0}?"
 	],
-	"else":
-	[
+	"else": [
 		"Do you need something else?",
 		"So can i help you with something else?"
 	],
-	"goodbye":
-	[
+	"goodbye": [
 		"Was nice talking to you goodbye!",
 		"Have a great day, {0}!"
 	],
-
-	"multi": 
-	{
-		"tipp":
+	"tipp": [
 		[
-			[
-				"You can walk arround with WASD on PC.",
-				"You can also use your joystick and D-Pad, if you have a controller.",
-				"You can interact with cupcakes and use the buggy placeholder clouds as a football."
-			],
-			[
-				"Lorem ipsum dolor sit amet, consetetur sadipscing elitr,",
-				"sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,",
-				"sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
-				"Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-			],
-			[
-				"test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1",
-				"test2test2test2test2test2test2test2test2test2test2test2test2test2test2test2",
-				"test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3",
-				"So do you want to do xy for me?",
-				{
-					"did you detect this dictionary as answer prompt?":
-					[
-						"yes i have!"
-					]
-				}
-			]
+			"You can walk arround with WASD on PC.",
+			"You can also use your joystick and D-Pad, if you have a controller.",
+			"You can interact with cupcakes and use the buggy placeholder clouds as a football."
+		],
+		[
+			"Lorem ipsum dolor sit amet, consetetur sadipscing elitr,",
+			"sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,",
+			"sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+			"Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+		],
+		[
+			"test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1",
+			"test2test2test2test2test2test2test2test2test2test2test2test2test2test2test2",
+			"test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3",
+			"So do you want to do xy for me?",
+			{
+				"did you detect this dictionary as answer prompt?": [
+					"yes i have!"
+				]
+			}
 		]
-	}
+	]
 }
