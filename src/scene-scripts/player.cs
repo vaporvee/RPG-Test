@@ -22,7 +22,7 @@ public partial class player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
 	{
         movement = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-        if(movement.Length() != 0) rotCenter.Rotation = movement.Angle();
+        if(movement.Length() != 0) rotCenter.Rotation = new Vector2((float)Math.Round(movement.x,0),(float)Math.Round(movement.y,0)).Angle();
         MoveAndCollide(movement * speed * (float)delta);
     }
     public override void _Process(double delta)
