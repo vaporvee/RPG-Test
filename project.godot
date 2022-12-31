@@ -24,6 +24,7 @@ Essential="*res://src/essential.cs"
 window/size/viewport_width=1537
 window/size/viewport_height=864
 window/stretch/mode="canvas_items"
+window/snap/snap_2d_transforms_to_pixel=false
 
 [dotnet]
 
@@ -89,3 +90,7 @@ hotkey_fullscreen={
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Interactable"
+
+[rendering]
+
+2d/snap/snap_2d_transforms_to_pixel=true
