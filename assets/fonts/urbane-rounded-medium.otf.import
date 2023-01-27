@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cx6bvqk0ghmjv"
-path="res://.godot/imported/urbane-rounded-medium.otf-b9893bdfac064b3a1273ef625926190e.fontdata"
+path="res://.godot/imported/urbane-rounded-medium.otf-9f9f3b12be0c06a6d7111a1305925d9c.fontdata"
 
 [deps]
 
-source_file="res://assets/font/urbane-rounded-medium.otf"
-dest_files=["res://.godot/imported/urbane-rounded-medium.otf-b9893bdfac064b3a1273ef625926190e.fontdata"]
+source_file="res://assets/fonts/urbane-rounded-medium.otf"
+dest_files=["res://.godot/imported/urbane-rounded-medium.otf-9f9f3b12be0c06a6d7111a1305925d9c.fontdata"]
 
 [params]
 

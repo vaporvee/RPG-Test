@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://2867aayx0skw"]
+[gd_scene load_steps=3 format=3 uid="uid://2867aayx0skw"]
 
 [ext_resource type="PackedScene" uid="uid://ujfhvssvbgpg" path="res://scenes/player.tscn" id="1_p5d84"]
 [ext_resource type="PackedScene" uid="uid://cld0jncmsk1bj" path="res://scenes/worlds/first_world.tscn" id="2_x8nyb"]
-[ext_resource type="PackedScene" uid="uid://d6ngurhq1r5y" path="res://scenes/gui/dialog_bubble.tscn" id="3_ohogx"]
 
 [node name="main" type="Node2D"]
 
@@ -10,6 +9,3 @@
 
 [node name="player" parent="." instance=ExtResource("1_p5d84")]
 playerName = "PlayerName"
-
-[node name="dialog_bubble" parent="." instance=ExtResource("3_ohogx")]
-visible = false

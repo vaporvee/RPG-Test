@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d6ngurhq1r5y"]
+[gd_scene load_steps=3 format=3 uid="uid://dcb1x11exmlab"]
 
 [ext_resource type="Script" path="res://src/scene-scripts/gui/dialog_bubble.cs" id="1_txwv4"]
-[ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/font/urbane-rounded-medium.otf" id="1_vlvkg"]
+[ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/fonts/urbane-rounded-medium.otf" id="2_qrihj"]
 
 [node name="dialog_bubble" type="CanvasLayer"]
 script = ExtResource("1_txwv4")
@@ -33,7 +33,7 @@ offset_bottom = -9.80798
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_vlvkg")
+theme_override_fonts/font = ExtResource("2_qrihj")
 theme_override_font_sizes/font_size = 32
 text = "This is test text"
 autowrap_mode = 3
@@ -49,6 +49,6 @@ offset_top = 4.35199
 offset_right = 7.27698
 offset_bottom = 4.888
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_vlvkg")
+theme_override_fonts/font = ExtResource("2_qrihj")
 theme_override_font_sizes/font_size = 16
 text = "Name"
