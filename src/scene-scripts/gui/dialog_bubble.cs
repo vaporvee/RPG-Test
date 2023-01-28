@@ -1,4 +1,3 @@
-//WORK IN PROGRESS this code is very messy and will be fixed when it works
 using Godot;
 using System;
 

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://hyhe4kitrbt6" path="res://scenes/dialog_trigger_area.tscn" id="2_blpmd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pchpi"]
-size = Vector2(64, 58.5)
+size = Vector2(64, 17.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d78tr"]
 size = Vector2(64, 58)
@@ -15,6 +15,7 @@ size = Vector2(64, 58)
 texture = ExtResource("1_imilm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20.625)
 shape = SubResource("RectangleShape2D_pchpi")
 
 [node name="dialog_trigger_area" parent="." instance=ExtResource("2_blpmd")]
