@@ -104,7 +104,7 @@ collide_with_areas = true
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.733398, 0.733398)
-frames = SubResource("SpriteFrames_2x1cy")
+sprite_frames = SubResource("SpriteFrames_2x1cy")
 animation = &"move_down"
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]

@@ -24,7 +24,7 @@ public partial class player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
 	{
         movement = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-        if(movement.Length() != 0) rotCenter.Rotation = new Vector2((float)Math.Round(movement.x,0),(float)Math.Round(movement.y,0)).Angle();
+        if(movement.Length() != 0) rotCenter.Rotation = new Vector2((float)Math.Round(movement.X,0),(float)Math.Round(movement.Y,0)).Angle();
         MoveAndCollide(movement * speed * (float)delta);
     }
     public override void _Process(double delta)
@@ -41,18 +41,18 @@ public partial class player : CharacterBody2D
             animatedSprite.Frame = 0;
             animatedSprite.Stop();
         }
-        if (Math.Round(movement.x, 0) != 0)
+        if (Math.Round(movement.X, 0) != 0)
         {
             animatedSprite.Animation = "move_side";
-            animatedSprite.FlipH = movement.x < 0.5;
-            animatedSprite.SpeedScale = Math.Abs(movement.x * speed/150);
+            animatedSprite.FlipH = movement.X < 0.5;
+            animatedSprite.SpeedScale = Math.Abs(movement.X * speed/150);
         }
-        else if (Math.Round(movement.y, 0) != 0)
+        else if (Math.Round(movement.Y, 0) != 0)
         {
-            if (movement.y > 0.05) animatedSprite.Animation = "move_down";
-            if (movement.y < 0.05) animatedSprite.Animation = "move_up";
+            if (movement.Y > 0.05) animatedSprite.Animation = "move_down";
+            if (movement.Y < 0.05) animatedSprite.Animation = "move_up";
             animatedSprite.FlipH = false;
-            animatedSprite.SpeedScale = Math.Abs(movement.y * speed/150);
+            animatedSprite.SpeedScale = Math.Abs(movement.Y * speed/150);
         }
     }
 }
