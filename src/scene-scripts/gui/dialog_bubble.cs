@@ -10,6 +10,5 @@ public partial class dialog_bubble : CanvasLayer
     public static void SetDialog(string dialogFile)
     {
         var parsedDialog = Json.ParseString(FileAccess.Open(dialogFile, FileAccess.ModeFlags.Read).GetAsText());
-        json
     }
 }
