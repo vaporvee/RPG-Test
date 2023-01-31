@@ -3,18 +3,19 @@ using System;
 
 public partial class player : CharacterBody2D
 {
+
     [Export] public string playerName;
 	[Export] public int speed = 200;
     public Vector2 movement;
     public AnimatedSprite2D animatedSprite;
     public Marker2D rotCenter;
-    public RayCast2D rayCast;
+    public RayCast2D dialogRayCast;
 
     public override void _Ready()
     {
         animatedSprite = GetNode<AnimatedSprite2D>("animated_sprite_2d");
         rotCenter = GetNode<Marker2D>("rotation_center");
-        rayCast = GetNode<RayCast2D>("rotation_center/ray_cast_2d");
+        dialogRayCast = GetNode<RayCast2D>("rotation_center/ray_cast_2d");
     }
     public void ChangeProcess(bool process) 
     {
@@ -29,9 +30,8 @@ public partial class player : CharacterBody2D
     }
     public override void _Process(double delta)
     {
-        //call event in raycasted object
-        if (Input.IsActionJustPressed("ui_accept") && rayCast.IsColliding())
-            rayCast.GetCollider().Call("OnInteraction", playerName);
+        if (Input.IsActionJustPressed("ui_accept") && dialogRayCast.IsColliding())
+            dialog_bubble.SetDialog(dialogRayCast.GetCollider().Get("dialogFile").AsString());
 
         //animation system (with controller support wich cant get normalized vector)
         if (movement.Length() != 0)
