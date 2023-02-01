@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcb1x11exmlab"]
+[gd_scene load_steps=3 format=3 uid="uid://cnmlidl1blxam"]
 
 [ext_resource type="Script" path="res://src/scene-scripts/gui/dialog_bubble.cs" id="1_txwv4"]
 [ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/fonts/urbane-rounded-medium.otf" id="2_qrihj"]
@@ -20,7 +20,7 @@ offset_bottom = -0.128052
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="TextLabel" type="Label" parent="."]
+[node name="text_label" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.218
 anchor_top = 0.812
@@ -38,7 +38,7 @@ theme_override_font_sizes/font_size = 32
 text = "This is test text"
 autowrap_mode = 3
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="name_label" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.164
 anchor_top = 0.782
