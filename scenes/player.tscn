@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ujfhvssvbgpg"]
+[gd_scene load_steps=14 format=3 uid="uid://bxaheg7l4h1ip"]
 
 [ext_resource type="Script" path="res://src/scene-scripts/player.cs" id="1_qehox"]
 [ext_resource type="Texture2D" uid="uid://olceowuycu8c" path="res://assets/textures/debug/dummy-player-atlas.png" id="2_yu1q5"]
-[ext_resource type="PackedScene" uid="uid://dcb1x11exmlab" path="res://scenes/gui/dialog_bubble.tscn" id="3_8f573"]
+[ext_resource type="PackedScene" uid="uid://cnmlidl1blxam" path="res://scenes/gui/dialog_bubble.tscn" id="3_8f573"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tokqm"]
 atlas = ExtResource("2_yu1q5")
