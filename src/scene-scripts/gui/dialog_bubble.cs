@@ -5,8 +5,15 @@ using System;
 public partial class dialog_bubble : CanvasLayer
 {
     public Variant parsedDialog;
+    public Variant test;
     public override void _Process(double delta)
     {
+        if (Input.IsActionJustPressed("ui_filedialog_refresh"))//F5
+        {
+            if (test.VariantType == Variant.Type.Array)
+                test = test.AsGodotArray()[0];
+            GD.Print(test);
+        }
     }
     public void GetDialog(string dialogFile)
     {
@@ -15,8 +22,8 @@ public partial class dialog_bubble : CanvasLayer
         Array<string> dialogLinestest = new Array<string>();
         dialogLinestest.Add("test");
         dialogLinestest.Add("test2");
-        GD.Print(dialogLinestest);
-        GD.Print((parsedDialog.AsGodotDictionary()["tipp"]).AsGodotArray()[2].AsGodotArray()[4].VariantType);
-        if(GetParent().Name == "player") GetParent<player>().allowMovement = true;
+        GD.Print();
+        test = parsedDialog.AsGodotDictionary()["tipp"];
+        if (GetParent().Name == "player") GetParent<player>().allowMovement = true;
     }
 }
