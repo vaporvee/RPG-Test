@@ -1,5 +1,6 @@
 {
 	"dialogTitle": "Debug Character",
+	"dialogType": "villager",
 	"playerbeginoptions": {
 		"talk": [
 			"I just wanna talk",
@@ -36,17 +37,34 @@
 			"sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,",
 			"sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
 			"Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-		],
+		]
+	],
+	"story": [
 		[
 			"test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1",
 			"test2test2test2test2test2test2test2test2test2test2test2test2test2test2test2",
 			"test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3",
 			"So do you want to do xy for me?",
 			{
-				"did you detect this dictionary as answer prompt?": [
-					"yes i have!"
-				]
-			}
+				"Yes tell me more": [
+					"Lorem ipsum orem ipsumorem ipsumorem ipsumorem ipsumorem ipsum",
+					"orem ipsumorem ipsumorem ipsumorem ipsumorem ipsumorem ipsumorem ipsum,",
+					"do you want to know even more?",
+					{
+						"tell me even more": [
+							"this is more debug text and it should look great",
+							"i hope i am able to finish the code for it"
+						],
+						"No thats enough": false
+					},
+					"orem ipsumorem ipsumorem ipsumorem ipsumorem ipsumorem ipsumorem ipsumorem ipsum."
+				],
+				"Make it short": [
+					"okay so this is the short version: xyxyxyxy is xyxyxxyxxyyx123!"
+				],
+				"No I'm good": false
+			},
+			"This is the text after the prompt"
 		]
 	]
 }
