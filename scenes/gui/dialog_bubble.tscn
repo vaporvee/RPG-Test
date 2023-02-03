@@ -9,6 +9,10 @@
 script = ExtResource("1_5xn2c")
 metadata/_edit_use_anchors_ = true
 
+[node name="typewriter_timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
 [node name="box" type="ColorRect" parent="."]
 anchors_preset = -1
 anchor_left = 0.083
