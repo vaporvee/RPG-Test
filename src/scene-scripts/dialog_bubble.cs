@@ -18,7 +18,7 @@ public partial class dialog_bubble : CanvasLayer
     public void GetDialog(string dialogFile)
     {
         parsedDialog = Json.ParseString(FileAccess.Open(dialogFile, FileAccess.ModeFlags.Read).GetAsText());
-        GetNode<Label>("name_label").Text = parsedDialog.AsGodotDictionary()["dialogTitle"].AsString();
+        GetNode<Label>("color_rect/name_label").Text = parsedDialog.AsGodotDictionary()["dialogTitle"].AsString();
         Array<string> dialogLinestest = new Array<string>();
         dialogLinestest.Add("test");
         dialogLinestest.Add("test2");

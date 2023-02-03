@@ -1,54 +1,97 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnmlidl1blxam"]
+[gd_scene load_steps=4 format=3 uid="uid://cg86tsupfq53i"]
 
-[ext_resource type="Script" path="res://src/scene-scripts/gui/dialog_bubble.cs" id="1_txwv4"]
+[ext_resource type="Script" path="res://src/scene-scripts/dialog_bubble.cs" id="1_210k6"]
 [ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/fonts/urbane-rounded-medium.otf" id="2_qrihj"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w2xu"]
+
 [node name="dialog_bubble" type="CanvasLayer"]
-script = ExtResource("1_txwv4")
+script = ExtResource("1_210k6")
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="color_rect" type="ColorRect" parent="."]
 anchors_preset = -1
-anchor_left = 0.163
-anchor_top = 0.78
-anchor_right = 0.863
-anchor_bottom = 0.977
-offset_left = -0.531006
-offset_top = 0.0799561
-offset_right = 0.56897
-offset_bottom = -0.128052
+anchor_left = 0.083
+anchor_top = 0.694
+anchor_right = 0.923
+anchor_bottom = 0.968
+offset_left = 0.428993
+offset_top = 0.383972
+offset_right = -40.651
+offset_bottom = 19.6479
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="text_label" type="Label" parent="."]
+[node name="text_label" type="RichTextLabel" parent="color_rect"]
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.218
-anchor_top = 0.812
-anchor_right = 0.837
-anchor_bottom = 0.972
-offset_left = -15.066
-offset_top = 8.43201
-offset_right = -16.469
-offset_bottom = -9.80798
+anchor_left = 0.034
+anchor_top = 0.276
+anchor_right = 0.964
+anchor_bottom = 0.914
+offset_left = 0.569996
+offset_top = 0.0679932
+offset_right = 0.219971
+offset_bottom = 0.10199
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_qrihj")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "this is test text or [center][b][wave amp=50 freq=15][rainbow]This is test text[/rainbow][/wave][/b][/center]"
+scroll_active = false
+
+[node name="name_label" type="Label" parent="color_rect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.039
+anchor_right = 0.118
+anchor_bottom = 0.233
+offset_left = 0.0499992
+offset_top = -0.0229998
+offset_right = 0.389984
+offset_bottom = 0.118996
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_qrihj")
 theme_override_font_sizes/font_size = 32
-text = "This is test text"
-autowrap_mode = 3
+text = "???"
 
-[node name="name_label" type="Label" parent="."]
-anchors_preset = -1
-anchor_left = 0.164
-anchor_top = 0.782
-anchor_right = 0.197
-anchor_bottom = 0.808
-offset_left = 7.93199
-offset_top = 4.35199
-offset_right = 7.27698
-offset_bottom = 4.888
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -466.0
+offset_top = -312.0
+offset_right = -144.0
+offset_bottom = -239.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5w2xu")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qrihj")
-theme_override_font_sizes/font_size = 16
-text = "Name"
+theme_override_font_sizes/font_size = 28
+text = "i want to hear more"
+alignment = 0

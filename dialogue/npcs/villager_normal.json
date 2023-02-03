@@ -1,5 +1,5 @@
 {
-	"dialogTitle": "Debug Character",
+	"dialogTitle": "Brain damaged Debug Character",
 	"dialogType": "villager",
 	"playerbeginoptions": {
 		"talk": [
@@ -57,14 +57,15 @@
 						],
 						"No thats enough": false
 					},
-					"orem ipsumorem ipsumorem ipsumorem ipsumorem ipsumorem ipsumorem ipsumorem ipsum."
+					"after yes tell me more debug text"
 				],
 				"Make it short": [
 					"okay so this is the short version: xyxyxyxy is xyxyxxyxxyyx123!"
 				],
 				"No I'm good": false
 			},
-			"This is the text after the prompt"
+			"This is the text after the prompt",
+			"and another text after the prompt"
 		]
 	]
 }
