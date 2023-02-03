@@ -19,7 +19,8 @@ position = Vector2(0, 20.625)
 shape = SubResource("RectangleShape2D_pchpi")
 
 [node name="dialog_trigger_area" parent="." instance=ExtResource("2_blpmd")]
-dialogFile = "res://dialogue/npcs/villager_normal.json"
+file = "res://dialogue/npcs/villager_normal.json"
+title = "Debug cupcake"
 
 [node name="collision_shape_2d" parent="dialog_trigger_area" index="0"]
 shape = SubResource("RectangleShape2D_d78tr")

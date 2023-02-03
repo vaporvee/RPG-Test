@@ -3,10 +3,11 @@ using System;
 
 public partial class dialog_trigger_area : Area2D
 {
-    [Signal] public delegate void InteractDialogueEventHandler();
-    [Export(PropertyHint.File, "*json")] string dialogFile;
-    public void OnInteraction(string playerName)
+    [Export(PropertyHint.File, "*json")] string file;
+    [Export] string title;
+    public Variant actor;
+    public override void _Ready()
     {
-        
+        actor = GetParent(); //must be the scene's root node
     }
 }
