@@ -29,6 +29,5 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_h66dw")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_2axga")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_s6xfc")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_trdc6")
-text = "this is placeholder text"
 icon = ExtResource("2_tkpfr")
 alignment = 0
