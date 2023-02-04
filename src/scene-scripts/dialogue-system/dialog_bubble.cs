@@ -1,6 +1,7 @@
 using Godot;
-using System.Collections;
 using System;
+using System.Collections;
+using System.Text.RegularExpressions;
 
 public partial class dialog_bubble : CanvasLayer
 {
@@ -12,8 +13,8 @@ public partial class dialog_bubble : CanvasLayer
     public override void _Ready()
     {
         richText = GetNode<RichTextLabel>("box/rich_text_label");
-        dlgLines.Add("Hello! I'm a debug character and...");
-        dlgLines.Add("[center][b][wave amp=50 freq=15][rainbow]This is cool test text"); //bbcode gets counted to so typewrite effect takes decades //make a seperate variable without bbcode and count that instead 
+        dlgLines.Add("Hello! I'm a [color=purple]debug character[/color] and...");
+        dlgLines.Add("[center][b][wave amp=50 freq=15][rainbow]This is cool test text[/rainbow][/wave][/b][/center]"); //bbcode gets counted to so typewrite effect takes decades //make a seperate variable without bbcode and count that instead 
     }
     public void GetDialog(string file, string title, Variant actor)
     {
@@ -34,12 +35,12 @@ public partial class dialog_bubble : CanvasLayer
     }
     public override void _Process(double delta)
     {
-        if (richText.VisibleCharacters < richText.Text.Length && GetNode<Timer>("typewriter_timer").IsStopped())
+        if (richText.VisibleCharacters < Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length && GetNode<Timer>("typewriter_timer").IsStopped())
         {
             richText.VisibleCharacters++;
             GetNode<Timer>("typewriter_timer").Start();
         }
-        if (Input.IsActionJustPressed("ui_accept") && richText.VisibleCharacters == -1 | richText.Text.Length == richText.VisibleCharacters)
+        if (Input.IsActionJustPressed("ui_accept") && Visible == true && richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length == richText.VisibleCharacters)
         {
             if (dlgPointer < dlgLines.Count && dlgLines[dlgPointer] is string)
             {

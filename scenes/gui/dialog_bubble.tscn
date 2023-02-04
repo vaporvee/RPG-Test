@@ -1,17 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkm7365u1mm3o"]
 
-[ext_resource type="Script" path="res://src/scene-scripts/dialogue-system/dialog_bubble.cs" id="1_5xn2c"]
+[ext_resource type="Script" path="res://src/scene-scripts/dialogue-system/dialog_bubble.cs" id="1_xtj1q"]
 [ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/fonts/urbane-rounded-medium.otf" id="2_qrihj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w2xu"]
 
 [node name="dialog_bubble" type="CanvasLayer"]
-script = ExtResource("1_5xn2c")
+script = ExtResource("1_xtj1q")
 metadata/_edit_use_anchors_ = true
 
 [node name="typewriter_timer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+metadata/charsAtOnce = 60
 
 [node name="box" type="ColorRect" parent="."]
 anchors_preset = -1
