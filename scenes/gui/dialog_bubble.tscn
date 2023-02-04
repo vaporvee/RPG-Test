@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkm7365u1mm3o"]
+[gd_scene load_steps=6 format=3 uid="uid://bkm7365u1mm3o"]
 
 [ext_resource type="Script" path="res://src/scene-scripts/dialogue-system/dialog_bubble.cs" id="1_xtj1q"]
 [ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/fonts/urbane-rounded-medium.otf" id="2_qrihj"]
 [ext_resource type="Texture2D" uid="uid://04pdpdvkg2s" path="res://assets/textures/dialogue/dialogue_answer_ninepatch.png" id="3_n3y1v"]
+[ext_resource type="PackedScene" uid="uid://cv87js42t1sty" path="res://scenes/gui/dlg_answer_button.tscn" id="4_r5f4t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w2xu"]
 
@@ -100,3 +101,11 @@ theme_override_constants/margin_bottom = 30
 
 [node name="v_box_container" type="VBoxContainer" parent="box/panel_container/margin_container"]
 layout_mode = 2
+
+[node name="answer_button" parent="box/panel_container/margin_container/v_box_container" instance=ExtResource("4_r5f4t")]
+layout_mode = 2
+text = "needs focus on mouse hover"
+
+[node name="answer_button_2" parent="box/panel_container/margin_container/v_box_container" instance=ExtResource("4_r5f4t")]
+layout_mode = 2
+text = "jkbhjvvjvhgvhjv"

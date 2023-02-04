@@ -16,9 +16,9 @@ public partial class dialog_bubble : CanvasLayer
         dlgLines.Add("Hello! I'm a [color=purple]debug character[/color] and...");
         dlgLines.Add("[center][b][wave amp=50 freq=15][rainbow]This is cool test text[/rainbow][/wave][/b][/center]"); //bbcode gets counted to so typewrite effect takes decades //make a seperate variable without bbcode and count that instead 
     }
-    public void GetDialog(string file, string title, Variant actor)
+    public void GetDialog(string file, string title, Variant actor, string playerName)
     {
-        parsedDlg = Json.ParseString(FileAccess.Open(file, FileAccess.ModeFlags.Read).GetAsText());
+        parsedDlg = Json.ParseString(FileAccess.Open(file, FileAccess.ModeFlags.Read).GetAsText().Replace("{player}", playerName));
         GetNode<Label>("box/name_label").Text = title;
         GD.Print("Now talking to: " + actor);
         if (GetParent().Name == "player") GetParent<player>().allowMovement = false;
