@@ -68,14 +68,15 @@ public partial class dialog_bubble : CanvasLayer
     }
     public void MakeAnswerBox(string[] dialogOptions)
     {
-        var button = GD.Load<PackedScene>("res://scenes/gui/dlg_answer_button.tscn");
         var parent = GetNode("box/panel_container/margin_container/v_box_container");
+        GD.Print(dialogOptions);
         for (int i = 0; parent.GetChildCount() < dialogOptions.Length; i++)
         {
-            //remove button nodes for randomizing
-            parent.AddChild(button.Instantiate());
-            parent.GetChild<Button>(i).Text = dialogOptions[i];
+            GD.Print(parent.GetChildren());
+            parent.AddChild(GD.Load<PackedScene>("res://scenes/gui/dlg_answer_button.tscn").Instantiate());
         }
+        for (int i = 0; i < dialogOptions.Length; i++)
+            parent.GetChild<Button>(i).Text = dialogOptions[i];
         dialogOptionsLength = dialogOptions.Length;
     }
 }
