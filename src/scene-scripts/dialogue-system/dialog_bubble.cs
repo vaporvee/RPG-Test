@@ -50,7 +50,8 @@ public partial class dialog_bubble : CanvasLayer
             richText.VisibleCharacters++;
             GetNode<Timer>("typewriter_timer").Start();
         }
-        if (Input.IsActionJustPressed("ui_accept") && Visible == true && richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length == richText.VisibleCharacters)
+        if (Input.IsActionJustPressed("ui_cancel") && Visible) richText.VisibleCharacters = richText.Text.Length;
+        if (Input.IsActionJustPressed("ui_accept") && Visible && richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length <= richText.VisibleCharacters)
         {
             if (dlgPointer < dlgLines.Count && dlgLines[dlgPointer] is string)
             {
@@ -64,7 +65,7 @@ public partial class dialog_bubble : CanvasLayer
             CloseDialog();
 
         //AnswerBox wait for typewrite effect to finish (garbage code)
-        GetNode<PanelContainer>("box/panel_container").Visible = richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length == richText.VisibleCharacters && GetNode("box/panel_container/margin_container/v_box_container").GetChildCount() == dialogOptionsLength;
+        GetNode<PanelContainer>("box/panel_container").Visible = richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length <= richText.VisibleCharacters && GetNode("box/panel_container/margin_container/v_box_container").GetChildCount() == dialogOptionsLength;
     }
     public void MakeAnswerBox(string[] dialogOptions)
     {
