@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://cv87js42t1sty"]
+
+[ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/fonts/urbane-rounded-medium.otf" id="1_2bkol"]
+[ext_resource type="Texture2D" uid="uid://boxc677b5i605" path="res://assets/textures/dialogue/circle.png" id="2_tkpfr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mvyo0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h66dw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2axga"]
+content_margin_top = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s6xfc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trdc6"]
+
+[node name="answer_button" type="Button"]
+custom_minimum_size = Vector2(100, 32)
+focus_mode = 0
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("1_2bkol")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mvyo0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h66dw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2axga")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_s6xfc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_trdc6")
+icon = ExtResource("2_tkpfr")
+alignment = 0
