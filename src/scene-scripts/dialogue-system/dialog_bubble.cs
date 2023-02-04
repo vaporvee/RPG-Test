@@ -28,8 +28,10 @@ public partial class dialog_bubble : CanvasLayer
     public void WelcomeDialog()
     {
         string[] welcomeText = parsedDlg.AsGodotDictionary()["welcome"].AsStringArray();
+        Godot.Collections.Dictionary playerbeginoptions = parsedDlg.AsGodotDictionary()["playerbeginoptions"].AsGodotDictionary();
+        GD.Randomize();
         dlgLines.Add(welcomeText[GD.Randi() % welcomeText.Length]);
-        MakeAnswerBox(new string[] { "talk", "go away" });
+        MakeAnswerBox(new string[] { playerbeginoptions["talk"].AsStringArray()[GD.Randi() % playerbeginoptions["talk"].AsStringArray().Length], playerbeginoptions["goaway"].AsStringArray()[GD.Randi() % playerbeginoptions["goaway"].AsStringArray().Length] });
     }
     public void CloseDialog()
     {
@@ -61,7 +63,7 @@ public partial class dialog_bubble : CanvasLayer
         if (dlgPointer > dlgLines.Count)
             CloseDialog();
 
-        //AnswerBox wait for typewrite effect to finish
+        //AnswerBox wait for typewrite effect to finish (garbage code)
         GetNode<PanelContainer>("box/panel_container").Visible = richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length == richText.VisibleCharacters && GetNode("box/panel_container/margin_container/v_box_container").GetChildCount() == dialogOptionsLength;
     }
     public void MakeAnswerBox(string[] dialogOptions)
@@ -70,6 +72,7 @@ public partial class dialog_bubble : CanvasLayer
         var parent = GetNode("box/panel_container/margin_container/v_box_container");
         for (int i = 0; parent.GetChildCount() < dialogOptions.Length; i++)
         {
+            //remove button nodes for randomizing
             parent.AddChild(button.Instantiate());
             parent.GetChild<Button>(i).Text = dialogOptions[i];
         }
