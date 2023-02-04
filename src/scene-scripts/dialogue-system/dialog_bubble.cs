@@ -78,6 +78,8 @@ public partial class dialog_bubble : CanvasLayer
         }
         for (int i = 0; i < dialogOptions.Length; i++)
             parent.GetChild<Button>(i).Text = dialogOptions[i];
+
+        //parent.GetChild<Button>(0).focus
         dialogOptionsLength = dialogOptions.Length;
     }
 }
