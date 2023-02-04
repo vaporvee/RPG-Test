@@ -9,12 +9,11 @@ public partial class dialog_bubble : CanvasLayer
     public ArrayList dlgLines = new ArrayList();
     public int dlgPointer = 0;
     public RichTextLabel richText;
+    public int dialogOptionsLength;
 
     public override void _Ready()
     {
         richText = GetNode<RichTextLabel>("box/rich_text_label");
-        dlgLines.Add("Hello! I'm a [color=purple]debug character[/color] and...");
-        dlgLines.Add("[center][b][wave amp=50 freq=15][rainbow]This is cool test text[/rainbow][/wave][/b][/center]"); //bbcode gets counted to so typewrite effect takes decades //make a seperate variable without bbcode and count that instead 
     }
     public void GetDialog(string file, string title, Variant actor, string playerName)
     {
@@ -22,16 +21,25 @@ public partial class dialog_bubble : CanvasLayer
         GetNode<Label>("box/name_label").Text = title;
         GD.Print("Now talking to: " + actor);
         if (GetParent().Name == "player") GetParent<player>().allowMovement = false;
+        if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "villager")
+            WelcomeDialog();
         Visible = true;
+    }
+    public void WelcomeDialog()
+    {
+        string[] welcomeText = parsedDlg.AsGodotDictionary()["welcome"].AsStringArray();
+        dlgLines.Add(welcomeText[GD.Randi() % welcomeText.Length]);
+        MakeAnswerBox(new string[] { "talk", "go away" });
     }
     public void CloseDialog()
     {
-        if (GetParent().Name == "player") GetParent<player>().allowMovement = true;
         Visible = false;
         dlgPointer = 0;
+        dlgLines.Clear();
         richText.VisibleCharacters = -1;
         GetNode<Label>("box/name_label").Text = "???";
         richText.Text = "";
+        if (GetParent().Name == "player") GetParent<player>().allowMovement = true;
     }
     public override void _Process(double delta)
     {
@@ -52,7 +60,19 @@ public partial class dialog_bubble : CanvasLayer
         }
         if (dlgPointer > dlgLines.Count)
             CloseDialog();
+
+        //AnswerBox wait for typewrite effect to finish
+        GetNode<PanelContainer>("box/panel_container").Visible = richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length == richText.VisibleCharacters && GetNode("box/panel_container/margin_container/v_box_container").GetChildCount() == dialogOptionsLength;
     }
-    //get dialogue inside dialogLines and add them to 
-    //richtextlabel and detect dictionarys in them and display them as prompts
+    public void MakeAnswerBox(string[] dialogOptions)
+    {
+        var button = GD.Load<PackedScene>("res://scenes/gui/dlg_answer_button.tscn");
+        var parent = GetNode("box/panel_container/margin_container/v_box_container");
+        for (int i = 0; parent.GetChildCount() < dialogOptions.Length; i++)
+        {
+            parent.AddChild(button.Instantiate());
+            parent.GetChild<Button>(i).Text = dialogOptions[i];
+        }
+        dialogOptionsLength = dialogOptions.Length;
+    }
 }
