@@ -8,4 +8,4 @@
 [node name="first_world" parent="." instance=ExtResource("2_x8nyb")]
 
 [node name="player" parent="." instance=ExtResource("1_p5d84")]
-playerName = "[rainbow]Yannik[/rainbow]"
+playerName = "Yannik"
