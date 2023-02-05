@@ -116,7 +116,6 @@ rotation = 1.57345
 shape = SubResource("CapsuleShape2D_38v5o")
 
 [node name="camera_2d" type="Camera2D" parent="."]
-current = true
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 position_smoothing_enabled = true
