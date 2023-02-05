@@ -32,7 +32,7 @@ project/assembly_name="RPG Test gd4"
 
 [editor]
 
-naming/default_signal_callback_name="On{NodeName}SignalName}"
+naming/default_signal_callback_name="On{NodeName}{SignalName}"
 naming/default_signal_callback_to_self_name="On{SignalName}"
 naming/node_name_num_separator=2
 naming/node_name_casing=2
