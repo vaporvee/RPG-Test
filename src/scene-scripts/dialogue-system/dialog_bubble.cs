@@ -1,6 +1,4 @@
 using Godot;
-using Godot.Collections;
-using System;
 using System.Text.RegularExpressions;
 
 public partial class dialog_bubble : CanvasLayer
