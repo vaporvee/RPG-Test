@@ -97,6 +97,3 @@ theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 30
-
-[node name="v_box_container" type="VBoxContainer" parent="box/panel_container/margin_container"]
-layout_mode = 2

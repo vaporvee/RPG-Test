@@ -43,7 +43,7 @@ public partial class dialog_bubble : CanvasLayer
     {
         if (Input.IsActionJustPressed("ui_cancel") && Visible) richText.VisibleCharacters = richText.Text.Length;
 
-        if (Input.IsActionJustPressed("ui_accept") && GetNode<PanelContainer>("box/panel_container").Visible == false && Visible
+        if (Input.IsActionJustPressed("ui_accept") && Visible
         && richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length <= richText.VisibleCharacters)
         {
             if (dlgPointer < dlgLines.AsGodotArray().Count)
@@ -57,7 +57,6 @@ public partial class dialog_bubble : CanvasLayer
                 else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Dictionary)
                 {
                     MakeAnswerBox(Json.ParseString(dlgLines.AsGodotArray()[dlgPointer].AsGodotDictionary().Keys.ToString()).AsStringArray());
-                    GetNode<PanelContainer>("box/panel_container").Visible = true;
                 }
             }
             dlgPointer++;
@@ -73,12 +72,16 @@ public partial class dialog_bubble : CanvasLayer
     }
     public void MakeAnswerBox(string[] dialogOptions)
     {
-        var parent = GetNode("box/panel_container/margin_container/v_box_container");
+        var parent = GetNode("box/panel_container/margin_container");
+        if (parent.GetChildCount() == 1)
+            parent.GetChild(0).Free();
+        parent.AddChild(new VBoxContainer());
+        parent = parent.GetChild(0);
         for (int i = 0; parent.GetChildCount() < dialogOptions.Length; i++)
         {
             parent.AddChild(GD.Load<PackedScene>("res://scenes/gui/dlg_answer_button.tscn").Instantiate());
-        }
-        for (int i = 0; i < dialogOptions.Length; i++)
             parent.GetChild<Button>(i).Text = dialogOptions[i];
+        }
+        GetNode<PanelContainer>("box/panel_container").Visible = true;
     }
 }
