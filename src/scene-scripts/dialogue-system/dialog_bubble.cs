@@ -43,7 +43,7 @@ public partial class dialog_bubble : CanvasLayer
     {
         if (Input.IsActionJustPressed("ui_cancel") && Visible) richText.VisibleCharacters = richText.Text.Length;
 
-        if (Input.IsActionJustPressed("ui_accept") && Visible
+        if (Input.IsActionJustPressed("ui_accept") && Visible && GetNode<PanelContainer>("box/panel_container").Visible == false
         && richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length <= richText.VisibleCharacters)
         {
             if (dlgPointer < dlgLines.AsGodotArray().Count)
@@ -69,6 +69,9 @@ public partial class dialog_bubble : CanvasLayer
 
         if (dlgPointer > dlgLines.AsGodotArray().Count)
             CloseDialog();
+
+        if (GetNode<PanelContainer>("box/panel_container").Visible == true && GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton() != null)
+            GD.Print(GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton());
     }
     public void MakeAnswerBox(string[] dialogOptions)
     {

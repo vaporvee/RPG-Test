@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv87js42t1sty"]
+[gd_scene load_steps=9 format=3 uid="uid://cv87js42t1sty"]
 
 [ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/fonts/urbane-rounded-medium.otf" id="1_2bkol"]
 [ext_resource type="Texture2D" uid="uid://boxc677b5i605" path="res://assets/textures/dialogue/circle.png" id="2_tkpfr"]
@@ -13,6 +13,10 @@ content_margin_top = 8.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s6xfc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trdc6"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_y8j7j"]
+resource_local_to_scene = false
+resource_name = "answer_buttons"
 
 [node name="answer_button" type="Button"]
 custom_minimum_size = Vector2(100, 32)
@@ -29,5 +33,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_h66dw")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_2axga")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_s6xfc")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_trdc6")
+button_group = SubResource("ButtonGroup_y8j7j")
 icon = ExtResource("2_tkpfr")
 alignment = 0
