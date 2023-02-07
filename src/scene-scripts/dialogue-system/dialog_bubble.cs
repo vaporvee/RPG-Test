@@ -27,7 +27,7 @@ public partial class dialog_bubble : CanvasLayer
     {
         dlgLines = parsedDlg.AsGodotDictionary()[key].AsGodotArray();
         if (dlgLines.VariantType == Variant.Type.Array)
-            dlgLines = dlgLines.AsGodotArray()[GD.RandRange(0, dlgLines.AsGodotArray().Count)];
+            dlgLines = dlgLines.AsGodotArray()[GD.RandRange(0, dlgLines.AsGodotArray().Count - 1)];
     }
 
     public void CloseDialog()
@@ -60,8 +60,7 @@ public partial class dialog_bubble : CanvasLayer
                     GetNode<PanelContainer>("box/panel_container").Visible = true;
                 }
             }
-            if (dlgLines.AsGodotArray()[dlgPointer].VariantType != Variant.Type.Dictionary)
-                dlgPointer++;
+            dlgPointer++;
         }
         if (richText.VisibleCharacters < Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length && GetNode<Timer>("typewriter_timer").IsStopped())
         {
