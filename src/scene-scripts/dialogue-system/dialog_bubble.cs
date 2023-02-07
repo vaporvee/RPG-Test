@@ -59,7 +59,7 @@ public partial class dialog_bubble : CanvasLayer
                 }
                 else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Dictionary)
                 {
-                    MakeAnswerBox(dlgLines.AsGodotArray()[dlgPointer].AsGodotDictionary().Keys.ToString().Trim('[', ']').Split(","));
+                    MakeAnswerBox(Json.ParseString(dlgLines.AsGodotArray()[dlgPointer].AsGodotDictionary().Keys.ToString()).AsStringArray());
                     GetNode<PanelContainer>("box/panel_container").Visible = true;
                 }
 
