@@ -41,13 +41,10 @@ public partial class dialog_bubble : CanvasLayer
     }
     public override void _Process(double delta)
     {
-        if (richText.VisibleCharacters < Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length && GetNode<Timer>("typewriter_timer").IsStopped())
-        {
-            richText.VisibleCharacters++;
-            GetNode<Timer>("typewriter_timer").Start();
-        }
         if (Input.IsActionJustPressed("ui_cancel") && Visible) richText.VisibleCharacters = richText.Text.Length;
-        if (Input.IsActionJustPressed("ui_accept") && GetNode<PanelContainer>("box/panel_container").Visible == false && Visible && richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length <= richText.VisibleCharacters)
+
+        if (Input.IsActionJustPressed("ui_accept") && GetNode<PanelContainer>("box/panel_container").Visible == false && Visible
+        && richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length <= richText.VisibleCharacters)
         {
             if (dlgPointer < dlgLines.AsGodotArray().Count)
             {
@@ -62,11 +59,16 @@ public partial class dialog_bubble : CanvasLayer
                     MakeAnswerBox(Json.ParseString(dlgLines.AsGodotArray()[dlgPointer].AsGodotDictionary().Keys.ToString()).AsStringArray());
                     GetNode<PanelContainer>("box/panel_container").Visible = true;
                 }
-
             }
             if (dlgLines.AsGodotArray()[dlgPointer].VariantType != Variant.Type.Dictionary)
                 dlgPointer++;
         }
+        if (richText.VisibleCharacters < Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length && GetNode<Timer>("typewriter_timer").IsStopped())
+        {
+            richText.VisibleCharacters++;
+            GetNode<Timer>("typewriter_timer").Start();
+        }
+
         if (dlgPointer > dlgLines.AsGodotArray().Count)
             CloseDialog();
     }
