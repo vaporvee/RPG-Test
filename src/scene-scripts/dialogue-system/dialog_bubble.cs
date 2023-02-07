@@ -1,15 +1,14 @@
 using Godot;
+using Godot.Collections;
 using System;
-using System.Collections;
 using System.Text.RegularExpressions;
 
 public partial class dialog_bubble : CanvasLayer
 {
     public Variant parsedDlg;
-    public ArrayList dlgLines = new ArrayList();
+    public Variant dlgLines;
     public int dlgPointer = 0;
     public RichTextLabel richText;
-    public int dialogOptionsLength = 1;
 
     public override void _Ready()
     {
@@ -20,25 +19,23 @@ public partial class dialog_bubble : CanvasLayer
         playerName = "[color=blue]" + playerName + "[/color]";
         parsedDlg = Json.ParseString(FileAccess.Open(file, FileAccess.ModeFlags.Read).GetAsText().Replace("{player}", playerName));
         GetNode<Label>("box/name_label").Text = title;
-        GD.Print("Now talking to: " + actor);
         if (GetParent().Name == "player") GetParent<player>().allowMovement = false;
         if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "villager")
-            WelcomeDialog();
+            GatherDialog("welcome");
         Visible = true;
     }
-    public void WelcomeDialog()
+
+    public void GatherDialog(string key)
     {
-        string[] welcomeText = parsedDlg.AsGodotDictionary()["welcome"].AsStringArray();
-        Godot.Collections.Dictionary playerbeginoptions = parsedDlg.AsGodotDictionary()["playerbeginoptions"].AsGodotDictionary();
-        GD.Randomize();
-        dlgLines.Add(welcomeText[GD.Randi() % welcomeText.Length]);
-        MakeAnswerBox(new string[] { playerbeginoptions["talk"].AsStringArray()[GD.Randi() % playerbeginoptions["talk"].AsStringArray().Length], playerbeginoptions["goaway"].AsStringArray()[GD.Randi() % playerbeginoptions["goaway"].AsStringArray().Length] });
+        dlgLines = parsedDlg.AsGodotDictionary()[key].AsGodotArray();
+        if (dlgLines.VariantType == Variant.Type.Array)
+            dlgLines = dlgLines.AsGodotArray()[GD.RandRange(0, dlgLines.AsGodotArray().Count)];
     }
+
     public void CloseDialog()
     {
         Visible = false;
         dlgPointer = 0;
-        dlgLines.Clear();
         richText.VisibleCharacters = -1;
         GetNode<Label>("box/name_label").Text = "???";
         richText.Text = "";
@@ -54,31 +51,35 @@ public partial class dialog_bubble : CanvasLayer
         if (Input.IsActionJustPressed("ui_cancel") && Visible) richText.VisibleCharacters = richText.Text.Length;
         if (Input.IsActionJustPressed("ui_accept") && GetNode<PanelContainer>("box/panel_container").Visible == false && Visible && richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length <= richText.VisibleCharacters)
         {
-            if (dlgPointer < dlgLines.Count && dlgLines[dlgPointer] is string)
+            if (dlgPointer < dlgLines.AsGodotArray().Count)
             {
-                richText.Text = dlgLines[dlgPointer].ToString();
-                richText.VisibleCharacters = 0;
-                GetNode<Timer>("typewriter_timer").Start();
-            }
-            dlgPointer++;
-        }
-        if (dlgPointer > dlgLines.Count)
-            CloseDialog();
+                if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.String)
+                {
+                    richText.Text = dlgLines.AsGodotArray()[dlgPointer].ToString();
+                    richText.VisibleCharacters = 0;
+                    GetNode<Timer>("typewriter_timer").Start();
+                }
+                else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Dictionary)
+                {
+                    MakeAnswerBox(dlgLines.AsGodotArray()[dlgPointer].AsGodotDictionary().Keys.ToString().Trim('[', ']').Split(","));
+                    GetNode<PanelContainer>("box/panel_container").Visible = true;
+                }
 
-        //AnswerBox wait for typewrite effect to finish (garbage code)
-        GetNode<PanelContainer>("box/panel_container").Visible = richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length <= richText.VisibleCharacters && GetNode("box/panel_container/margin_container/v_box_container").GetChildCount() == dialogOptionsLength;
+            }
+            if (dlgLines.AsGodotArray()[dlgPointer].VariantType != Variant.Type.Dictionary)
+                dlgPointer++;
+        }
+        if (dlgPointer > dlgLines.AsGodotArray().Count)
+            CloseDialog();
     }
     public void MakeAnswerBox(string[] dialogOptions)
     {
         var parent = GetNode("box/panel_container/margin_container/v_box_container");
-        GD.Print(dialogOptions);
         for (int i = 0; parent.GetChildCount() < dialogOptions.Length; i++)
         {
-            GD.Print(parent.GetChildren());
             parent.AddChild(GD.Load<PackedScene>("res://scenes/gui/dlg_answer_button.tscn").Instantiate());
         }
         for (int i = 0; i < dialogOptions.Length; i++)
             parent.GetChild<Button>(i).Text = dialogOptions[i];
-        dialogOptionsLength = dialogOptions.Length;
     }
 }

@@ -1,29 +1,51 @@
 {
 	"dialogType": "villager",
-	"playerbeginoptions": {
-		"talk": [
-			"I just wanna talk",
-			"What's up",
-			"Can we talk?"
-		],
-		"goaway": [
-			"Nevermind!",
-			"Nothing",
-			"Have a great day!"
-		]
-	},
 	"welcome": [
-		"Oh hello, {player}... You look great! What do you want from me?",
-		"Hey, {player}! Hope you have fun today! So what do you want?",
-		"Hi! What's up {player}?"
+		[
+			"Oh hello, {player}... You look great! What can I do for you?",
+			{
+				"I just wanna talk": true,
+				"Nevermind!": false
+			}
+		],
+		[
+			"Hey, {player}! Hope you have fun today! So what do you want?",
+			{
+				"What's up": true,
+				"Nothing": false
+			}
+		],
+		[
+			"Hi! What's up {player}?",
+			{
+				"Can we talk?": true,
+				"Have a great day!": false
+			}
+		]
 	],
 	"else": [
-		"Do you need something else?",
-		"So can i help you with something else?"
+		[
+			"Do you need something else?",
+			{
+				"Can you tell me something else?": true,
+				"No, thanks!": false
+			}
+		],
+		[
+			"So can i help you with something else?",
+			{
+				"Tell me a bit more maybe": true,
+				"I'm good, thank you!": false
+			}
+		]
 	],
 	"goodbye": [
-		"Was nice talking to you goodbye!",
-		"Have a great day, {player}!"
+		[
+			"Was nice talking to you goodbye!"
+		],
+		[
+			"Have a great day, {player}!"
+		]
 	],
 	"tipp": [
 		[
