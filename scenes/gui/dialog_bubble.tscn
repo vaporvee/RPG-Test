@@ -11,7 +11,7 @@ script = ExtResource("1_xtj1q")
 metadata/_edit_use_anchors_ = true
 
 [node name="typewriter_timer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.04
 one_shot = true
 metadata/charsAtOnce = 60
 

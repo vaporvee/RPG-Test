@@ -13,9 +13,9 @@
 		]
 	},
 	"welcome": [
-		"Oh hello, [color=blue]{player}[/color]... You look great! What do you want from me?",
-		"Hey, [color=blue]{player}[/color]! Hope you have fun today! So what do you want?",
-		"Hi! What's up [color=blue]{player}[/color]?"
+		"Oh hello, {player}... You look great! What do you want from me?",
+		"Hey, {player}! Hope you have fun today! So what do you want?",
+		"Hi! What's up {player}?"
 	],
 	"else": [
 		"Do you need something else?",
@@ -23,7 +23,7 @@
 	],
 	"goodbye": [
 		"Was nice talking to you goodbye!",
-		"Have a great day, [color=blue]{player}[/color]!"
+		"Have a great day, {player}!"
 	],
 	"tipp": [
 		[
