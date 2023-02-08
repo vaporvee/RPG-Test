@@ -2,7 +2,7 @@
 	"dialogType": "villager",
 	"intro": [
 		[
-			"Hello i'm {title}. Your name must be {player}!",
+			"Hello i'm {title}. Your name must be {player}! So...",
 			1
 		]
 	],
