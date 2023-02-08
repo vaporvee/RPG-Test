@@ -19,6 +19,7 @@ position = Vector2(0, 20.625)
 shape = SubResource("RectangleShape2D_pchpi")
 
 [node name="dialog_trigger_area" parent="." instance=ExtResource("2_blpmd")]
+position = Vector2(3, 0)
 file = "res://assets/lang/en/dialogue/npcs/villager_normal.json"
 title = "Debug cupcake"
 

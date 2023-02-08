@@ -25,6 +25,7 @@ public partial class dialog_bubble : CanvasLayer
 
     public void GatherDialog(string key)
     {
+        dlgPointer = 0;
         dlgLines = parsedDlg.AsGodotDictionary()[key].AsGodotArray();
         if (dlgLines.VariantType == Variant.Type.Array)
             dlgLines = dlgLines.AsGodotArray()[GD.RandRange(0, dlgLines.AsGodotArray().Count - 1)];
@@ -49,15 +50,9 @@ public partial class dialog_bubble : CanvasLayer
             if (dlgPointer < dlgLines.AsGodotArray().Count)
             {
                 if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.String)
-                {
-                    richText.Text = dlgLines.AsGodotArray()[dlgPointer].ToString();
-                    richText.VisibleCharacters = 0;
-                    GetNode<Timer>("typewriter_timer").Start();
-                }
+                    UpdateDialog();
                 else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Dictionary)
-                {
                     MakeAnswerBox(Json.ParseString(dlgLines.AsGodotArray()[dlgPointer].AsGodotDictionary().Keys.ToString()).AsStringArray());
-                }
             }
             dlgPointer++;
         }
@@ -71,7 +66,22 @@ public partial class dialog_bubble : CanvasLayer
             CloseDialog();
 
         if (GetNode<PanelContainer>("box/panel_container").Visible == true && GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton() != null)
-            GD.Print(GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton());
+        {
+            var answer = dlgLines.AsGodotArray()[dlgPointer - 1].AsGodotDictionary()[GetNode<Button>(GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton().GetPath()).Text];
+            GetNode<PanelContainer>("box/panel_container").Visible = false;
+            if (answer.VariantType == Variant.Type.Bool && answer.AsBool())
+            {
+                GatherDialog("tipp");
+                UpdateDialog();
+            }
+            dlgPointer++;
+        }
+    }
+    public void UpdateDialog()
+    {
+        richText.Text = dlgLines.AsGodotArray()[dlgPointer].ToString();
+        richText.VisibleCharacters = 0;
+        GetNode<Timer>("typewriter_timer").Start();
     }
     public void MakeAnswerBox(string[] dialogOptions)
     {
