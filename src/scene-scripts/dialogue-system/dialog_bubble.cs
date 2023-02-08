@@ -12,7 +12,9 @@ public partial class dialog_bubble : CanvasLayer
     - Dont repeat the same randomized dialogue after you get asked do you need something "else"
     - add controller support for answerboxes
     - add tree support (example: "story" key)
-    - ability to add dialogue begin answers on the fly (special ones are colored)*/
+    - ability to add dialogue begin answers on the fly (special ones are colored)
+    they will be in an dictionary with numbers as event IDs and the event ID will 
+    be used with a switch case or a string key with a event ID later in the dialogue like event 0 (close)*/
     public override void _Ready()
     {
         richText = GetNode<RichTextLabel>("box/rich_text_label");
