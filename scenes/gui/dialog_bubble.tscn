@@ -45,7 +45,6 @@ grow_vertical = 0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("2_qrihj")
 theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 80
 bbcode_enabled = true
 scroll_active = false
 

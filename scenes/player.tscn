@@ -92,6 +92,7 @@ height = 45.968
 process_mode = 1
 y_sort_enabled = true
 position = Vector2(-1, 0)
+floor_stop_on_slope = false
 script = ExtResource("1_qehox")
 
 [node name="rotation_center" type="Marker2D" parent="."]

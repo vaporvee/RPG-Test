@@ -62,7 +62,7 @@
 			"You can interact with cupcakes and use the buggy placeholder clouds as a football."
 		],
 		[
-			"[center][b][wave amp=50 freq=15][rainbow]This is cool test text[/rainbow][/wave][/b][/center]",
+			"[center][font s=80][wave amp=50 freq=15][rainbow]This is cool test text[/rainbow][/wave][/font][/center]",
 			"sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,",
 			"sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
 			"Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
