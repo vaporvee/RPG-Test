@@ -1,5 +1,11 @@
 {
 	"dialogType": "villager",
+	"intro": [
+		[
+			"Hello i'm {title}. Your name must be {player}!",
+			1
+		]
+	],
 	"welcome": [
 		[
 			"Oh hello, {player}... You look great! What can I do for you?",

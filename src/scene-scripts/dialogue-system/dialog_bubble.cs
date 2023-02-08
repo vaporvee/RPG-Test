@@ -7,6 +7,8 @@ public partial class dialog_bubble : CanvasLayer
     public Variant dlgLines;
     public int dlgPointer = 0;
     public RichTextLabel richText;
+    public string name;
+    public Area2D triggerArea;
 
     /*TODO: 
     - Dont repeat the same randomized dialogue after you get asked do you need something "else"
@@ -18,14 +20,22 @@ public partial class dialog_bubble : CanvasLayer
     {
         richText = GetNode<RichTextLabel>("box/rich_text_label");
     }
-    public void GetDialog(string file, string title, Variant actor, string playerName)
+    public void GetDialog(string file, string title, Area2D actor, string playerName, bool introducedVillager)
     {
+        triggerArea = actor;
+        name = title;
         playerName = "[color=blue]" + playerName + "[/color]";
-        parsedDlg = Json.ParseString(FileAccess.Open(file, FileAccess.ModeFlags.Read).GetAsText().Replace("{player}", playerName));
-        GetNode<Label>("box/name_label").Text = title;
+        parsedDlg = Json.ParseString(FileAccess.Open(file, FileAccess.ModeFlags.Read).GetAsText().Replace("{player}", playerName).Replace("{title}", title));
+        if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() != "villager" || introducedVillager)
+            GetNode<Label>("box/name_label").Text = title;
         if (GetParent().Name == "player") GetParent<player>().allowMovement = false;
+
         if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "villager")
-            GatherDialog("welcome");
+            if (introducedVillager)
+                GatherDialog("welcome");
+            else
+                GatherDialog("intro");
+
         else if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "message")
             GatherDialog("message");
         Visible = true;
@@ -57,8 +67,7 @@ public partial class dialog_bubble : CanvasLayer
         {
             if (dlgPointer < dlgLines.AsGodotArray().Count)
             {
-                GD.Print(dlgLines.AsGodotArray()[dlgPointer].VariantType);
-                if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Float && ((float)dlgLines.AsGodotArray()[dlgPointer]) == 0)
+                if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Float)
                     InDialogEvents((int)dlgLines.AsGodotArray()[dlgPointer]);
                 else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.String)
                     UpdateDialog();
@@ -122,6 +131,13 @@ public partial class dialog_bubble : CanvasLayer
         {
             case 0:
                 CloseDialog();
+                break;
+            case 1:
+                GetNode<Label>("box/name_label").Text = name;
+                triggerArea.Set("introducedVillager", true);
+                GatherDialog("welcome");
+                UpdateDialog();
+                dlgPointer++;
                 break;
         }
     }
