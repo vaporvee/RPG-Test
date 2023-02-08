@@ -135,7 +135,7 @@ public partial class dialog_bubble : CanvasLayer
             case 1:
                 GetNode<Label>("box/name_label").Text = name;
                 triggerArea.Set("introducedVillager", true);
-                GatherDialog("welcome");
+                GatherDialog("welcome"); //not that logical conversation maybe split "welcome" and "what do you want"
                 UpdateDialog();
                 dlgPointer++;
                 break;
