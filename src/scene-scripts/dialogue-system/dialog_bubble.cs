@@ -8,6 +8,11 @@ public partial class dialog_bubble : CanvasLayer
     public int dlgPointer = 0;
     public RichTextLabel richText;
 
+    /*TODO: 
+    - Dont repeat the same randomized dialogue after you get asked do you need something "else"
+    - add controller support for answerboxes
+    - add tree support (example: "story" key)
+    - ability to add dialogue begin answers on the fly (special ones are colored)*/
     public override void _Ready()
     {
         richText = GetNode<RichTextLabel>("box/rich_text_label");
