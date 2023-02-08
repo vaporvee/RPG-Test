@@ -124,6 +124,7 @@ public partial class dialog_bubble : CanvasLayer
             parent.GetChild<Button>(i).Text = dialogOptions[i];
         }
         GetNode<PanelContainer>("box/panel_container").Visible = true;
+        parent.GetChild<Button>(0).GrabFocus();
     }
     public void InDialogEvents(int eventID) //maybe replaceable with jsonrpc?
     {
