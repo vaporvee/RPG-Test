@@ -76,8 +76,7 @@ public partial class dialog_bubble : CanvasLayer
     public void MakeAnswerBox(string[] dialogOptions)
     {
         var parent = GetNode("box/panel_container/margin_container");
-        if (parent.GetChildCount() == 1)
-            parent.GetChild(0).Free();
+        if (parent.GetChildCount() == 1) parent.GetChild(0).Free();
         parent.AddChild(new VBoxContainer());
         parent = parent.GetChild(0);
         for (int i = 0; parent.GetChildCount() < dialogOptions.Length; i++)
