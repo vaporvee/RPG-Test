@@ -116,7 +116,7 @@ public partial class dialog_bubble : CanvasLayer
         }
         GetNode<PanelContainer>("box/panel_container").Visible = true;
     }
-    public void InDialogEvents(int eventID)
+    public void InDialogEvents(int eventID) //maybe replaceable with jsonrpc?
     {
         switch (eventID)
         {
