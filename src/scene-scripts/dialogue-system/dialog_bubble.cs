@@ -13,7 +13,7 @@ public partial class dialog_bubble : CanvasLayer
     - add controller support for answerboxes
     - add tree support (example: "story" key)
     - ability to add dialogue begin answers on the fly (special ones are colored)
-    they will be in a dictionary with event IDs or Dictionary keys*/
+    they will be in a dictionary with event IDs or Dictionary keys it also needs an array wich ones are active*/
     public override void _Ready()
     {
         richText = GetNode<RichTextLabel>("box/rich_text_label");
