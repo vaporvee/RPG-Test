@@ -13,8 +13,7 @@ public partial class dialog_bubble : CanvasLayer
     - add controller support for answerboxes
     - add tree support (example: "story" key)
     - ability to add dialogue begin answers on the fly (special ones are colored)
-    they will be in an dictionary with numbers as event IDs and the event ID will 
-    be used with a switch case or a string key with a event ID later in the dialogue like event 0 (close)*/
+    they will be in a dictionary with event IDs or Dictionary keys*/
     public override void _Ready()
     {
         richText = GetNode<RichTextLabel>("box/rich_text_label");
@@ -60,7 +59,7 @@ public partial class dialog_bubble : CanvasLayer
             {
                 GD.Print(dlgLines.AsGodotArray()[dlgPointer].VariantType);
                 if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Float && ((float)dlgLines.AsGodotArray()[dlgPointer]) == 0)
-                    CloseDialog();
+                    InDialogEvents((int)dlgLines.AsGodotArray()[dlgPointer]);
                 else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.String)
                     UpdateDialog();
                 else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Dictionary)
@@ -116,5 +115,14 @@ public partial class dialog_bubble : CanvasLayer
             parent.GetChild<Button>(i).Text = dialogOptions[i];
         }
         GetNode<PanelContainer>("box/panel_container").Visible = true;
+    }
+    public void InDialogEvents(int eventID)
+    {
+        switch (eventID)
+        {
+            case 0:
+                CloseDialog();
+                break;
+        }
     }
 }
