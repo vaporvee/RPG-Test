@@ -20,6 +20,8 @@ public partial class dialog_bubble : CanvasLayer
         if (GetParent().Name == "player") GetParent<player>().allowMovement = false;
         if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "villager")
             GatherDialog("welcome");
+        else if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "message")
+            GatherDialog("message");
         Visible = true;
     }
 
@@ -49,7 +51,10 @@ public partial class dialog_bubble : CanvasLayer
         {
             if (dlgPointer < dlgLines.AsGodotArray().Count)
             {
-                if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.String)
+                GD.Print(dlgLines.AsGodotArray()[dlgPointer].VariantType);
+                if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Float && ((float)dlgLines.AsGodotArray()[dlgPointer]) == 0)
+                    CloseDialog();
+                else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.String)
                     UpdateDialog();
                 else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Dictionary)
                     MakeAnswerBox(Json.ParseString(dlgLines.AsGodotArray()[dlgPointer].AsGodotDictionary().Keys.ToString()).AsStringArray());
@@ -61,17 +66,26 @@ public partial class dialog_bubble : CanvasLayer
             richText.VisibleCharacters++;
             GetNode<Timer>("typewriter_timer").Start();
         }
-
         if (dlgPointer > dlgLines.AsGodotArray().Count)
-            CloseDialog();
-
-        if (GetNode<PanelContainer>("box/panel_container").Visible == true && GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton() != null)
         {
-            var answer = dlgLines.AsGodotArray()[dlgPointer - 1].AsGodotDictionary()[GetNode<Button>(GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton().GetPath()).Text];
-            GetNode<PanelContainer>("box/panel_container").Visible = false;
-            if (answer.VariantType == Variant.Type.Bool && answer.AsBool())
+            if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "villager")
             {
-                GatherDialog("tipp");
+                GatherDialog("else");
+                UpdateDialog();
+                dlgPointer++;
+            }
+            else CloseDialog();
+        }
+
+        if (GetNode<PanelContainer>("box/panel_container").Visible == true
+        && GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton() != null)
+        {
+            var answer = dlgLines.AsGodotArray()[dlgPointer - 1].AsGodotDictionary()[GetNode<Button>(GetNode("box/panel_container/margin_container")
+            .GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton().GetPath()).Text];
+            GetNode<PanelContainer>("box/panel_container").Visible = false;
+            if (answer.VariantType == Variant.Type.String)
+            {
+                GatherDialog(answer.AsString());
                 UpdateDialog();
             }
             dlgPointer++;
