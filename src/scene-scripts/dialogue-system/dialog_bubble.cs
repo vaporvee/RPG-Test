@@ -137,7 +137,6 @@ public partial class dialog_bubble : CanvasLayer
                 triggerArea.Set("introducedVillager", true);
                 GatherDialog("welcome"); //not that logical conversation maybe split "welcome" and "what do you want"
                 UpdateDialog();
-                dlgPointer++;
                 break;
         }
     }
