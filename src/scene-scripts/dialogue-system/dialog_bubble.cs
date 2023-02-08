@@ -24,8 +24,8 @@ public partial class dialog_bubble : CanvasLayer
     {
         triggerArea = actor;
         name = title;
-        playerName = "[color=blue]" + playerName + "[/color]";
-        parsedDlg = Json.ParseString(FileAccess.Open(file, FileAccess.ModeFlags.Read).GetAsText().Replace("{player}", playerName).Replace("{title}", title));
+        parsedDlg = Json.ParseString(FileAccess.Open(file, FileAccess.ModeFlags.Read).GetAsText()
+        .Replace("{player}", "[color=cyan]" + playerName + "[/color]").Replace("{title}", "[color=purple]" + title + "[/color]"));
         if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() != "villager" || introducedVillager)
             GetNode<Label>("box/name_label").Text = title;
         if (GetParent().Name == "player") GetParent<player>().allowMovement = false;
