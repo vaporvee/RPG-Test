@@ -2,30 +2,37 @@
 	"dialogType": "villager",
 	"intro": [
 		[
-			"Hello i'm {title}. Your name must be {player}! So...",
+			"Hello i'm {title}. Your name must be {player}!",
 			0
 		]
 	],
 	"welcome": [
 		[
-			"Oh hello, {player}... You look great! What can I do for you?",
+			"Oh hello, {player}... You look great!",
+			"<goto:>begindialog"
+		],
+		[
+			"Hey, {player}! Hope you have fun today!",
+			"<goto:>begindialog"
+		],
+		[
+			"Hi! What's up {player}?",
+			"<goto:>begindialog"
+		]
+	],
+	"begindialog": [
+		[
+			"What can I do for you?",
 			{
 				"I just wanna talk": "<goto:>tipp",
 				"Nevermind!": "<goto:>goodbye"
 			}
 		],
 		[
-			"Hey, {player}! Hope you have fun today! So what do you want?",
+			"So what do you want?",
 			{
 				"What's up": "<goto:>tipp",
 				"Nothing": "<goto:>goodbye"
-			}
-		],
-		[
-			"Hi! What's up {player}?",
-			{
-				"Can we talk?": "<goto:>tipp",
-				"Have a great day!": "<goto:>goodbye"
 			}
 		]
 	],
