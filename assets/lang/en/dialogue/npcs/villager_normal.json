@@ -3,29 +3,29 @@
 	"intro": [
 		[
 			"Hello i'm {title}. Your name must be {player}! So...",
-			1
+			0
 		]
 	],
 	"welcome": [
 		[
 			"Oh hello, {player}... You look great! What can I do for you?",
 			{
-				"I just wanna talk": "tipp",
-				"Nevermind!": "goodbye"
+				"I just wanna talk": "<goto:>tipp",
+				"Nevermind!": "<goto:>goodbye"
 			}
 		],
 		[
 			"Hey, {player}! Hope you have fun today! So what do you want?",
 			{
-				"What's up": "tipp",
-				"Nothing": "goodbye"
+				"What's up": "<goto:>tipp",
+				"Nothing": "<goto:>goodbye"
 			}
 		],
 		[
 			"Hi! What's up {player}?",
 			{
-				"Can we talk?": "tipp",
-				"Have a great day!": "goodbye"
+				"Can we talk?": "<goto:>tipp",
+				"Have a great day!": "<goto:>goodbye"
 			}
 		]
 	],
@@ -33,39 +33,39 @@
 		[
 			"Do you need something else?",
 			{
-				"Can you tell me something else?": "tipp",
-				"No, thanks!": "goodbye"
+				"Can you tell me something else?": "<goto:>tipp",
+				"No, thanks!": "<goto:>goodbye"
 			}
 		],
 		[
 			"So can i help you with something else?",
 			{
-				"Tell me a bit more maybe": "tipp",
-				"I'm good, thank you!": "goodbye"
+				"Tell me a bit more maybe": "<goto:>tipp",
+				"I'm good, thank you!": "<goto:>goodbye"
 			}
 		]
 	],
 	"goodbye": [
 		[
-			"Was nice talking to you goodbye!",
-			0
+			"Was nice talking to you goodbye!"
 		],
 		[
-			"Have a great day, {player}!",
-			0
+			"Have a great day, {player}!"
 		]
 	],
 	"tipp": [
 		[
 			"You can walk arround with WASD on PC.",
 			"You can also use your joystick and D-Pad, if you have a controller.",
-			"You can interact with cupcakes and use the buggy placeholder clouds as a football."
+			"You can interact with cupcakes and use the buggy placeholder clouds as a football.",
+			"<goto:>else"
 		],
 		[
 			"[center][font s=80][wave amp=50 freq=15][rainbow]This is cool test text[/rainbow][/wave][/font][/center]",
 			"sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,",
 			"sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
-			"Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+			"Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+			"<goto:>else"
 		]
 	],
 	"story": [
