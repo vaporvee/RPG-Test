@@ -49,6 +49,7 @@ public partial class dialog_bubble : CanvasLayer
         dlgPointer = 0;
         dlgLines = parsedDlg.AsGodotDictionary()[key].AsGodotArray();
         dlgLines = dlgLines.AsGodotArray()[GD.RandRange(0, dlgLines.AsGodotArray().Count - 1)];
+        //TODO:copy a clean default array and remove already used indexes and copy from clean array when its empty
     }
 
     public void CloseDialog()
