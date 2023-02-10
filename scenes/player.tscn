@@ -93,8 +93,10 @@ process_mode = 1
 position = Vector2(-1, 0)
 floor_stop_on_slope = false
 script = ExtResource("1_qehox")
+metadata/_edit_lock_ = true
 
 [node name="rotation_center" type="Marker2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="ray_cast_2d" type="RayCast2D" parent="rotation_center"]
 rotation = 3.14159
@@ -103,17 +105,20 @@ collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
+metadata/_edit_lock_ = true
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.733398, 0.733398)
 sprite_frames = SubResource("SpriteFrames_2x1cy")
 animation = &"move_down"
+metadata/_edit_lock_ = true
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 31)
 rotation = 1.57345
 shape = SubResource("CapsuleShape2D_38v5o")
+metadata/_edit_lock_ = true
 
 [node name="camera_2d" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)
@@ -127,9 +132,11 @@ drag_top_margin = 0.15
 drag_right_margin = 0.15
 drag_bottom_margin = 0.15
 editor_draw_drag_margin = true
+metadata/_edit_lock_ = true
 
 [node name="audio_listener_2d" type="AudioListener2D" parent="."]
 current = true
+metadata/_edit_lock_ = true
 
 [node name="dialog_bubble" parent="." instance=ExtResource("3_8f573")]
 visible = false
