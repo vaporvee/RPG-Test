@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://2867aayx0skw"]
+
+[ext_resource type="TileSet" uid="uid://txl24cadn8t4" path="res://tilesets/main_foreground.tres" id="1_tknx3"]
+[ext_resource type="PackedScene" uid="uid://bxaheg7l4h1ip" path="res://scenes/player.tscn" id="2_0skrb"]
+
+[node name="overworld" type="Node2D"]
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="tilemap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("1_tknx3")
+cell_quadrant_size = 64
+format = 2
+layer_0/tile_data = PackedInt32Array(1, 0, 0, 65533, 0, 0, -3, 0, 0, -65535, 0, 0, -131070, 1, 131072, -131067, 1, 131072, -131074, 1, 131072, -262141, 1, 131072, 4, 1, 131072, -131078, 2, 65536)
+metadata/_edit_lock_ = true
+
+[node name="player" parent="." instance=ExtResource("2_0skrb")]
+playerName = "Yannik"
+metadata/_edit_lock_ = true

@@ -10,7 +10,7 @@ scenes/0/scene = ExtResource("1_uxmn6")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_eskkr"]
 resource_name = "dialogdebug"
-scenes/1/scene = ExtResource("2_0cov5")
+scenes/2/scene = ExtResource("2_0cov5")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xtxu0"]
 resource_name = "sounddebug"

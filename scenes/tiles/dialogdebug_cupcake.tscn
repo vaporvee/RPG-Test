@@ -7,7 +7,7 @@
 size = Vector2(64, 17.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d78tr"]
-size = Vector2(64, 58)
+size = Vector2(64, 64)
 
 [node name="dialogdebug_cupcake" type="StaticBody2D"]
 
@@ -15,11 +15,10 @@ size = Vector2(64, 58)
 texture = ExtResource("1_imilm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 20.625)
+position = Vector2(0, 23)
 shape = SubResource("RectangleShape2D_pchpi")
 
 [node name="dialog_trigger_area" parent="." instance=ExtResource("2_blpmd")]
-position = Vector2(3, 0)
 file = "res://assets/lang/en/dialogue/npcs/villager_normal.json"
 title = "Debug cupcake"
 
