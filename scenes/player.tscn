@@ -85,8 +85,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38v5o"]
-radius = 13.9973
-height = 45.968
+radius = 7.99997
+height = 33.9946
 
 [node name="player" type="CharacterBody2D"]
 process_mode = 1
@@ -114,12 +114,6 @@ sprite_frames = SubResource("SpriteFrames_2x1cy")
 animation = &"move_down"
 metadata/_edit_lock_ = true
 
-[node name="collision_shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 31)
-rotation = 1.57345
-shape = SubResource("CapsuleShape2D_38v5o")
-metadata/_edit_lock_ = true
-
 [node name="camera_2d" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
@@ -140,3 +134,8 @@ metadata/_edit_lock_ = true
 
 [node name="dialog_bubble" parent="." instance=ExtResource("3_8f573")]
 visible = false
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+position = Vector2(1, 38)
+rotation = 1.57345
+shape = SubResource("CapsuleShape2D_38v5o")

@@ -17,7 +17,7 @@ texture = ExtResource("1_imilm")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 21.6875)
+position = Vector2(0, 23)
 shape = SubResource("RectangleShape2D_pchpi")
 metadata/_edit_lock_ = true
 
