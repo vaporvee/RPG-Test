@@ -21,14 +21,14 @@ public partial class essential : Node
         custom controlls possible*/
         InputEventJoypadButton JoyButtonA = new InputEventJoypadButton() { ButtonIndex = JoyButton.A };
         InputEventJoypadButton JoyButtonB = new InputEventJoypadButton() { ButtonIndex = JoyButton.B };
-        if (currentController.StartsWith("Nintendo"))
+        if (currentController.StartsWith("Nintendo") && InputMap.ActionHasEvent("ui_accept", JoyButtonA))
         {
             InputMap.ActionEraseEvent("ui_accept", JoyButtonA);
             InputMap.ActionEraseEvent("ui_cancel", JoyButtonB);
             InputMap.ActionAddEvent("ui_accept", JoyButtonB);
             InputMap.ActionAddEvent("ui_cancel", JoyButtonA);
         }
-        else
+        else if (InputMap.ActionHasEvent("ui_accept", JoyButtonB))
         {
             InputMap.ActionEraseEvent("ui_accept", JoyButtonB);
             InputMap.ActionEraseEvent("ui_cancel", JoyButtonA);
