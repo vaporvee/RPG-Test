@@ -90,7 +90,6 @@ height = 33.9946
 
 [node name="player" type="CharacterBody2D"]
 process_mode = 1
-position = Vector2(-1, 0)
 floor_stop_on_slope = false
 script = ExtResource("1_qehox")
 metadata/_edit_lock_ = true
@@ -136,6 +135,7 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
-position = Vector2(1, 38)
+position = Vector2(0, 38)
 rotation = 1.57345
 shape = SubResource("CapsuleShape2D_38v5o")
+metadata/_edit_lock_ = true
