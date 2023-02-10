@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://txl24cadn8t4"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://txl24cadn8t4"]
 
 [ext_resource type="PackedScene" uid="uid://dk7fqaw2b3w1k" path="res://scenes/tiles/first_debug_tile.tscn" id="1_uxmn6"]
 [ext_resource type="PackedScene" uid="uid://dckxciecwjfgf" path="res://scenes/tiles/dialogdebug_cupcake.tscn" id="2_0cov5"]
 [ext_resource type="PackedScene" path="res://scenes/tiles/sound_debug_tile.tscn" id="3_lf2fs"]
+[ext_resource type="Texture2D" uid="uid://6146gtneb4si" path="res://scenes/grass_tile.png" id="4_cea6w"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lcrun"]
 resource_name = "test"
@@ -16,8 +17,14 @@ scenes/2/scene = ExtResource("2_0cov5")
 resource_name = "sounddebug"
 scenes/1/scene = ExtResource("3_lf2fs")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_na45g"]
+texture = ExtResource("4_cea6w")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetScenesCollectionSource_lcrun")
 sources/1 = SubResource("TileSetScenesCollectionSource_eskkr")
 sources/2 = SubResource("TileSetScenesCollectionSource_xtxu0")
+sources/3 = SubResource("TileSetAtlasSource_na45g")
