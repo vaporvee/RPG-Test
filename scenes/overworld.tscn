@@ -1,7 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://2867aayx0skw"]
+[gd_scene load_steps=7 format=3 uid="uid://2867aayx0skw"]
 
 [ext_resource type="TileSet" uid="uid://txl24cadn8t4" path="res://tilesets/main_foreground.tres" id="1_tknx3"]
 [ext_resource type="PackedScene" uid="uid://bxaheg7l4h1ip" path="res://scenes/player.tscn" id="2_0skrb"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4m3b4"]
+resource_local_to_scene = true
+a = Vector2(-1791, -1023)
+b = Vector2(1781, -1023)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_horqe"]
+a = Vector2(1791, 1023)
+b = Vector2(-1791, 1023)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2ne87"]
+a = Vector2(-1791, -1023)
+b = Vector2(-1791, 1023)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_f7wta"]
+a = Vector2(1791, -1023)
+b = Vector2(1791, 1023)
 
 [node name="overworld" type="Node2D"]
 y_sort_enabled = true
@@ -35,5 +52,24 @@ limit_right = 1791
 limit_bottom = 1023
 limit_smoothed = true
 editor_draw_limits = true
+
+[node name="world_border" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="world_border"]
+shape = SubResource("SegmentShape2D_4m3b4")
+metadata/_edit_lock_ = true
+
+[node name="collision_shape_2d_2" type="CollisionShape2D" parent="world_border"]
+shape = SubResource("SegmentShape2D_horqe")
+metadata/_edit_lock_ = true
+
+[node name="collision_shape_2d_3" type="CollisionShape2D" parent="world_border"]
+shape = SubResource("SegmentShape2D_2ne87")
+metadata/_edit_lock_ = true
+
+[node name="collision_shape_2d_4" type="CollisionShape2D" parent="world_border"]
+shape = SubResource("SegmentShape2D_f7wta")
+metadata/_edit_lock_ = true
 
 [editable path="player"]
