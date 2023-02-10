@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://2867aayx0skw"]
+[gd_scene load_steps=7 format=3 uid="uid://mg7lepglug18"]
 
-[ext_resource type="TileSet" uid="uid://txl24cadn8t4" path="res://tilesets/main_foreground.tres" id="1_tknx3"]
+[ext_resource type="TileSet" uid="uid://txl24cadn8t4" path="res://tilesets/main_tileset.tres" id="1_hewr6"]
 [ext_resource type="PackedScene" uid="uid://bxaheg7l4h1ip" path="res://scenes/player.tscn" id="2_0skrb"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4m3b4"]
@@ -26,7 +26,7 @@ metadata/_edit_lock_ = true
 
 [node name="tilemap" type="TileMap" parent="."]
 y_sort_enabled = true
-tile_set = ExtResource("1_tknx3")
+tile_set = ExtResource("1_hewr6")
 cell_quadrant_size = 64
 format = 2
 layer_0/name = "Ground"

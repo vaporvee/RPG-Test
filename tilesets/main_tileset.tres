@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dk7fqaw2b3w1k" path="res://scenes/tiles/first_debug_tile.tscn" id="1_uxmn6"]
 [ext_resource type="PackedScene" uid="uid://dckxciecwjfgf" path="res://scenes/tiles/dialogdebug_cupcake.tscn" id="2_0cov5"]
 [ext_resource type="PackedScene" path="res://scenes/tiles/sound_debug_tile.tscn" id="3_lf2fs"]
-[ext_resource type="Texture2D" uid="uid://6146gtneb4si" path="res://scenes/grass_tile.png" id="4_cea6w"]
+[ext_resource type="Texture2D" uid="uid://d3l4uomk1gw8c" path="res://assets/textures/debug/grass_tile.png" id="4_k7c1q"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lcrun"]
 resource_name = "test"
@@ -18,7 +18,7 @@ resource_name = "sounddebug"
 scenes/1/scene = ExtResource("3_lf2fs")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_na45g"]
-texture = ExtResource("4_cea6w")
+texture = ExtResource("4_k7c1q")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
