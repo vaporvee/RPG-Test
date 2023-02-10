@@ -5,7 +5,7 @@ public partial class essential : Node
 {
     public string currentController = Input.GetJoyName(0);
 
-    public override void _Input(InputEvent @event) 
+    public override void _Input(InputEvent @event)
     {
         //Checks if using Keyboard or controller and giving out current controller
         if (@event is InputEventKey || @event is InputEventMouseButton || currentController == "")
@@ -15,7 +15,10 @@ public partial class essential : Node
     }
     public override void _Process(double delta)
     {
-        //CHANGE INPUT FOR NINTENDO CONTROLLER
+        //CHANGE INPUT FOR NINTENDO CONTROLLER 
+        /*TODO: shouldnt hard change the controlls everytime and only switch 
+        the current input methods when the controller changes to make
+        custom controlls possible*/
         InputEventJoypadButton JoyButtonA = new InputEventJoypadButton() { ButtonIndex = JoyButton.A };
         InputEventJoypadButton JoyButtonB = new InputEventJoypadButton() { ButtonIndex = JoyButton.B };
         if (currentController.StartsWith("Nintendo"))
@@ -24,7 +27,8 @@ public partial class essential : Node
             InputMap.ActionEraseEvent("ui_cancel", JoyButtonB);
             InputMap.ActionAddEvent("ui_accept", JoyButtonB);
             InputMap.ActionAddEvent("ui_cancel", JoyButtonA);
-        } else
+        }
+        else
         {
             InputMap.ActionEraseEvent("ui_accept", JoyButtonB);
             InputMap.ActionEraseEvent("ui_cancel", JoyButtonA);
@@ -35,9 +39,9 @@ public partial class essential : Node
         //FULLSCREEN HOTKEY
         if (Input.IsActionJustPressed("hotkey_fullscreen"))
         {
-            if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen) 
-                  DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
-            else  DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+            if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen)
+                DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+            else DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
         }
     }
 }
