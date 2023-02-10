@@ -17,4 +17,3 @@ metadata/_edit_lock_ = true
 
 [node name="player" parent="." instance=ExtResource("2_0skrb")]
 playerName = "Yannik"
-metadata/_edit_lock_ = true
