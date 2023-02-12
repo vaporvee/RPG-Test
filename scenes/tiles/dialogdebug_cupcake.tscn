@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dckxciecwjfgf"]
 
 [ext_resource type="Texture2D" uid="uid://p5ubildre2tg" path="res://assets/textures/debug/cupcake.png" id="1_imilm"]
-[ext_resource type="PackedScene" path="res://scenes/dialog_trigger_area.tscn" id="2_blpmd"]
+[ext_resource type="PackedScene" uid="uid://br767fo0k4p37" path="res://scenes/dialog_trigger_area.tscn" id="2_blpmd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pchpi"]
 size = Vector2(64, 14.625)
