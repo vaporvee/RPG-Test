@@ -1,6 +1,5 @@
 using Godot;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 public partial class dialog_bubble : CanvasLayer
 {
@@ -11,7 +10,6 @@ public partial class dialog_bubble : CanvasLayer
 	public Timer typewriterTimer;
 	public string name;
 	public Area2D triggerArea;
-
 	/*TODO: 
     - Dont repeat the same randomized dialogue after you get asked do you need something "else"
     - add tree support (example: "story" key)
@@ -46,7 +44,6 @@ public partial class dialog_bubble : CanvasLayer
 
 		Visible = true;
 	}
-
 	public void GatherDialog(string key)
 	{
 		dlgPointer = 0;
@@ -54,7 +51,6 @@ public partial class dialog_bubble : CanvasLayer
 		dlgLines = dlgLines.AsGodotArray()[GD.RandRange(0, dlgLines.AsGodotArray().Count - 1)];
 		//TODO:copy a clean default array and remove already used indexes and copy from clean array when its empty
 	}
-
 	public override void _Process(double delta)
 	{
 		DialogControlls();
