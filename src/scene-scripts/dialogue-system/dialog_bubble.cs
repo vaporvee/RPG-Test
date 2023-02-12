@@ -92,7 +92,10 @@ public partial class dialog_bubble : CanvasLayer
 	public void OnTypewriterTimerTimeout()
 	{
 		if (richText.VisibleCharacters < Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length)
+		{
 			richText.VisibleCharacters++;
+			GetNode<AudioStreamPlayer>("typewriter_audio_stream").Play();
+		}
 		else typewriterTimer.Stop();
 	}
 	public void MakeAnswerBox(string[] dialogOptions)
