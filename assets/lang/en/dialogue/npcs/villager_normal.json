@@ -40,14 +40,14 @@
 		[
 			"Do you need something else?",
 			{
-				"Can you tell me something else?": "<goto:>tipp",
+				"Can you tell me more?": "<goto:>tipp",
 				"No, thanks!": "<goto:>goodbye"
 			}
 		],
 		[
 			"So can i help you with something else?",
 			{
-				"Tell me a bit more maybe": "<goto:>tipp",
+				"Tell me a bit more": "<goto:>tipp",
 				"I'm good, thank you!": "<goto:>goodbye"
 			}
 		]
