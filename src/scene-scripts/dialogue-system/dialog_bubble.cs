@@ -14,7 +14,8 @@ public partial class dialog_bubble : CanvasLayer
     - Dont repeat the same randomized dialogue after you get asked do you need something "else"
     - add tree support (example: "story" key)
     - ability to add dialogue begin answers on the fly (special ones are colored)
-    they will be in a dictionary with event IDs or Dictionary keys it also needs an array wich ones are active*/
+    they will be in a dictionary with event IDs or Dictionary keys it also needs an array wich ones are active
+	- focus answer button on mouse hover and add focus sounds*/
 	public override void _Ready()
 	{
 		richText = GetNode<RichTextLabel>("box/rich_text_label");
