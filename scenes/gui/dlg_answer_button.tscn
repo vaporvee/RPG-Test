@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cv87js42t1sty"]
+[gd_scene load_steps=10 format=3 uid="uid://cv87js42t1sty"]
 
 [ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/fonts/urbane-rounded-medium.otf" id="1_2bkol"]
 [ext_resource type="Texture2D" uid="uid://boxc677b5i605" path="res://assets/textures/dialogue/circle.png" id="2_tkpfr"]
@@ -18,6 +18,13 @@ content_margin_top = 8.0
 resource_local_to_scene = false
 resource_name = "answer_buttons"
 
+[sub_resource type="GDScript" id="GDScript_nhv51"]
+resource_name = "button"
+script/source = "extends Button 
+func _process(_delta): 
+	if(is_hovered()): grab_focus()
+"
+
 [node name="answer_button" type="Button"]
 custom_minimum_size = Vector2(100, 32)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
@@ -36,3 +43,4 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_trdc6")
 button_group = SubResource("ButtonGroup_y8j7j")
 icon = ExtResource("2_tkpfr")
 alignment = 0
+script = SubResource("GDScript_nhv51")
