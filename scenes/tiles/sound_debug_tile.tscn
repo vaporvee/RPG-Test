@@ -1,14 +1,28 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4dkrtswpv8cv"]
 
 [ext_resource type="Texture2D" uid="uid://ciidukjv5k6oa" path="res://assets/textures/debug/banana.png" id="1_7651j"]
-[ext_resource type="Script" path="res://src/scene-scripts/tiles/sound_debug_tile.gd" id="1_tukqg"]
 [ext_resource type="AudioStream" uid="uid://s64cl4x57oae" path="res://assets/audios/sound_explode.wav" id="3_dnu2u"]
+
+[sub_resource type="GDScript" id="GDScript_krkfl"]
+resource_name = "sound_debug_tile"
+script/source = "extends StaticBody2D
+
+@export var soundOn = true
+
+func _ready():
+	$audio_stream_player_2d.autoplay = soundOn
+	if(soundOn): 
+		$audio_stream_player_2d.play()
+func OnAudioFinished():
+	if(soundOn): 
+		$audio_stream_player_2d.play()
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2d5dy"]
 radius = 30.8058
 
-[node name="first_debug_tile" type="StaticBody2D"]
-script = ExtResource("1_tukqg")
+[node name="sound_debug_tile" type="StaticBody2D"]
+script = SubResource("GDScript_krkfl")
 soundOn = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,10 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://bu1xkt4xi58ox"]
 
-[ext_resource type="Script" path="res://src/scene-scripts/dialogue-system/dialog_trigger_area.gd" id="1_ua004"]
+[sub_resource type="GDScript" id="GDScript_enb1s"]
+resource_name = "dialog_trigger_variables"
+script/source = "extends Area2D
+
+@export_file(\"*json\") var file = \"\"
+@export var title = \"\"
+@export var introducedVillager = false
+"
 
 [node name="dialog_trigger_area" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_ua004")
+script = SubResource("GDScript_enb1s")
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]
