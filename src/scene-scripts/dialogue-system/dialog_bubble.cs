@@ -118,6 +118,7 @@ public partial class dialog_bubble : CanvasLayer
 		if (GetNode<PanelContainer>("box/panel_container").Visible == true
 		&& GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton() != null)
 		{
+			GetNode<AudioStreamPlayer>("answerbtn_audio_stream").Play();
 			var answer = dlgLines.AsGodotArray()[dlgPointer - 1].AsGodotDictionary()[GetNode<Button>(GetNode("box/panel_container/margin_container")
 			.GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton().GetPath()).Text];
 			GetNode<PanelContainer>("box/panel_container").Visible = false;

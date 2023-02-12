@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkm7365u1mm3o"]
+[gd_scene load_steps=7 format=3 uid="uid://bkm7365u1mm3o"]
 
 [ext_resource type="Script" path="res://src/scene-scripts/dialogue-system/dialog_bubble.cs" id="1_xtj1q"]
 [ext_resource type="FontFile" uid="uid://cx6bvqk0ghmjv" path="res://assets/fonts/urbane-rounded-medium.otf" id="2_qrihj"]
 [ext_resource type="AudioStream" uid="uid://cg6grs5k5m33n" path="res://assets/audios/typewrite/default_tw.wav" id="2_wg62u"]
 [ext_resource type="Texture2D" uid="uid://04pdpdvkg2s" path="res://assets/textures/dialogue/dialogue_answer_ninepatch.png" id="3_n3y1v"]
+[ext_resource type="AudioStream" uid="uid://7si4jccoofsf" path="res://assets/audios/ui/small_btn.wav" id="5_w6jq7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w2xu"]
 
@@ -105,5 +106,8 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 30
 metadata/_edit_lock_ = true
+
+[node name="answerbtn_audio_stream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_w6jq7")
 
 [connection signal="timeout" from="typewriter_timer" to="." method="OnTypewriterTimerTimeout"]
