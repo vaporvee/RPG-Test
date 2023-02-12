@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://c4dkrtswpv8cv"]
 
-[ext_resource type="Script" path="res://src/scene-scripts/tiles/audioplayer_tile.cs" id="1_6sf4e"]
 [ext_resource type="Texture2D" uid="uid://ciidukjv5k6oa" path="res://assets/textures/debug/banana.png" id="1_7651j"]
+[ext_resource type="Script" path="res://src/scene-scripts/tiles/sound_debug_tile.gd" id="1_tukqg"]
 [ext_resource type="AudioStream" uid="uid://s64cl4x57oae" path="res://assets/audios/sound_explode.wav" id="3_dnu2u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2d5dy"]
 radius = 30.8058
 
 [node name="first_debug_tile" type="StaticBody2D"]
-script = ExtResource("1_6sf4e")
+script = ExtResource("1_tukqg")
 soundOn = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -20,8 +20,7 @@ shape = SubResource("CircleShape2D_2d5dy")
 
 [node name="audio_stream_player_2d" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_dnu2u")
-autoplay = true
-max_distance = 1500.0
-attenuation = 2.0
+max_distance = 1700.0
+attenuation = 1.7
 
 [connection signal="finished" from="audio_stream_player_2d" to="." method="OnAudioFinished"]
