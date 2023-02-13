@@ -16,8 +16,6 @@ public partial class essential : Node
     public override void _Process(double delta)
     {
         //CHANGE INPUT FOR NINTENDO CONTROLLER 
-        /*TODO: shouldnt hard change the controlls everytime and only swap 
-        the current given actions somehow to make custom controlls possible*/
         InputEventJoypadButton JoyButtonA = new InputEventJoypadButton() { ButtonIndex = JoyButton.A };
         InputEventJoypadButton JoyButtonB = new InputEventJoypadButton() { ButtonIndex = JoyButton.B };
         if (currentController.StartsWith("Nintendo") && InputMap.ActionHasEvent("ui_accept", JoyButtonA))
