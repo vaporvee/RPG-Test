@@ -16,6 +16,7 @@ public partial class player : CharacterBody2D
     public override void _Ready()
     {
         playerName = Regex.Replace(playerName, @"\[[^]]+\]", "");
+        playerName = Regex.Replace(playerName, @"<[^>]*>", "");
         if (playerName.Length > 12)
             playerName = playerName.Substring(0, 12);
 
