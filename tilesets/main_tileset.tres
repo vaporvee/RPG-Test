@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dckxciecwjfgf" path="res://scenes/tiles/dialogdebug_cupcake.tscn" id="2_0cov5"]
 [ext_resource type="PackedScene" uid="uid://c4dkrtswpv8cv" path="res://scenes/tiles/sound_debug_tile.tscn" id="3_lf2fs"]
 [ext_resource type="Texture2D" uid="uid://d3l4uomk1gw8c" path="res://assets/textures/debug/grass_tile.png" id="4_k7c1q"]
-[ext_resource type="PackedScene" uid="uid://dxfg62cl12ppw" path="res://scenes/tiles/3d_cube_tile.tscn" id="5_x3uol"]
+[ext_resource type="PackedScene" uid="uid://ct6s1gfjkciva" path="res://scenes/tiles/3d_cube_tile.tscn" id="5_x3uol"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lcrun"]
 resource_name = "test"

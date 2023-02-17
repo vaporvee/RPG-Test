@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxfg62cl12ppw"]
+[gd_scene load_steps=4 format=3 uid="uid://ct6s1gfjkciva"]
 
 [ext_resource type="PackedScene" uid="uid://boxvq5qowh8nn" path="res://scenes/3D/3d_cube.tscn" id="1_643fx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxe27"]
 size = Vector2(64, 64)
+
+[sub_resource type="GDScript" id="GDScript_1h1n3"]
+resource_name = "visibillity"
+script/source = "extends VisibleOnScreenNotifier2D
+
+func OnScreenEntered():
+	get_child(0).visible = true
+pass
+
+func OnScreenExited():
+	get_child(0).visible = false
+pass
+"
 
 [node name="3d_cube_tile" type="Node2D"]
 
@@ -14,17 +27,23 @@ position = Vector2(0, 1)
 position = Vector2(1, -2)
 shape = SubResource("RectangleShape2D_lxe27")
 
-[node name="sub_viewport_container" type="SubViewportContainer" parent="."]
-offset_left = -115.0
-offset_top = -112.0
-offset_right = 141.0
-offset_bottom = 144.0
+[node name="visible_on_screen_notifier_2d" type="VisibleOnScreenNotifier2D" parent="."]
+script = SubResource("GDScript_1h1n3")
 
-[node name="sub_viewport" type="SubViewport" parent="sub_viewport_container"]
+[node name="sub_viewport_container" type="SubViewportContainer" parent="visible_on_screen_notifier_2d"]
+offset_left = -115.0
+offset_top = -110.0
+offset_right = 141.0
+offset_bottom = 146.0
+
+[node name="sub_viewport" type="SubViewport" parent="visible_on_screen_notifier_2d/sub_viewport_container"]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(230, 230)
 render_target_update_mode = 4
 
-[node name="Node3D" parent="sub_viewport_container/sub_viewport" instance=ExtResource("1_643fx")]
+[node name="Node3D" parent="visible_on_screen_notifier_2d/sub_viewport_container/sub_viewport" instance=ExtResource("1_643fx")]
+
+[connection signal="screen_entered" from="visible_on_screen_notifier_2d" to="visible_on_screen_notifier_2d" method="OnScreenEntered"]
+[connection signal="screen_exited" from="visible_on_screen_notifier_2d" to="visible_on_screen_notifier_2d" method="OnScreenExited"]
