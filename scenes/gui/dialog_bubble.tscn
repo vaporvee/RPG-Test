@@ -53,6 +53,7 @@ theme_override_fonts/normal_font = ExtResource("2_qrihj")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 scroll_active = false
+visible_characters_behavior = 1
 metadata/_edit_lock_ = true
 
 [node name="name_label" type="Label" parent="box"]
