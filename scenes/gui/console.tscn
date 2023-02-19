@@ -32,3 +32,6 @@ select_all_on_focus = true
 caret_blink = true
 caret_blink_interval = 0.5
 caret_force_displayed = true
+
+[connection signal="popup_hide" from="." to="." method="OnPopupHide"]
+[connection signal="text_submitted" from="v_box_container/line_edit" to="." method="OnLineEditTextSubmitted"]
