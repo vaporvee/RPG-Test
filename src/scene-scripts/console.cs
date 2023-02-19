@@ -46,11 +46,22 @@ public partial class console : CanvasLayer
         textblock.AddText("\n============ Help ============");
         textblock.AddText("\n1. consoleclear - Clears the console");
         textblock.AddText("\n2. speed <value> - Multiplies the player speed by the given value");
+        textblock.AddText("\n3. playername <new name> - Renames the player");
     }
     public void consoleclear() => textblock.Clear();
     public void speed(float multiplier)
     {
         if (GetParent().Name == "player") GetParent<player>().speedMultiplier = Mathf.Clamp(multiplier, 0.01f, 15f);
         textblock.AddText("\nSet speed to " + Mathf.Clamp(multiplier, 0.01f, 15f));
+    }
+    public void playername(string name)
+    {
+        if (GetParent().Name == "player")
+        {
+            GetParent<player>().playerName = name;
+            GetParent<player>().ClearPlayerName();
+            textblock.AddText("\nYour new name is now: " + GetParent<player>().playerName);
+        }
+
     }
 }

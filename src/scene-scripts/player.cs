@@ -16,14 +16,17 @@ public partial class player : CharacterBody2D
 
     public override void _Ready()
     {
+        ClearPlayerName();
+        animatedSprite = GetNode<AnimatedSprite2D>("animated_sprite_2d");
+        rotCenter = GetNode<Marker2D>("rotation_center");
+        dialogRayCast = GetNode<RayCast2D>("rotation_center/ray_cast_2d");
+    }
+    public void ClearPlayerName()
+    {
         playerName = Regex.Replace(playerName, @"\[[^]]+\]", "");
         playerName = Regex.Replace(playerName, @"<[^>]*>", "");
         if (playerName.Length > 12)
             playerName = playerName.Substring(0, 12);
-
-        animatedSprite = GetNode<AnimatedSprite2D>("animated_sprite_2d");
-        rotCenter = GetNode<Marker2D>("rotation_center");
-        dialogRayCast = GetNode<RayCast2D>("rotation_center/ray_cast_2d");
     }
     public override void _PhysicsProcess(double delta)
     {
