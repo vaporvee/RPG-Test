@@ -7,6 +7,7 @@ public partial class player : CharacterBody2D
 
     [Export] public string playerName;
     [Export] public int speed = 200;
+    public float speedMultiplier = 1;
     public bool allowMovement = true;
     public Vector2 movement;
     public AnimatedSprite2D animatedSprite;
@@ -29,7 +30,7 @@ public partial class player : CharacterBody2D
         if (allowMovement) movement = Input.GetVector("move_left", "move_right", "move_up", "move_down");
         else movement = Vector2.Zero;
         if (movement.Length() != 0) rotCenter.Rotation = new Vector2((float)Math.Round(movement.X, 0), (float)Math.Round(movement.Y, 0)).Angle();
-        MoveAndCollide(movement * speed * (float)delta);
+        MoveAndCollide(movement * speed * speedMultiplier * (float)delta);
     }
     public override void _Process(double delta)
     {

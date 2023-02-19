@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt4pohi6srcvi"]
+
+[ext_resource type="Script" path="res://src/scene-scripts/console.cs" id="1_c6bre"]
+
+[node name="console" type="CanvasLayer"]
+script = ExtResource("1_c6bre")
+
+[node name="panel_container" type="PanelContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="v_box_container" type="VBoxContainer" parent="panel_container"]
+layout_mode = 2
+
+[node name="rich_text_label" type="RichTextLabel" parent="panel_container/v_box_container"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+bbcode_enabled = true
+scroll_following = true
+
+[node name="line_edit" type="LineEdit" parent="panel_container/v_box_container"]
+layout_mode = 2
+placeholder_text = "Type in cheat or command. Use \"help\" for help."
+max_length = 200
+clear_button_enabled = true
+flat = true
+draw_control_chars = true
+select_all_on_focus = true
+caret_blink = true
+caret_blink_interval = 0.5
+caret_force_displayed = true
+
+[connection signal="text_submitted" from="panel_container/v_box_container/line_edit" to="." method="OnLineEditTextSubmitted"]

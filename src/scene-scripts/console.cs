@@ -1,0 +1,56 @@
+using Godot;
+
+public partial class console : CanvasLayer
+{
+    public RichTextLabel textblock;
+    public LineEdit line;
+    public string error = "Not found! :(";
+    public override void _Ready()
+    {
+        textblock = GetNode<RichTextLabel>("panel_container/v_box_container/rich_text_label");
+        line = GetNode<LineEdit>("panel_container/v_box_container/line_edit");
+    }
+    public override void _Process(double delta)
+    {
+        if (Input.IsActionJustPressed("console"))
+        {
+            Visible = !Visible;
+            line.GrabFocus();
+            if (GetParent().Name == "player") GetParent<player>().allowMovement = !Visible;
+        }
+    }
+    public void OnLineEditTextSubmitted(string command)
+    {
+        command = command.ToLower();
+        line.Clear();
+        if (command.Length != 0) textblock.AddText("\n>" + command);
+        Variant args;
+        if (command.Split(' ').Length == 2)
+        {
+            int i = command.IndexOf(" ") + 1;
+            args = command.Substring(i);
+            Call(command.Split(' ')[0], args);
+        }
+        if (command.Split(' ').Length > 2)
+        {
+            int i = command.IndexOf(" ") + 1;
+            args = command.Substring(i).Split(' ');
+            Callv(command.Split(' ')[0], args.AsGodotArray());
+        }
+        else Call(command);
+    }
+
+
+    public void help()
+    {
+        textblock.AddText("\n============ Help ============");
+        textblock.AddText("\n1. consoleclear - Clears the console");
+        textblock.AddText("\n2. speed <value> - Multiplies the player speed by the given value");
+    }
+    public void consoleclear() => textblock.Clear();
+    public void speed(float multiplier)
+    {
+        if (GetParent().Name == "player") GetParent<player>().speedMultiplier = Mathf.Clamp(multiplier, 0.01f, 15f);
+        textblock.AddText("\nSet speed to " + Mathf.Clamp(multiplier, 0.01f, 15f));
+    }
+}
