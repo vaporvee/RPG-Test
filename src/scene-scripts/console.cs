@@ -21,7 +21,6 @@ public partial class console : CanvasLayer
     }
     public void OnLineEditTextSubmitted(string command)
     {
-        command = command.ToLower();
         line.Clear();
         if (command.Length != 0) textblock.AddText("\n>" + command);
         Variant args;
@@ -29,23 +28,24 @@ public partial class console : CanvasLayer
         {
             int i = command.IndexOf(" ") + 1;
             args = command.Substring(i);
-            Call(command.Split(' ')[0], args);
+            Call(command.Split(' ')[0].ToLower(), args);
         }
         if (command.Split(' ').Length > 2)
         {
             int i = command.IndexOf(" ") + 1;
             args = command.Substring(i).Split(' ');
-            Callv(command.Split(' ')[0], args.AsGodotArray());
+            Callv(command.Split(' ')[0].ToLower(), args.AsGodotArray());
         }
-        else Call(command);
+        else Call(command.ToLower());
     }
+
 
 
     public void help()
     {
         textblock.AddText("\n============ Help ============");
         textblock.AddText("\n1. consoleclear - Clears the console");
-        textblock.AddText("\n2. speed <value> - Multiplies the player speed by the given value");
+        textblock.AddText("\n2. speed <multiplier number> - Multiplies the player speed by the given value");
         textblock.AddText("\n3. playername <new name> - Renames the player");
     }
     public void consoleclear() => textblock.Clear();
