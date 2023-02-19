@@ -142,4 +142,3 @@ shape = SubResource("CapsuleShape2D_38v5o")
 metadata/_edit_lock_ = true
 
 [node name="console" parent="." instance=ExtResource("4_kw3hh")]
-visible = false

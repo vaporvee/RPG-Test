@@ -1,14 +1,17 @@
 using Godot;
 
-public partial class console : CanvasLayer
+public partial class console : PopupPanel
 {
     public RichTextLabel textblock;
     public LineEdit line;
+
     public string error = "Not found! :(";
+
+    //functions with capital letters can't be used inside the console
     public override void _Ready()
     {
-        textblock = GetNode<RichTextLabel>("panel_container/v_box_container/rich_text_label");
-        line = GetNode<LineEdit>("panel_container/v_box_container/line_edit");
+        textblock = GetNode<RichTextLabel>("v_box_container/rich_text_label");
+        line = GetNode<LineEdit>("v_box_container/line_edit");
     }
     public override void _Process(double delta)
     {

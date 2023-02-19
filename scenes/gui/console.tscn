@@ -2,24 +2,26 @@
 
 [ext_resource type="Script" path="res://src/scene-scripts/console.cs" id="1_c6bre"]
 
-[node name="console" type="CanvasLayer"]
+[node name="popup_panel" type="PopupPanel"]
+transparent_bg = true
+size = Vector2i(1537, 193)
+visible = true
 script = ExtResource("1_c6bre")
 
-[node name="panel_container" type="PanelContainer" parent="."]
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
+[node name="v_box_container" type="VBoxContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 1533.0
+offset_bottom = 189.0
 
-[node name="v_box_container" type="VBoxContainer" parent="panel_container"]
-layout_mode = 2
-
-[node name="rich_text_label" type="RichTextLabel" parent="panel_container/v_box_container"]
+[node name="rich_text_label" type="RichTextLabel" parent="v_box_container"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 bbcode_enabled = true
+text = "[color=red][b]USING CHEATS MAY DISABLE ACHIEVEMENTS[/b][/color]"
 scroll_following = true
 
-[node name="line_edit" type="LineEdit" parent="panel_container/v_box_container"]
+[node name="line_edit" type="LineEdit" parent="v_box_container"]
 layout_mode = 2
 placeholder_text = "Type in cheat or command. Use \"help\" for help."
 max_length = 200
@@ -30,5 +32,3 @@ select_all_on_focus = true
 caret_blink = true
 caret_blink_interval = 0.5
 caret_force_displayed = true
-
-[connection signal="text_submitted" from="panel_container/v_box_container/line_edit" to="." method="OnLineEditTextSubmitted"]
