@@ -22,6 +22,10 @@ public partial class console : PopupPanel
             if (GetParent().Name == "player") GetParent<player>().allowMovement = !Visible;
         }
     }
+    public void OnPopupHide()
+    {
+        if (GetParent().Name == "player") GetParent<player>().allowMovement = true;
+    }
     public void OnLineEditTextSubmitted(string command)
     {
         line.Clear();
