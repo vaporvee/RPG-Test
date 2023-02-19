@@ -51,7 +51,7 @@ public partial class console : CanvasLayer
     public void consoleclear() => textblock.Clear();
     public void speed(float multiplier)
     {
-        if (GetParent().Name == "player") GetParent<player>().speedMultiplier = Mathf.Clamp(multiplier, 0.01f, 15f);
+        if (GetParent().Name == "player") GetParent<player>().speed = Mathf.Clamp(multiplier, 0.01f, 15f);
         textblock.AddText("\nSet speed to " + Mathf.Clamp(multiplier, 0.01f, 15f));
     }
     public void playername(string name)
