@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/scene-scripts/player.cs" id="1_qehox"]
 [ext_resource type="Texture2D" uid="uid://olceowuycu8c" path="res://assets/textures/debug/dummy-player-atlas.png" id="2_yu1q5"]
 [ext_resource type="PackedScene" uid="uid://bkm7365u1mm3o" path="res://scenes/gui/dialog_bubble.tscn" id="3_8f573"]
-[ext_resource type="PackedScene" uid="uid://bt4pohi6srcvi" path="res://scenes/gui/console.tscn" id="4_kw3hh"]
+[ext_resource type="PackedScene" uid="uid://dlkpivjpbxnlg" path="res://scenes/gui/console.tscn" id="4_kw3hh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tokqm"]
 atlas = ExtResource("2_yu1q5")
@@ -87,7 +87,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38v5o"]
 radius = 7.99997
-height = 33.9946
+height = 32.0
 
 [node name="player" type="CharacterBody2D"]
 process_mode = 1
@@ -114,9 +114,8 @@ sprite_frames = SubResource("SpriteFrames_2x1cy")
 animation = &"move_down"
 metadata/_edit_lock_ = true
 
-[node name="camera_2d" type="Camera2D" parent="."]
+[node name="main_cam" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)
-process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 drag_horizontal_enabled = true
@@ -126,6 +125,10 @@ drag_top_margin = 0.15
 drag_right_margin = 0.15
 drag_bottom_margin = 0.15
 editor_draw_drag_margin = true
+metadata/_edit_lock_ = true
+
+[node name="cheat_cam" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
 metadata/_edit_lock_ = true
 
 [node name="audio_listener_2d" type="AudioListener2D" parent="."]

@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt4pohi6srcvi"]
+[gd_scene load_steps=2 format=3 uid="uid://dlkpivjpbxnlg"]
 
-[ext_resource type="Script" path="res://src/scene-scripts/console.cs" id="1_c6bre"]
+[ext_resource type="Script" path="res://src/scene-scripts/console/console.cs" id="1_gdt1r"]
 
 [node name="popup_panel" type="PopupPanel"]
 transparent_bg = true
 size = Vector2i(1537, 193)
 visible = true
-script = ExtResource("1_c6bre")
+script = ExtResource("1_gdt1r")
 
 [node name="v_box_container" type="VBoxContainer" parent="."]
 offset_left = 4.0
@@ -17,17 +17,20 @@ offset_bottom = 189.0
 [node name="rich_text_label" type="RichTextLabel" parent="v_box_container"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+focus_mode = 2
 bbcode_enabled = true
-text = "[color=red][b]USING CHEATS MAY DISABLE ACHIEVEMENTS[/b][/color]"
+text = "[color=red][b]USING CHEATS MAY PAUSE ACHIEVEMENTS WHILE THE CHEATS ARE ACTIVE[/b][/color]
+"
 scroll_following = true
+selection_enabled = true
 
 [node name="line_edit" type="LineEdit" parent="v_box_container"]
 layout_mode = 2
 placeholder_text = "Type in cheat or command. Use \"help\" for help."
 max_length = 200
+context_menu_enabled = false
 clear_button_enabled = true
 flat = true
-draw_control_chars = true
 select_all_on_focus = true
 caret_blink = true
 caret_blink_interval = 0.5

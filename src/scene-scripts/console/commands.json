@@ -1,0 +1,9 @@
+{
+	"help": " - Shows this help\n",
+	"consoleclear": " - Clears the console\n",
+	"speed": " <multiplier number> - Multiplies the player speed by the given value\n",
+	"noclip": " - Toggles the player collision and lets you walk through walls and world barriers\n",
+	"stickycamera": " - Toggles the camera mode. Stickycamera follows the player without limits and extra animation\n",
+	"playername": " <new name> - Renames the player\n",
+	"reload": " - Reloads the current level (for softlocks or other issues)\n"
+}

@@ -45,7 +45,7 @@ metadata/_edit_lock_ = true
 [node name="player" parent="." instance=ExtResource("2_0skrb")]
 playerName = "Yannik"
 
-[node name="camera_2d" parent="player" index="2"]
+[node name="main_cam" parent="player" index="2"]
 limit_left = -1791
 limit_top = -1023
 limit_right = 1791
