@@ -9,6 +9,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w2xu"]
 
 [node name="dialog_bubble" type="CanvasLayer"]
+process_mode = 4
 script = ExtResource("1_xtj1q")
 metadata/_edit_use_anchors_ = true
 
@@ -113,4 +114,5 @@ metadata/_edit_lock_ = true
 stream = ExtResource("5_w6jq7")
 bus = &"UI"
 
+[connection signal="visibility_changed" from="." to="." method="OnVisibilityChanged"]
 [connection signal="timeout" from="typewriter_timer" to="." method="OnTypewriterTimerTimeout"]

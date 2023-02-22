@@ -53,6 +53,12 @@ public partial class dialog_bubble : CanvasLayer
         dlgLines = dlgLines.AsGodotArray()[GD.RandRange(0, dlgLines.AsGodotArray().Count - 1)];
         //TODO:copy a clean default array and remove already used indexes and copy from clean array when its empty
     }
+    public void OnVisibilityChanged()
+    {
+        if (Visible)
+            ProcessMode = ProcessModeEnum.Inherit;
+        else ProcessMode = ProcessModeEnum.Disabled;
+    }
     public override void _Process(double delta)
     {
         DialogControlls();
@@ -60,9 +66,9 @@ public partial class dialog_bubble : CanvasLayer
     }
     public void DialogControlls()
     {
-        if (Input.IsActionJustPressed("ui_cancel") && Visible) richText.VisibleCharacters = richText.Text.Length;
+        if (Input.IsActionJustPressed("ui_cancel")) richText.VisibleCharacters = richText.Text.Length;
 
-        if (Input.IsActionJustPressed("ui_accept") && Visible && GetNode<PanelContainer>("box/panel_container").Visible == false
+        if (Input.IsActionJustPressed("ui_accept") && GetNode<PanelContainer>("box/panel_container").Visible == false
         && richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length <= richText.VisibleCharacters)
         {
             if (dlgPointer < dlgLines.AsGodotArray().Count)
