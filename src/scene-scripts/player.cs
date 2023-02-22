@@ -4,8 +4,6 @@ using System.Text.RegularExpressions;
 
 public partial class player : CharacterBody2D
 {
-
-    [Export] public string playerName;
     [Export] public float speed = 1;
     public bool allowMovement = true;
     public Vector2 movement;
@@ -15,17 +13,9 @@ public partial class player : CharacterBody2D
 
     public override void _Ready()
     {
-        ClearPlayerName();
         animatedSprite = GetNode<AnimatedSprite2D>("animated_sprite_2d");
         rotCenter = GetNode<Marker2D>("rotation_center");
         dialogRayCast = GetNode<RayCast2D>("rotation_center/ray_cast_2d");
-    }
-    public void ClearPlayerName()
-    {
-        playerName = Regex.Replace(playerName, @"\[[^]]+\]", "");
-        playerName = Regex.Replace(playerName, @"<[^>]*>", "");
-        if (playerName.Length > 12)
-            playerName = playerName.Substring(0, 12);
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -38,7 +28,7 @@ public partial class player : CharacterBody2D
     {
         if (Input.IsActionJustPressed("ui_accept") && dialogRayCast.IsColliding() && allowMovement)
             GetNode<dialog_bubble>("dialog_bubble").GetDialog(dialogRayCast.GetCollider().Get("file").AsString(), dialogRayCast.GetCollider().Get("title").AsString(),
-            (Area2D)dialogRayCast.GetCollider(), playerName, dialogRayCast.GetCollider().Get("introducedVillager").AsBool());
+            (Area2D)dialogRayCast.GetCollider(), player_variables.PlayerName, dialogRayCast.GetCollider().Get("introducedVillager").AsBool());
 
         //animation system (with controller support wich cant get normalized vector)
         if (allowMovement == false)

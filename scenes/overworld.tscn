@@ -44,7 +44,6 @@ layer_1/tile_data = PackedInt32Array(-262141, 0, 0, -196605, 0, 0, -196604, 0, 0
 metadata/_edit_lock_ = true
 
 [node name="player" parent="." instance=ExtResource("2_0skrb")]
-playerName = "Yannik"
 
 [node name="main_cam" parent="player" index="2"]
 limit_left = -1791

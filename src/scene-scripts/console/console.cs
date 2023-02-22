@@ -28,7 +28,7 @@ public partial class console : PopupPanel
     public void OnLineEditTextSubmitted(string command)
     {
         line.Clear();
-        if (command.Length != 0) textblock.AddText(GetParent<player>().playerName + " > " + command + "\n");
+        if (command.Length != 0) textblock.AddText(player_variables.PlayerName + " > " + command + "\n");
         Variant args;
         if (command.Split(' ').Length == 2 && commandDict.ContainsKey(command.Split(' ')[0].ToLower()))
         {
@@ -102,12 +102,9 @@ public partial class console : PopupPanel
     }
     public void playername(string name)
     {
-        if (GetParent().Name == "player")
-        {
-            GetParent<player>().playerName = name;
-            GetParent<player>().ClearPlayerName();
-            textblock.AddText("Your new name is now: " + GetParent<player>().playerName + "\n");
-        }
+        player_variables.PlayerName = name;
+        player_variables.ClearPlayerName();
+        textblock.AddText("Your new name is now: " + player_variables.PlayerName + "\n");
     }
     public void reload() => GetTree().ReloadCurrentScene();
 }
