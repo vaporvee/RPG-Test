@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://darnmy8nv11mc"]
+[gd_scene load_steps=8 format=3 uid="uid://darnmy8nv11mc"]
 
-[ext_resource type="TileSet" uid="uid://txl24cadn8t4" path="res://tilesets/main_tileset.tres" id="1_hewr6"]
+[ext_resource type="TileSet" uid="uid://dcg1tdmkkx22p" path="res://tilesets/main_tileset.tres" id="1_hewr6"]
 [ext_resource type="PackedScene" uid="uid://bxaheg7l4h1ip" path="res://scenes/player.tscn" id="2_0skrb"]
+[ext_resource type="PackedScene" uid="uid://brh4u8w48v7po" path="res://scenes/base_npc.tscn" id="3_dxdug"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4m3b4"]
 resource_local_to_scene = true
@@ -39,7 +40,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = true
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-4, 1, 131072, -262141, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -262138, 0, 0, -262139, 0, 0, -262140, 0, 0, -6, 1, 131072, -8, 1, 131072, -10, 1, 131072, -262150, 2, 65536, 4, 4, 65536)
+layer_1/tile_data = PackedInt32Array(-262141, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -262138, 0, 0, -262139, 0, 0, -262140, 0, 0, -6, 1, 131072, -262150, 2, 65536, 4, 4, 65536)
 metadata/_edit_lock_ = true
 
 [node name="player" parent="." instance=ExtResource("2_0skrb")]
@@ -52,6 +53,18 @@ limit_right = 1791
 limit_bottom = 1023
 limit_smoothed = true
 editor_draw_limits = true
+
+[node name="base_npc" parent="." instance=ExtResource("3_dxdug")]
+position = Vector2(-224, 206)
+metadata/_edit_lock_ = true
+
+[node name="base_npc_2" parent="." instance=ExtResource("3_dxdug")]
+position = Vector2(-319, 178)
+metadata/_edit_lock_ = true
+
+[node name="base_npc_3" parent="." instance=ExtResource("3_dxdug")]
+position = Vector2(-131, 147)
+metadata/_edit_lock_ = true
 
 [node name="world_border" type="StaticBody2D" parent="."]
 metadata/_edit_lock_ = true

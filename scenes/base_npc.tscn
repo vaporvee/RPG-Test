@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://brh4u8w48v7po"]
+
+[ext_resource type="Texture2D" uid="uid://boewsqe4b5yxm" path="res://assets/textures/debug/dummy-npc-atlas.png" id="1_feq0g"]
+[ext_resource type="PackedScene" uid="uid://bu1xkt4xi58ox" path="res://scenes/dialog_trigger_area.tscn" id="2_cjcdi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0drx1"]
+atlas = ExtResource("1_feq0g")
+region = Rect2(0, 0, 84, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmcfr"]
+atlas = ExtResource("1_feq0g")
+region = Rect2(84, 0, 84, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fq5y"]
+atlas = ExtResource("1_feq0g")
+region = Rect2(168, 0, 84, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pv6w"]
+atlas = ExtResource("1_feq0g")
+region = Rect2(252, 0, 84, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrbg8"]
+atlas = ExtResource("1_feq0g")
+region = Rect2(252, 128, 84, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwitn"]
+atlas = ExtResource("1_feq0g")
+region = Rect2(0, 128, 84, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg6mx"]
+atlas = ExtResource("1_feq0g")
+region = Rect2(84, 128, 84, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk3e1"]
+atlas = ExtResource("1_feq0g")
+region = Rect2(168, 128, 84, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rr6ht"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0drx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmcfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0drx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fq5y")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pv6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrbg8")
+}],
+"loop": true,
+"name": &"move_side",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwitn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg6mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwitn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk3e1")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rsgcw"]
+radius = 7.99997
+height = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgrqb"]
+size = Vector2(64, 100)
+
+[node name="base_npc" type="CharacterBody2D"]
+
+[node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.733398, 0.733398)
+sprite_frames = SubResource("SpriteFrames_rr6ht")
+animation = &"move_down"
+frame_progress = 0.781605
+metadata/_edit_lock_ = true
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 38)
+rotation = 1.57345
+shape = SubResource("CapsuleShape2D_rsgcw")
+metadata/_edit_lock_ = true
+
+[node name="dialog_trigger_area" parent="." instance=ExtResource("2_cjcdi")]
+file = "res://assets/lang/en/dialogue/npcs/villager_normal.json"
+title = "Debug NPC"
+metadata/_edit_lock_ = true
+
+[node name="collision_shape_2d" parent="dialog_trigger_area" index="0"]
+shape = SubResource("RectangleShape2D_sgrqb")
+metadata/_edit_lock_ = true
+
+[editable path="dialog_trigger_area"]

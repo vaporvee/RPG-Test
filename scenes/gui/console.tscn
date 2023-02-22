@@ -18,6 +18,7 @@ offset_bottom = 189.0
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 focus_mode = 2
+theme_override_colors/default_color = Color(0, 1, 0, 1)
 bbcode_enabled = true
 text = "[color=red][b]USING CHEATS MAY PAUSE ACHIEVEMENTS WHILE THE CHEATS ARE ACTIVE[/b][/color]
 "
@@ -26,6 +27,8 @@ selection_enabled = true
 
 [node name="line_edit" type="LineEdit" parent="v_box_container"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/caret_color = Color(0, 1, 0, 1)
 placeholder_text = "Type in cheat or command. Use \"help\" for help."
 max_length = 200
 context_menu_enabled = false

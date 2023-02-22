@@ -1,7 +1,7 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://txl24cadn8t4"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://dcg1tdmkkx22p"]
 
 [ext_resource type="PackedScene" uid="uid://dk7fqaw2b3w1k" path="res://scenes/tiles/first_debug_tile.tscn" id="1_uxmn6"]
-[ext_resource type="PackedScene" uid="uid://dckxciecwjfgf" path="res://scenes/tiles/dialogdebug_cupcake.tscn" id="2_0cov5"]
+[ext_resource type="PackedScene" uid="uid://dckxciecwjfgf" path="res://scenes/tiles/cupcake.tscn" id="2_v4037"]
 [ext_resource type="PackedScene" uid="uid://c4dkrtswpv8cv" path="res://scenes/tiles/sound_debug_tile.tscn" id="3_lf2fs"]
 [ext_resource type="Texture2D" uid="uid://d3l4uomk1gw8c" path="res://assets/textures/debug/grass_tile.png" id="4_k7c1q"]
 [ext_resource type="PackedScene" uid="uid://ct6s1gfjkciva" path="res://scenes/tiles/3d_cube_tile.tscn" id="5_x3uol"]
@@ -11,8 +11,8 @@ resource_name = "test"
 scenes/0/scene = ExtResource("1_uxmn6")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_eskkr"]
-resource_name = "dialogdebug"
-scenes/2/scene = ExtResource("2_0cov5")
+resource_name = "cupcake"
+scenes/2/scene = ExtResource("2_v4037")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xtxu0"]
 resource_name = "sounddebug"
