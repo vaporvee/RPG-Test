@@ -48,7 +48,7 @@ public partial class console : PopupPanel
         {
             Call(command.ToLower());
         }
-        else textblock.AddText(error);
+        else if (command.Length != 0) textblock.AddText(error);
     }
 
 
