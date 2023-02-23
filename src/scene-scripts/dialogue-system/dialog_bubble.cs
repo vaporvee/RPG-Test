@@ -8,7 +8,7 @@ public partial class dialog_bubble : CanvasLayer
     public int dlgPointer = 0;
     public RichTextLabel richText;
     public Timer typewriterTimer;
-    public string name;
+    public string title;
     public Area2D triggerArea;
     /*TODO: 
     - Dont repeat the same randomized dialogue after you get asked do you need something "else"
@@ -22,13 +22,14 @@ public partial class dialog_bubble : CanvasLayer
         richText = GetNode<RichTextLabel>("box/rich_text_label");
         typewriterTimer = GetNode<Timer>("typewriter_timer");
     }
-    public void GetDialog(string file, string title, Area2D actor, string playerName, bool introducedVillager)
+    public void GetDialog(string file, Area2D actor)
     {
         triggerArea = actor;
-        name = title;
+        title = actor.Get("title").AsString();
+        bool introducedVillager = actor.Get("introducedVillager").AsBool();
 
         parsedDlg = Json.ParseString(FileAccess.Open(file, FileAccess.ModeFlags.Read).GetAsText()
-        .Replace("{player}", "[color=cyan]" + playerName + "[/color]").Replace("{title}", "[color=purple]" + title + "[/color]"));
+        .Replace("{player}", "[color=cyan]" + player_variables.PlayerName + "[/color]").Replace("{title}", "[color=purple]" + title + "[/color]"));
 
         if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() != "villager" || introducedVillager)
             GetNode<Label>("box/name_label").Text = title;
@@ -143,7 +144,7 @@ public partial class dialog_bubble : CanvasLayer
         switch (eventID)
         {
             case 0:
-                GetNode<Label>("box/name_label").Text = name;
+                GetNode<Label>("box/name_label").Text = title;
                 triggerArea.Set("introducedVillager", true);
                 GatherDialog("begindialog");
                 UpdateDialog();

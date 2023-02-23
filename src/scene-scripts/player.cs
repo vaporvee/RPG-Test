@@ -27,8 +27,7 @@ public partial class player : CharacterBody2D
     public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("ui_accept") && dialogRayCast.IsColliding() && allowMovement)
-            GetNode<dialog_bubble>("dialog_bubble").GetDialog(dialogRayCast.GetCollider().Get("file").AsString(), dialogRayCast.GetCollider().Get("title").AsString(),
-            (Area2D)dialogRayCast.GetCollider(), player_variables.PlayerName, dialogRayCast.GetCollider().Get("introducedVillager").AsBool());
+            GetNode<dialog_bubble>("dialog_bubble").GetDialog(dialogRayCast.GetCollider().Get("file").AsString(), (Area2D)dialogRayCast.GetCollider());
 
         //animation system (with controller support wich cant get normalized vector)
         if (allowMovement == false)
