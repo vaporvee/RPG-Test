@@ -33,7 +33,7 @@ public partial class dialog_bubble : CanvasLayer
 
         if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() != "villager" || introducedVillager)
             GetNode<Label>("box/name_label").Text = title;
-        if (GetParent().Name == "player") GetParent<player>().allowMovement = false;
+        if (GetParent().Name == "player") player.allowMovement = false;
 
         //Get first key
         if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "villager")
@@ -158,6 +158,6 @@ public partial class dialog_bubble : CanvasLayer
         richText.VisibleCharacters = -1;
         GetNode<Label>("box/name_label").Text = "???";
         richText.Text = "";
-        if (GetParent().Name == "player") GetParent<player>().allowMovement = true;
+        if (GetParent().Name == "player") player.allowMovement = true;
     }
 }

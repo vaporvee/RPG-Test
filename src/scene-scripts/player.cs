@@ -4,18 +4,25 @@ using System.Text.RegularExpressions;
 
 public partial class player : CharacterBody2D
 {
-    [Export] public float speed = 1;
-    public bool allowMovement = true;
+    [Export] public static float speed = 1;
+    public static bool allowMovement = true;
     public Vector2 movement;
     public AnimatedSprite2D animatedSprite;
     public Marker2D rotCenter;
     public RayCast2D dialogRayCast;
+    //console cheats:
+    private static Camera2D cheatCam;
+    private static Camera2D mainCam;
+    private static CollisionShape2D collision;
 
     public override void _Ready()
     {
         animatedSprite = GetNode<AnimatedSprite2D>("animated_sprite_2d");
         rotCenter = GetNode<Marker2D>("rotation_center");
         dialogRayCast = GetNode<RayCast2D>("rotation_center/ray_cast_2d");
+        cheatCam = GetNode<Camera2D>("cheat_cam");
+        mainCam = GetNode<Camera2D>("main_cam");
+        collision = GetNode<CollisionShape2D>("collision_shape");
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -66,5 +73,28 @@ public partial class player : CharacterBody2D
         {
 
         }
+    }
+
+    //CONSOLE CHEATS
+    public static string CheatCam()
+    {
+
+        if (mainCam.Enabled)
+        {
+            cheatCam.Enabled = true;
+            mainCam.Enabled = false;
+            return "cheat_cam has been enabled\n";
+        }
+        else
+        {
+            cheatCam.Enabled = false;
+            mainCam.Enabled = true;
+            return "cheat_cam has been disabled\n";
+        }
+    }
+    public static string CollisionToggle()
+    {
+        collision.Disabled = !collision.Disabled;
+        return ("Noclip is now set to: " + collision.Disabled + "\n");
     }
 }

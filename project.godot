@@ -19,6 +19,7 @@ config/icon="res://assets/textures/debug/dummy-player-normal.png"
 
 Essential="res://src/essential.cs"
 PlayerVariables="*res://src/player_variables.cs"
+Console="*res://scenes/gui/console.tscn"
 
 [display]
 

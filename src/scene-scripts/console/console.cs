@@ -11,6 +11,7 @@ public partial class console : PopupPanel
     //functions with capital letters can't be used inside the console
     public override void _Ready()
     {
+        Visible = false;
         textblock = GetNode<RichTextLabel>("v_box_container/rich_text_label");
         line = GetNode<LineEdit>("v_box_container/line_edit");
         commandDict = Json.ParseString(FileAccess.GetFileAsString("res://src/scene-scripts/console/commands.json").ToString()).AsGodotDictionary();
@@ -19,12 +20,13 @@ public partial class console : PopupPanel
     {
         if (Input.IsActionJustPressed("console"))
         {
+
             Visible = !Visible;
             line.GrabFocus();
-            GetParent<player>().allowMovement = !Visible;
+            player.allowMovement = !Visible;
         }
     }
-    private void OnPopupHide() => GetParent<player>().allowMovement = true;
+    private void OnPopupHide() => player.allowMovement = true;
     private void OnLineEditTextSubmitted(string command)
     {
         line.Clear();
@@ -74,38 +76,27 @@ public partial class console : PopupPanel
     private void consoleclear() => textblock.Clear();
     private void speed(float multiplier)
     {
-        GetParent<player>().speed = Mathf.Clamp(multiplier, 0.01f, 15f);
-        textblock.AddText("Set speed to " + Mathf.Clamp(multiplier, 0.01f, 15f) + "\n");
+        player.speed = Mathf.Clamp(multiplier, 0.01f, 15f);
+        textblock.AddText("Set player speed to " + Mathf.Clamp(multiplier, 0.01f, 15f) + "\n");
     }
     private void noclip()
     {
-        CollisionShape2D collision = GetParent<player>().GetNode<CollisionShape2D>("collision_shape");
-        collision.Disabled = !collision.Disabled;
-        textblock.AddText("Noclip is now set to: " + collision.Disabled + "\n");
+        try { textblock.AddText(player.CollisionToggle()); } catch { textblock.AddText("Player is not accessable\n"); }
     }
     private void stickycamera()
     {
-        Camera2D cheatCam = GetParent<player>().GetNode<Camera2D>("cheat_cam");
-        Camera2D mainCam = GetParent<player>().GetNode<Camera2D>("main_cam");
-        if (mainCam.Enabled)
-        {
-            cheatCam.Enabled = true;
-            mainCam.Enabled = false;
-            textblock.AddText("cheat_cam has been enabled\n");
-        }
-        else
-        {
-            cheatCam.Enabled = false;
-            mainCam.Enabled = true;
-            textblock.AddText("cheat_cam has been disabled\n");
-        }
+        try { textblock.AddText(player.CheatCam()); } catch { textblock.AddText("Player is not accessable\n"); }
     }
     private void playername(string name)
     {
         player_variables.PlayerName = name;
         textblock.AddText("Your new name is now: " + player_variables.PlayerName + "\n");
     }
-    private void reload() => GetTree().ReloadCurrentScene();
+    private void reload()
+    {
+        GetTree().ReloadCurrentScene();
+        textblock.AddText("Level got reloaded!\n");
+    }
     private void visiblecollision()
     {
         GetTree().DebugCollisionsHint = !GetTree().DebugCollisionsHint;

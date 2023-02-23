@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxaheg7l4h1ip"]
+[gd_scene load_steps=14 format=3 uid="uid://bxaheg7l4h1ip"]
 
 [ext_resource type="Script" path="res://src/scene-scripts/player.cs" id="1_qehox"]
 [ext_resource type="Texture2D" uid="uid://olceowuycu8c" path="res://assets/textures/debug/dummy-player-atlas.png" id="2_yu1q5"]
 [ext_resource type="PackedScene" uid="uid://bkm7365u1mm3o" path="res://scenes/gui/dialog_bubble.tscn" id="3_8f573"]
-[ext_resource type="PackedScene" uid="uid://dlkpivjpbxnlg" path="res://scenes/gui/console.tscn" id="4_kw3hh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tokqm"]
 atlas = ExtResource("2_yu1q5")
@@ -131,7 +130,6 @@ zoom = Vector2(0.8, 0.8)
 metadata/_edit_lock_ = true
 
 [node name="audio_listener_2d" type="AudioListener2D" parent="."]
-current = true
 metadata/_edit_lock_ = true
 
 [node name="dialog_bubble" parent="." instance=ExtResource("3_8f573")]
@@ -141,8 +139,5 @@ visible = false
 position = Vector2(0, 38)
 rotation = 1.57345
 shape = SubResource("CapsuleShape2D_38v5o")
-
-[node name="console" parent="." instance=ExtResource("4_kw3hh")]
-visible = false
 
 [connection signal="animation_changed" from="animated_sprite_2d" to="." method="OnAnimationChanged"]
