@@ -106,4 +106,9 @@ public partial class console : PopupPanel
         textblock.AddText("Your new name is now: " + player_variables.PlayerName + "\n");
     }
     public void reload() => GetTree().ReloadCurrentScene();
+    public void visiblecollision()
+    {
+        GetTree().DebugCollisionsHint = !GetTree().DebugCollisionsHint;
+        textblock.AddText("Visible collision shapes and hitmarker now set to: " + GetTree().DebugCollisionsHint + "\nUse 'reload' to see changes!\n");
+    }
 }
