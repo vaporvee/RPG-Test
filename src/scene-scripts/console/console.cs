@@ -73,7 +73,11 @@ public partial class console : PopupPanel
             textblock.AddText(key);
             textblock.AddText(commandDict[key].ToString());
         }
-        else textblock.AddText(error);
+        else
+        {
+            textblock.AddText(error);
+            help("help");
+        };
     }
     private void consoleclear() => textblock.Clear();
     private void speed(float multiplier)
@@ -83,11 +87,21 @@ public partial class console : PopupPanel
     }
     private void noclip()
     {
-        try { textblock.AddText(player.CollisionToggle()); } catch { textblock.AddText("Player is not accessable\n"); }
+        try { textblock.AddText(player.CollisionToggle()); }
+        catch
+        {
+            textblock.AddText("Player is not accessable\n");
+            help("noclip");
+        }
     }
     private void stickycamera()
     {
-        try { textblock.AddText(player.CheatCam()); } catch { textblock.AddText("Player is not accessable\n"); }
+        try { textblock.AddText(player.CheatCam()); }
+        catch
+        {
+            textblock.AddText("Player is not accessable\n");
+            help("stickycamera");
+        }
     }
     private void playername(string name)
     {
