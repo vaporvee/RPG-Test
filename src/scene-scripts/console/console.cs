@@ -24,8 +24,8 @@ public partial class console : PopupPanel
             GetParent<player>().allowMovement = !Visible;
         }
     }
-    public void OnPopupHide() => GetParent<player>().allowMovement = true;
-    public void OnLineEditTextSubmitted(string command)
+    private void OnPopupHide() => GetParent<player>().allowMovement = true;
+    private void OnLineEditTextSubmitted(string command)
     {
         line.Clear();
         if (command.Length != 0) textblock.AddText(player_variables.PlayerName + " > " + command + "\n");
@@ -53,7 +53,7 @@ public partial class console : PopupPanel
 
 
 
-    public void help(/*string key = ""*/) //bug: optional parameters aren't optional in Call()
+    private void help(/*string key = ""*/) //bug: optional parameters aren't optional in Call()
     {
         /*if (key.Length == 0)
         {*/
@@ -71,19 +71,19 @@ public partial class console : PopupPanel
         }
         else textblock.AddText(error);*/
     }
-    public void consoleclear() => textblock.Clear();
-    public void speed(float multiplier)
+    private void consoleclear() => textblock.Clear();
+    private void speed(float multiplier)
     {
         GetParent<player>().speed = Mathf.Clamp(multiplier, 0.01f, 15f);
         textblock.AddText("Set speed to " + Mathf.Clamp(multiplier, 0.01f, 15f) + "\n");
     }
-    public void noclip()
+    private void noclip()
     {
         CollisionShape2D collision = GetParent<player>().GetNode<CollisionShape2D>("collision_shape");
         collision.Disabled = !collision.Disabled;
         textblock.AddText("Noclip is now set to: " + collision.Disabled + "\n");
     }
-    public void stickycamera()
+    private void stickycamera()
     {
         Camera2D cheatCam = GetParent<player>().GetNode<Camera2D>("cheat_cam");
         Camera2D mainCam = GetParent<player>().GetNode<Camera2D>("main_cam");
@@ -100,13 +100,13 @@ public partial class console : PopupPanel
             textblock.AddText("cheat_cam has been disabled\n");
         }
     }
-    public void playername(string name)
+    private void playername(string name)
     {
         player_variables.PlayerName = name;
         textblock.AddText("Your new name is now: " + player_variables.PlayerName + "\n");
     }
-    public void reload() => GetTree().ReloadCurrentScene();
-    public void visiblecollision()
+    private void reload() => GetTree().ReloadCurrentScene();
+    private void visiblecollision()
     {
         GetTree().DebugCollisionsHint = !GetTree().DebugCollisionsHint;
         textblock.AddText("Visible collision shapes and hitmarker now set to: " + GetTree().DebugCollisionsHint + "\nUse 'reload' to see changes!\n");
