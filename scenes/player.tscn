@@ -86,7 +86,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38v5o"]
-height = 50.0
+height = 59.9998
 
 [node name="player" type="CharacterBody2D"]
 process_mode = 1
