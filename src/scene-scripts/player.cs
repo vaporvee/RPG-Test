@@ -57,4 +57,15 @@ public partial class player : CharacterBody2D
             animatedSprite.SpeedScale = Math.Abs(movement.Y * speed * 1.3f);
         }
     }
+    public void OnAnimationChanged()
+    {
+        if (animatedSprite.Animation == "move_side")
+        {
+            //GetNode<CollisionShape2D>("collision_shape").Shape
+        }
+        else
+        {
+
+        }
+    }
 }

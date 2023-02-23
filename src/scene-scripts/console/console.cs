@@ -103,7 +103,6 @@ public partial class console : PopupPanel
     public void playername(string name)
     {
         player_variables.PlayerName = name;
-        player_variables.ClearPlayerName();
         textblock.AddText("Your new name is now: " + player_variables.PlayerName + "\n");
     }
     public void reload() => GetTree().ReloadCurrentScene();

@@ -18,7 +18,7 @@ config/icon="res://assets/textures/debug/dummy-player-normal.png"
 [autoload]
 
 Essential="res://src/essential.cs"
-PlayerVariables="*res://player_variables.cs"
+PlayerVariables="*res://src/player_variables.cs"
 
 [display]
 
