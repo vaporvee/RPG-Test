@@ -3,10 +3,10 @@ using Godot.Collections;
 
 public partial class console : PopupPanel
 {
-    public RichTextLabel textblock;
-    public LineEdit line;
-    public Dictionary commandDict;
-    public string error = "Not found! :(\n";
+    private RichTextLabel textblock;
+    private LineEdit line;
+    private Dictionary commandDict;
+    private string error = "Not found! :(\n";
 
     //functions with capital letters can't be used inside the console
     public override void _Ready()
@@ -20,11 +20,12 @@ public partial class console : PopupPanel
     {
         if (Input.IsActionJustPressed("console"))
         {
-
             Visible = !Visible;
             line.GrabFocus();
             player.allowMovement = !Visible;
         }
+        /*if (OS.ReadStringFromStdIn() != "") //not tested yet
+            OnLineEditTextSubmitted(OS.ReadStringFromStdIn());*/
     }
     private void OnPopupHide() => player.allowMovement = true;
     private void OnLineEditTextSubmitted(string command)
@@ -55,23 +56,24 @@ public partial class console : PopupPanel
 
 
 
-    private void help(/*string key = ""*/) //bug: optional parameters aren't optional in Call()
+    private void help()
     {
-        /*if (key.Length == 0)
-        {*/
         textblock.AddText("==================================== Help ====================================\n");
         for (int i = 0; i < commandDict.Count; i++)
         {
             textblock.AddText((i + 1) + ". " + Json.ParseString(commandDict.Keys.ToString()).AsStringArray()[i]);
             textblock.AddText(Json.ParseString(commandDict.Values.ToString()).AsStringArray()[i]);
         }
-        /*}
-        else if (commandDict.ContainsKey(key))
+    }
+    private void help(string key) //Optional parameters aren't optional in Call()/Callv() so i use overloads instead
+    {
+        key = key.ToLower();
+        if (key.Length != 0 && commandDict.ContainsKey(key))
         {
             textblock.AddText(key);
             textblock.AddText(commandDict[key].ToString());
         }
-        else textblock.AddText(error);*/
+        else textblock.AddText(error);
     }
     private void consoleclear() => textblock.Clear();
     private void speed(float multiplier)

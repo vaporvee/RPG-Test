@@ -1,5 +1,5 @@
 {
-	"help": " - Shows this help\n",
+	"help": " [command] - Shows help or help for a specific command\n",
 	"consoleclear": " - Clears the console\n",
 	"speed": " <multiplier number> - Multiplies the player speed by the given value\n",
 	"noclip": " - Toggles the player collision and lets you walk through walls and world barriers\n",
