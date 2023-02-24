@@ -34,10 +34,10 @@ public partial class console : PopupPanel
             }
         }
         if (Input.IsActionJustPressed("ui_cancel"))
-
-            //Normal keyboard hotkey
-            if (Input.IsActionJustPressed("console"))
-                ToggleVisible();
+            Visible = false;
+        //Normal keyboard hotkey
+        if (Input.IsActionJustPressed("console"))
+            ToggleVisible();
         //OS console
         /*if (OS.ReadStringFromStdIn() != "") //not tested yet
             OnLineEditTextSubmitted(OS.ReadStringFromStdIn());*/
