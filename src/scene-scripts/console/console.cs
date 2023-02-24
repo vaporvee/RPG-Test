@@ -3,6 +3,9 @@ using Godot.Collections;
 
 public partial class console : PopupPanel
 {
+    private string[] gamepadCheatcode = { "ui_up", "ui_up", "ui_down", "ui_down", "ui_left", "ui_right", "ui_left", "ui_right", "ui_cancel", "ui_accept", "cheat_start" };
+    private int gpCcIndexer = 0;
+    private InputEvent inputEvent;
     private static RichTextLabel textblock;
     private LineEdit line;
     private Dictionary commandDict;
@@ -16,16 +19,34 @@ public partial class console : PopupPanel
         line = GetNode<LineEdit>("v_box_container/line_edit");
         commandDict = Json.ParseString(FileAccess.GetFileAsString("res://src/scene-scripts/console/commands.json").ToString()).AsGodotDictionary();
     }
+
     public override void _Process(double delta)
     {
-        if (Input.IsActionJustPressed("console"))
+        //Cheatcode
+        if (Input.IsActionJustPressed(gamepadCheatcode[gpCcIndexer]))
         {
-            Visible = !Visible;
-            player.allowMovement = !Visible;
-            line.GrabFocus();
+            gpCcIndexer++;
+            GetNode<Timer>("cheatcode_timer").Start();
+            if (gpCcIndexer == gamepadCheatcode.Length)
+            {
+                gpCcIndexer = 0;
+                ToggleVisible();
+            }
         }
+        if (Input.IsActionJustPressed("ui_cancel"))
+
+            //Normal keyboard hotkey
+            if (Input.IsActionJustPressed("console"))
+                ToggleVisible();
+        //OS console
         /*if (OS.ReadStringFromStdIn() != "") //not tested yet
             OnLineEditTextSubmitted(OS.ReadStringFromStdIn());*/
+    }
+    private void ToggleVisible()
+    {
+        Visible = !Visible;
+        player.allowMovement = !Visible;
+        line.GrabFocus();
     }
     private void OnPopupHide() { if (dialog_bubble.isTalking == false) player.allowMovement = true; }
     private void OnLineEditTextSubmitted(string command)
