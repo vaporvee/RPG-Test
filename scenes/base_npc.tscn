@@ -88,7 +88,7 @@ radius = 9.0
 height = 60.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgrqb"]
-size = Vector2(64, 100)
+size = Vector2(64, 79)
 
 [node name="base_npc" type="CharacterBody2D"]
 
@@ -112,7 +112,7 @@ title = "Debug NPC"
 metadata/_edit_lock_ = true
 
 [node name="collision_shape_2d" parent="dialog_trigger_area" index="0"]
+position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_sgrqb")
-metadata/_edit_lock_ = true
 
 [editable path="dialog_trigger_area"]

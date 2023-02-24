@@ -26,15 +26,17 @@ public partial class player : CharacterBody2D
     }
     public override void _PhysicsProcess(double delta)
     {
-        if (allowMovement) movement = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+        if (allowMovement)
+            movement = Input.GetVector("move_left", "move_right", "move_up", "move_down");
         else movement = Vector2.Zero;
-        if (movement.Length() != 0) rotCenter.Rotation = new Vector2((float)Math.Round(movement.X, 0), (float)Math.Round(movement.Y, 0)).Angle();
+        if (Math.Round(movement.Length(), 0) != 0) rotCenter.Rotation = new Vector2((float)Math.Round(movement.X, 0), (float)Math.Round(movement.Y, 0)).Angle();
         MoveAndCollide(movement * speed * 200 * (float)delta);
     }
     public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("ui_accept") && dialogRayCast.IsColliding() && allowMovement)
             GetNode<dialog_bubble>("dialog_bubble").GetDialog(dialogRayCast.GetCollider().Get("file").AsString(), (Area2D)dialogRayCast.GetCollider());
+
 
         //animation system (with controller support wich cant get normalized vector)
         if (allowMovement == false)
@@ -62,6 +64,10 @@ public partial class player : CharacterBody2D
             animatedSprite.FlipH = false;
             animatedSprite.SpeedScale = Math.Abs(movement.Y * speed * 1.3f);
         }
+    }
+    public int BeginDialogue(int i)
+    {
+        return 0;
     }
     public void OnAnimationChanged()
     {

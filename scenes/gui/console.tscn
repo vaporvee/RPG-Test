@@ -6,6 +6,7 @@
 transparent_bg = true
 size = Vector2i(1537, 193)
 visible = true
+always_on_top = true
 script = ExtResource("1_gdt1r")
 
 [node name="v_box_container" type="VBoxContainer" parent="."]
@@ -38,6 +39,9 @@ select_all_on_focus = true
 caret_blink = true
 caret_blink_interval = 0.5
 caret_force_displayed = true
+
+[node name="cheatcode_timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="popup_hide" from="." to="." method="OnPopupHide"]
 [connection signal="text_submitted" from="v_box_container/line_edit" to="." method="OnLineEditTextSubmitted"]

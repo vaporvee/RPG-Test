@@ -36,7 +36,8 @@ public partial class dialog_bubble : CanvasLayer
 
         if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() != "villager" || introducedVillager)
             GetNode<Label>("box/name_label").Text = title;
-        if (GetParent().Name == "player") player.allowMovement = false;
+
+        player.allowMovement = false;
 
         //Get first key
         if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "villager")

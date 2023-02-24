@@ -3,17 +3,20 @@ using System;
 
 public partial class essential : Node
 {
-    public string currentController = Input.GetJoyName(0);
+    public static string currentController = Input.GetJoyName(0);
 
     public override void _Input(InputEvent @event)
     {
-        //Checks if using Keyboard or controller and giving out current controller
-        if (@event is InputEventKey || @event is InputEventMouseButton || currentController == "")
+        //Checks if using Keyboard or controller. It gives out the current controller and changes cursor visibillity
+        if (@event is InputEventKey || @event is InputEventMouseButton || @event is InputEventMouseMotion || currentController == "")
+        {
             currentController = "PC";
-        if (@event is InputEventJoypadButton && currentController != Input.GetJoyName(0))
+            Input.MouseMode = Input.MouseModeEnum.Visible;
+        }
+        if (@event is InputEventJoypadButton || @event is InputEventJoypadMotion & Input.GetVector("move_left", "move_right", "move_up", "move_down") != Vector2.Zero && currentController != Input.GetJoyName(0))
         {
             currentController = Input.GetJoyName(0);
-            console.Print("Current controller device: " + currentController);
+            Input.MouseMode = Input.MouseModeEnum.Hidden;
         }
     }
     public override void _Process(double delta)
