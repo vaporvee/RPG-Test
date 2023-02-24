@@ -10,8 +10,11 @@ public partial class essential : Node
         //Checks if using Keyboard or controller and giving out current controller
         if (@event is InputEventKey || @event is InputEventMouseButton || currentController == "")
             currentController = "PC";
-        if (@event is InputEventJoypadButton)
+        if (@event is InputEventJoypadButton && currentController != Input.GetJoyName(0))
+        {
             currentController = Input.GetJoyName(0);
+            console.Print("Current controller device: " + currentController);
+        }
     }
     public override void _Process(double delta)
     {

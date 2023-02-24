@@ -1,10 +1,11 @@
 {
-	"help": " [command] - Shows help or help for a specific command\n",
-	"consoleclear": " - Clears the console\n",
-	"speed": " <multiplier number> - Multiplies the player speed by the given value\n",
-	"noclip": " - Toggles the player collision and lets you walk through walls and world barriers\n",
-	"stickycamera": " - Toggles the camera mode. Stickycamera follows the player without limits and extra animation\n",
-	"playername": " <new name> - Renames the player\n",
-	"reload": " - Reloads the current level (for softlocks or other issues)\n",
-	"visiblecollision": " - Toggles if collision shapes hitboxes and hitmarkers are visible. Use 'reload' to see changes!\n"
+	"help": " [command] - Shows help or help for a specific command",
+	"consoleclear": " - Clears the console",
+	"speed": " <multiplier number> - Multiplies the player speed by the given value",
+	"noclip": " - Toggles the player collision and lets you walk through walls and world barriers",
+	"stickycamera": " - Toggles the camera mode. Stickycamera follows the player without limits and extra animation",
+	"playername": " <new name> - Renames the player",
+	"closedialogue": "Closes the current dialogue box",
+	"reload": " - Reloads the current level (for softlocks or other issues)",
+	"visiblecollision": " - Toggles if collision shapes hitboxes and hitmarkers are visible. Use 'reload' to see changes!"
 }

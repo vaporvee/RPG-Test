@@ -10,6 +10,7 @@ public partial class dialog_bubble : CanvasLayer
     public Timer typewriterTimer;
     public string title;
     public Area2D triggerArea;
+    public static bool forceClose;
     /*TODO: 
     - Dont repeat the same randomized dialogue after you get asked do you need something "else"
     - add tree support (example: "story" key)
@@ -24,6 +25,7 @@ public partial class dialog_bubble : CanvasLayer
     }
     public void GetDialog(string file, Area2D actor)
     {
+        console.Print("Loaded dialogue from: " + file + "\nClose dialogue with 'closedialogue'");
         triggerArea = actor;
         title = actor.Get("title").AsString();
         bool introducedVillager = actor.Get("introducedVillager").AsBool();
@@ -69,7 +71,7 @@ public partial class dialog_bubble : CanvasLayer
     {
         if (Input.IsActionJustPressed("ui_cancel")) richText.VisibleCharacters = richText.Text.Length;
 
-        if (Input.IsActionJustPressed("ui_accept") && GetNode<PanelContainer>("box/panel_container").Visible == false
+        if (Input.IsActionJustPressed("ui_accept") && GetNode<console>("/root/Console").Visible == false && GetNode<PanelContainer>("box/panel_container").Visible == false
         && richText.VisibleCharacters == -1 | Regex.Replace(richText.Text, @"\[[^]]+\]", "").Length <= richText.VisibleCharacters)
         {
             if (dlgPointer < dlgLines.AsGodotArray().Count)
@@ -89,7 +91,7 @@ public partial class dialog_bubble : CanvasLayer
             }
             dlgPointer++;
         }
-        if (dlgPointer > dlgLines.AsGodotArray().Count)
+        if (dlgPointer > dlgLines.AsGodotArray().Count || forceClose)
             CloseDialog();
     }
     public void UpdateDialog()
@@ -127,7 +129,7 @@ public partial class dialog_bubble : CanvasLayer
         if (GetNode<PanelContainer>("box/panel_container").Visible == true
         && GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton() != null)
         {
-            GetNode<AudioStreamPlayer>("answerbtn_audio_stream").Play();
+            GetNode<AudioStreamPlayer>("answerbtn_audio_stream").Play(); //BUG: dialogue box breaks while game console is open.
             var answer = dlgLines.AsGodotArray()[dlgPointer - 1].AsGodotDictionary()[GetNode<Button>(GetNode("box/panel_container/margin_container")
             .GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton().GetPath()).Text];
             GetNode<PanelContainer>("box/panel_container").Visible = false;
@@ -151,6 +153,7 @@ public partial class dialog_bubble : CanvasLayer
                 break;
         }
     }
+
     public void CloseDialog()
     {
         Visible = false;
@@ -159,5 +162,6 @@ public partial class dialog_bubble : CanvasLayer
         GetNode<Label>("box/name_label").Text = "???";
         richText.Text = "";
         if (GetParent().Name == "player") player.allowMovement = true;
+        forceClose = false;
     }
 }

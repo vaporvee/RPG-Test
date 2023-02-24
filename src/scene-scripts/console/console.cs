@@ -3,7 +3,7 @@ using Godot.Collections;
 
 public partial class console : PopupPanel
 {
-    private RichTextLabel textblock;
+    private static RichTextLabel textblock;
     private LineEdit line;
     private Dictionary commandDict;
     private string error = "Not found! :(\n";
@@ -31,7 +31,7 @@ public partial class console : PopupPanel
     private void OnLineEditTextSubmitted(string command)
     {
         line.Clear();
-        if (command.Length != 0) textblock.AddText(player_variables.PlayerName + " > " + command + "\n");
+        if (command.Length != 0) Print(player_variables.PlayerName + " > " + command + "\n");
         Variant args;
         if (command.Split(' ').Length == 2 && commandDict.ContainsKey(command.Split(' ')[0].ToLower()))
         {
@@ -51,18 +51,21 @@ public partial class console : PopupPanel
         {
             Call(command.ToLower());
         }
-        else if (command.Length != 0) textblock.AddText(error);
+        else if (command.Length != 0) Print(error);
     }
-
+    public static void Print(string text)
+    {
+        textblock.AddText(text + "\n");
+    }
 
 
     private void help()
     {
-        textblock.AddText("==================================== Help ====================================\n");
+        Print("==================================== Help ====================================\n");
         for (int i = 0; i < commandDict.Count; i++)
         {
-            textblock.AddText((i + 1) + ". " + Json.ParseString(commandDict.Keys.ToString()).AsStringArray()[i]);
-            textblock.AddText(Json.ParseString(commandDict.Values.ToString()).AsStringArray()[i]);
+            Print((i + 1) + ". " + Json.ParseString(commandDict.Keys.ToString()).AsStringArray()[i]);
+            Print(Json.ParseString(commandDict.Values.ToString()).AsStringArray()[i]);
         }
     }
     private void help(string key) //Optional parameters aren't optional in Call()/Callv() so i use overloads instead
@@ -70,12 +73,12 @@ public partial class console : PopupPanel
         key = key.ToLower();
         if (key.Length != 0 && commandDict.ContainsKey(key))
         {
-            textblock.AddText(key);
-            textblock.AddText(commandDict[key].ToString());
+            Print(key);
+            Print(commandDict[key].ToString());
         }
         else
         {
-            textblock.AddText(error);
+            Print(error);
             help("help");
         };
     }
@@ -83,39 +86,44 @@ public partial class console : PopupPanel
     private void speed(float multiplier)
     {
         player.speed = Mathf.Clamp(multiplier, 0.01f, 15f);
-        textblock.AddText("Set player speed to " + Mathf.Clamp(multiplier, 0.01f, 15f) + "\n");
+        Print("Set player speed to " + Mathf.Clamp(multiplier, 0.01f, 15f));
     }
     private void noclip()
     {
-        try { textblock.AddText(player.CollisionToggle()); }
+        try { Print(player.CollisionToggle()); }
         catch
         {
-            textblock.AddText("Player is not accessable\n");
+            Print("Player is not accessable");
             help("noclip");
         }
     }
     private void stickycamera()
     {
-        try { textblock.AddText(player.CheatCam()); }
+        try { Print(player.CheatCam()); }
         catch
         {
-            textblock.AddText("Player is not accessable\n");
+            Print("Player is not accessable");
             help("stickycamera");
         }
     }
     private void playername(string name)
     {
         player_variables.PlayerName = name;
-        textblock.AddText("Your new name is now: " + player_variables.PlayerName + "\n");
+        Print("Your new name is now: " + player_variables.PlayerName);
+    }
+    private void closedialogue()
+    {
+        dialog_bubble.forceClose = true;
+        Print("Dialogue got closed!");
     }
     private void reload()
     {
         GetTree().ReloadCurrentScene();
-        textblock.AddText("Level got reloaded!\n");
+        Print("Level got reloaded!");
     }
     private void visiblecollision()
     {
         GetTree().DebugCollisionsHint = !GetTree().DebugCollisionsHint;
-        textblock.AddText("Visible collision shapes and hitmarker now set to: " + GetTree().DebugCollisionsHint + "\nUse 'reload' to see changes!\n");
+        Print("Visible collision shapes and hitmarker now set to: " + GetTree().DebugCollisionsHint + "\nUse 'reload' to see changes!");
     }
 }
