@@ -11,6 +11,7 @@ public partial class dialog_bubble : CanvasLayer
     public string title;
     public Area2D triggerArea;
     public static bool forceClose;
+    public static bool isTalking;
     /*TODO: 
     - Dont repeat the same randomized dialogue after you get asked do you need something "else"
     - add tree support (example: "story" key)
@@ -48,6 +49,7 @@ public partial class dialog_bubble : CanvasLayer
             GatherDialog("message");
 
         Visible = true;
+        isTalking = true;
     }
     public void GatherDialog(string key)
     {
@@ -162,6 +164,7 @@ public partial class dialog_bubble : CanvasLayer
         GetNode<Label>("box/name_label").Text = "???";
         richText.Text = "";
         if (GetParent().Name == "player") player.allowMovement = true;
+        isTalking = false;
         forceClose = false;
     }
 }

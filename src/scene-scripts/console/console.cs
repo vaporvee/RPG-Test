@@ -6,7 +6,7 @@ public partial class console : PopupPanel
     private static RichTextLabel textblock;
     private LineEdit line;
     private Dictionary commandDict;
-    private string error = "Not found! :(\n";
+    private string error = "Not found! :(";
 
     //functions with capital letters can't be used inside the console
     public override void _Ready()
@@ -21,13 +21,13 @@ public partial class console : PopupPanel
         if (Input.IsActionJustPressed("console"))
         {
             Visible = !Visible;
-            line.GrabFocus();
             player.allowMovement = !Visible;
+            line.GrabFocus();
         }
         /*if (OS.ReadStringFromStdIn() != "") //not tested yet
             OnLineEditTextSubmitted(OS.ReadStringFromStdIn());*/
     }
-    private void OnPopupHide() => player.allowMovement = true;
+    private void OnPopupHide() { if (dialog_bubble.isTalking == false) player.allowMovement = true; }
     private void OnLineEditTextSubmitted(string command)
     {
         line.Clear();
