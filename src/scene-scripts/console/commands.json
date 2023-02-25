@@ -5,7 +5,7 @@
 	"noclip": " - Toggles the player collision and lets you walk through walls and world barriers",
 	"stickycamera": " - Toggles the camera mode. Stickycamera follows the player without limits and extra animation",
 	"playername": " <new name> - Renames the player",
-	"closedialogue": "Closes the current dialogue box",
+	"closedialogue": " - Closes the current dialogue box",
 	"reload": " - Reloads the current level (for softlocks or other issues)",
 	"visiblecollision": " - Toggles if collision shapes hitboxes and hitmarkers are visible. Use 'reload' to see changes!"
 }
