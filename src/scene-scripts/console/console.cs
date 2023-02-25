@@ -52,7 +52,9 @@ public partial class console : PopupPanel
     private void OnLineEditTextSubmitted(string command)
     {
         line.Clear();
-        if (command.Length != 0) Print(player_variables.PlayerName + " > " + command + "\n");
+        //repeat user input to console
+        if (command.Length != 0) Print(player_variables.PlayerName + " > " + command);
+        //splits command into arguments and uses the right call functions for the given amount of split string arguments by the user
         Variant args;
         if (command.Split(' ').Length == 2 && commandDict.ContainsKey(command.Split(' ')[0].ToLower()))
         {
@@ -76,17 +78,18 @@ public partial class console : PopupPanel
     }
     public static void Print(string text)
     {
+        GD.Print(text);
         textblock.AddText(text + "\n");
     }
 
 
     private void help()
     {
-        Print("==================================== Help ====================================\n");
+        Print("==================================== Help ====================================");
         for (int i = 0; i < commandDict.Count; i++)
         {
-            Print((i + 1) + ". " + Json.ParseString(commandDict.Keys.ToString()).AsStringArray()[i]);
-            Print(Json.ParseString(commandDict.Values.ToString()).AsStringArray()[i]);
+            Print((i + 1) + ". " + Json.ParseString(commandDict.Keys.ToString()).AsStringArray()[i]
+            + Json.ParseString(commandDict.Values.ToString()).AsStringArray()[i]);
         }
     }
     private void help(string key) //Optional parameters aren't optional in Call()/Callv() so i use overloads instead
@@ -145,6 +148,6 @@ public partial class console : PopupPanel
     private void visiblecollision()
     {
         GetTree().DebugCollisionsHint = !GetTree().DebugCollisionsHint;
-        Print("Visible collision shapes and hitmarker now set to: " + GetTree().DebugCollisionsHint + "\nUse 'reload' to see changes!");
+        Print("Visible collision shapes and hitmarker now set to: " + GetTree().DebugCollisionsHint + "Use 'reload' to see changes!");
     }
 }
