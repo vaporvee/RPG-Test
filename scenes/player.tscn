@@ -4,52 +4,52 @@
 [ext_resource type="Texture2D" uid="uid://olceowuycu8c" path="res://assets/textures/debug/dummy-player-atlas.png" id="2_yu1q5"]
 [ext_resource type="PackedScene" uid="uid://bkm7365u1mm3o" path="res://scenes/gui/dialog_bubble.tscn" id="3_8f573"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tokqm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_068kt"]
 atlas = ExtResource("2_yu1q5")
-region = Rect2(0, 0, 83, 127)
+region = Rect2(0, 0, 59, 90)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qomfj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tubtg"]
 atlas = ExtResource("2_yu1q5")
-region = Rect2(168, 0, 84, 128)
+region = Rect2(59, 0, 59, 90)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bsfbd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck0si"]
 atlas = ExtResource("2_yu1q5")
-region = Rect2(84, 0, 83, 127)
+region = Rect2(118, 0, 59, 90)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ulejc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_48laa"]
 atlas = ExtResource("2_yu1q5")
-region = Rect2(252, 0, 84, 128)
+region = Rect2(177, 0, 59, 90)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1x805"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp3ld"]
 atlas = ExtResource("2_yu1q5")
-region = Rect2(252, 128, 84, 128)
+region = Rect2(177, 90, 59, 90)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x338k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t6sn"]
 atlas = ExtResource("2_yu1q5")
-region = Rect2(0, 128, 84, 128)
+region = Rect2(0, 90, 59, 90)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ynw8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5lt5"]
 atlas = ExtResource("2_yu1q5")
-region = Rect2(84, 128, 84, 128)
+region = Rect2(59, 90, 59, 90)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2yirn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gngb"]
 atlas = ExtResource("2_yu1q5")
-region = Rect2(168, 128, 84, 128)
+region = Rect2(118, 90, 59, 90)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2x1cy"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_65gi3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tokqm")
+"texture": SubResource("AtlasTexture_068kt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qomfj")
+"texture": SubResource("AtlasTexture_tubtg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tokqm")
+"texture": SubResource("AtlasTexture_068kt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bsfbd")
+"texture": SubResource("AtlasTexture_ck0si")
 }],
 "loop": true,
 "name": &"move_down",
@@ -57,10 +57,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ulejc")
+"texture": SubResource("AtlasTexture_48laa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1x805")
+"texture": SubResource("AtlasTexture_dp3ld")
 }],
 "loop": true,
 "name": &"move_side",
@@ -68,16 +68,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x338k")
+"texture": SubResource("AtlasTexture_7t6sn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6ynw8")
+"texture": SubResource("AtlasTexture_w5lt5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x338k")
+"texture": SubResource("AtlasTexture_7t6sn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2yirn")
+"texture": SubResource("AtlasTexture_0gngb")
 }],
 "loop": true,
 "name": &"move_up",
@@ -85,11 +85,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38v5o"]
-height = 59.9998
+radius = 7.99997
+height = 54.0
 
 [node name="player" type="CharacterBody2D"]
 process_mode = 1
-floor_stop_on_slope = false
 script = ExtResource("1_qehox")
 metadata/_edit_lock_ = true
 
@@ -106,14 +106,11 @@ collide_with_bodies = false
 metadata/_edit_lock_ = true
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(0.733398, 0.733398)
-sprite_frames = SubResource("SpriteFrames_2x1cy")
+sprite_frames = SubResource("SpriteFrames_65gi3")
 animation = &"move_down"
 metadata/_edit_lock_ = true
 
 [node name="main_cam" type="Camera2D" parent="."]
-zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 drag_horizontal_enabled = true
@@ -126,7 +123,6 @@ editor_draw_drag_margin = true
 metadata/_edit_lock_ = true
 
 [node name="cheat_cam" type="Camera2D" parent="."]
-zoom = Vector2(0.8, 0.8)
 metadata/_edit_lock_ = true
 
 [node name="audio_listener_2d" type="AudioListener2D" parent="."]
@@ -136,8 +132,6 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 38)
-rotation = 1.57345
+position = Vector2(0, 37)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_38v5o")
-
-[connection signal="animation_changed" from="animated_sprite_2d" to="." method="OnAnimationChanged"]

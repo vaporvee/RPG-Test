@@ -24,11 +24,12 @@ Console="*res://scenes/gui/console.tscn"
 
 [display]
 
-window/size/viewport_width=1537
-window/size/viewport_height=864
+window/size/viewport_width=1844
+window/size/viewport_height=1037
+window/size/window_width_override=1537
+window/size/window_height_override=864
 mouse_cursor/custom_image="res://assets/textures/cursor.png"
 window/stretch/mode="canvas_items"
-window/snap/snap_2d_transforms_to_pixel=false
 
 [dotnet]
 

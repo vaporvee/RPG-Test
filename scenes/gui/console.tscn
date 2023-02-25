@@ -4,7 +4,7 @@
 
 [node name="popup_panel" type="PopupPanel"]
 transparent_bg = true
-size = Vector2i(1537, 193)
+size = Vector2i(1844, 193)
 visible = true
 always_on_top = true
 script = ExtResource("1_gdt1r")
@@ -12,7 +12,7 @@ script = ExtResource("1_gdt1r")
 [node name="v_box_container" type="VBoxContainer" parent="."]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 1533.0
+offset_right = 1840.0
 offset_bottom = 189.0
 
 [node name="rich_text_label" type="RichTextLabel" parent="v_box_container"]
