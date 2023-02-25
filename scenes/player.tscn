@@ -111,14 +111,11 @@ animation = &"move_down"
 metadata/_edit_lock_ = true
 
 [node name="main_cam" type="Camera2D" parent="."]
+process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_left_margin = 0.15
-drag_top_margin = 0.15
-drag_right_margin = 0.15
-drag_bottom_margin = 0.15
 editor_draw_drag_margin = true
 metadata/_edit_lock_ = true
 
