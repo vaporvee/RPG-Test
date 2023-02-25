@@ -28,7 +28,6 @@ metadata/_edit_lock_ = true
 [node name="tilemap" type="TileMap" parent="."]
 y_sort_enabled = true
 tile_set = ExtResource("1_hewr6")
-cell_quadrant_size = 64
 format = 2
 layer_0/name = "Ground"
 layer_0/y_sort_enabled = true
