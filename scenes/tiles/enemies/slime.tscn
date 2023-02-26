@@ -11,6 +11,9 @@ var motion = Vector2.ZERO
 
 var player = null
 
+func _ready():
+	$animated_sprite_2d.play()
+
 func _physics_process(_delta):
 	motion = Vector2.ZERO
 	if player:
@@ -65,6 +68,8 @@ height = 56.0
 radius = 440.41
 
 [node name="slime" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 8
 script = SubResource("GDScript_78jn1")
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
