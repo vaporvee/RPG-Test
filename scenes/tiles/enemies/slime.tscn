@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpu7t7csffoxg"]
+[gd_scene load_steps=9 format=3 uid="uid://cpu7t7csffoxg"]
 
 [ext_resource type="Texture2D" uid="uid://ca1es3hoj53wg" path="res://assets/textures/enemies/slime_green_atlas.png" id="1_bw6us"]
 
@@ -42,15 +42,27 @@ func _ready():
 	play()
 "
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ochsc"]
-radius = 26.0192
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6mi3"]
+radius = 6.0
+height = 56.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gptu"]
+radius = 211.464
 
 [node name="slime" type="CharacterBody2D"]
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 33)
 sprite_frames = SubResource("SpriteFrames_bwr2v")
-frame_progress = 0.486509
+frame_progress = 0.491853
 script = SubResource("GDScript_6slvi")
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ochsc")
+position = Vector2(1, 43)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e6mi3")
+
+[node name="area_2d" type="Area2D" parent="."]
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="area_2d"]
+shape = SubResource("CircleShape2D_3gptu")
