@@ -1,36 +1,30 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://dcg1tdmkkx22p"]
+[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://dcg1tdmkkx22p"]
 
 [ext_resource type="PackedScene" uid="uid://dk7fqaw2b3w1k" path="res://scenes/tiles/first_debug_tile.tscn" id="1_uxmn6"]
 [ext_resource type="PackedScene" uid="uid://dckxciecwjfgf" path="res://scenes/tiles/cupcake.tscn" id="2_v4037"]
 [ext_resource type="PackedScene" uid="uid://c4dkrtswpv8cv" path="res://scenes/tiles/sound_debug_tile.tscn" id="3_lf2fs"]
 [ext_resource type="Texture2D" uid="uid://d3l4uomk1gw8c" path="res://assets/textures/debug/grass_tile.png" id="4_k7c1q"]
 [ext_resource type="PackedScene" uid="uid://ct6s1gfjkciva" path="res://scenes/tiles/3d_cube_tile.tscn" id="5_x3uol"]
+[ext_resource type="PackedScene" uid="uid://cpu7t7csffoxg" path="res://scenes/tiles/enemies/slime.tscn" id="6_mcy76"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lcrun"]
-resource_name = "test"
+resource_name = "debug"
 scenes/0/scene = ExtResource("1_uxmn6")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_eskkr"]
-resource_name = "cupcake"
+scenes/1/scene = ExtResource("5_x3uol")
 scenes/2/scene = ExtResource("2_v4037")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xtxu0"]
-resource_name = "sounddebug"
-scenes/1/scene = ExtResource("3_lf2fs")
+scenes/3/scene = ExtResource("3_lf2fs")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_na45g"]
 texture = ExtResource("4_k7c1q")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_loadc"]
-resource_name = "3d cube"
-scenes/1/scene = ExtResource("5_x3uol")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_d4uti"]
+resource_name = "enemies"
+scenes/1/scene = ExtResource("6_mcy76")
 
 [resource]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetScenesCollectionSource_lcrun")
-sources/1 = SubResource("TileSetScenesCollectionSource_eskkr")
-sources/2 = SubResource("TileSetScenesCollectionSource_xtxu0")
 sources/3 = SubResource("TileSetAtlasSource_na45g")
-sources/4 = SubResource("TileSetScenesCollectionSource_loadc")
+sources/5 = SubResource("TileSetScenesCollectionSource_d4uti")

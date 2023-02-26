@@ -90,6 +90,7 @@ height = 54.0
 
 [node name="player" type="CharacterBody2D"]
 process_mode = 1
+motion_mode = 1
 script = ExtResource("1_qehox")
 metadata/_edit_lock_ = true
 
