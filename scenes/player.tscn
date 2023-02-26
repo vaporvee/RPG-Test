@@ -90,9 +90,10 @@ height = 54.0
 
 [node name="player" type="CharacterBody2D"]
 process_mode = 1
+collision_layer = 5
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_qehox")
-metadata/_edit_lock_ = true
 
 [node name="rotation_center" type="Marker2D" parent="."]
 metadata/_edit_lock_ = true
@@ -109,7 +110,6 @@ metadata/_edit_lock_ = true
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_65gi3")
 animation = &"move_down"
-metadata/_edit_lock_ = true
 
 [node name="main_cam" type="Camera2D" parent="."]
 process_callback = 0
@@ -130,6 +130,6 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 37)
+position = Vector2(0, 36)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_38v5o")

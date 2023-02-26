@@ -2,6 +2,29 @@
 
 [ext_resource type="Texture2D" uid="uid://ca1es3hoj53wg" path="res://assets/textures/enemies/slime_green_atlas.png" id="1_bw6us"]
 
+[sub_resource type="GDScript" id="GDScript_78jn1"]
+resource_name = "debug"
+script/source = "extends CharacterBody2D
+
+var speed = 35
+var motion = Vector2.ZERO
+
+var player = null
+
+func _physics_process(_delta):
+	motion = Vector2.ZERO
+	if player:
+			motion = position.direction_to(player.position) * speed
+	velocity = motion
+	move_and_slide()
+
+func OnArea2dBodyEntered(body):
+	player = body
+
+func OnArea2dBodyExited(_body):
+	player = null
+"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_eghup"]
 atlas = ExtResource("1_bw6us")
 region = Rect2(0, 0, 64, 64)
@@ -34,28 +57,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_6slvi"]
-resource_name = "animation"
-script/source = "extends AnimatedSprite2D
-
-func _ready():
-	play()
-"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6mi3"]
 radius = 6.0
 height = 56.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3gptu"]
-radius = 211.464
+radius = 440.41
 
 [node name="slime" type="CharacterBody2D"]
+script = SubResource("GDScript_78jn1")
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 33)
 sprite_frames = SubResource("SpriteFrames_bwr2v")
-frame_progress = 0.491853
-script = SubResource("GDScript_6slvi")
+frame_progress = 0.348187
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]
 position = Vector2(1, 43)
@@ -63,6 +78,12 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_e6mi3")
 
 [node name="area_2d" type="Area2D" parent="."]
+position = Vector2(0, 32)
+collision_layer = 4
+collision_mask = 4
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="area_2d"]
 shape = SubResource("CircleShape2D_3gptu")
+
+[connection signal="body_entered" from="area_2d" to="." method="OnArea2dBodyEntered"]
+[connection signal="body_exited" from="area_2d" to="." method="OnArea2dBodyExited"]
