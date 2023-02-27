@@ -10,7 +10,7 @@ public partial class player : CharacterBody2D
     public AnimatedSprite2D animatedSprite;
     public Marker2D rotCenter;
     public RayCast2D dialogRayCast;
-    public static Vector2 globalPlayerPosition; //for enemy path finding with delay for less bugs
+    public static Vector2 globalPlayerPosition;
     //console cheats:
     private static Camera2D cheatCam;
     private static Camera2D mainCam;
@@ -27,20 +27,15 @@ public partial class player : CharacterBody2D
     }
     public override void _PhysicsProcess(double delta)
     {
+        globalPlayerPosition = Position;
         if (allowMovement)
             movement = Input.GetVector("move_left", "move_right", "move_up", "move_down");
         else movement = Vector2.Zero;
         if (Math.Round(movement.Length(), 0) != 0) rotCenter.Rotation = new Vector2((float)Math.Round(movement.X, 0), (float)Math.Round(movement.Y, 0)).Angle();
         MoveAndCollide(movement * speed * 200 * (float)delta);
     }
-    void GlobalPlayerPosition()
-    {
-        if (Mathf.Round(GetNode<Timer>("globalposition_timer").TimeLeft) == 0)
-            globalPlayerPosition = Position;
-    }
     public override void _Process(double delta)
     {
-        GlobalPlayerPosition();
         if (Input.IsActionJustPressed("ui_accept") && dialogRayCast.IsColliding() && allowMovement)
             GetNode<dialog_bubble>("dialog_bubble").GetDialog(dialogRayCast.GetCollider().Get("file").AsString(), (Area2D)dialogRayCast.GetCollider());
 
