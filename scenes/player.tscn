@@ -92,6 +92,7 @@ height = 54.0
 process_mode = 1
 collision_layer = 5
 collision_mask = 5
+collision_priority = 5.0
 motion_mode = 1
 script = ExtResource("1_qehox")
 
@@ -133,3 +134,7 @@ visible = false
 position = Vector2(0, 36)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_38v5o")
+
+[node name="globalposition_timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
