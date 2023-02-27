@@ -46,7 +46,6 @@ collision_priority = 20.0
 motion_mode = 1
 floor_stop_on_slope = false
 floor_constant_speed = true
-platform_on_leave = 2
 script = ExtResource("1_l1742")
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]

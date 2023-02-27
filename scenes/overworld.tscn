@@ -65,6 +65,7 @@ position = Vector2(-131, 147)
 metadata/_edit_lock_ = true
 
 [node name="world_border" type="StaticBody2D" parent="."]
+collision_priority = 3.0
 metadata/_edit_lock_ = true
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="world_border"]
