@@ -22,6 +22,7 @@ func OnAudioFinished():
 radius = 30.8058
 
 [node name="sound_debug_tile" type="StaticBody2D"]
+collision_priority = 20.0
 script = SubResource("GDScript_krkfl")
 soundOn = false
 

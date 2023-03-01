@@ -39,10 +39,9 @@ animations = [{
 radius = 9.0
 height = 46.0
 
-[node name="slime" type="CharacterBody2D"]
+[node name="slime" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 8
 collision_mask = 9
-collision_priority = 20.0
 motion_mode = 1
 floor_stop_on_slope = false
 floor_constant_speed = true

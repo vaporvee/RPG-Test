@@ -22,6 +22,7 @@ pass
 
 [node name="static_body_2d" type="StaticBody2D" parent="."]
 position = Vector2(0, 1)
+collision_priority = 20.0
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="static_body_2d"]
 position = Vector2(1, -2)

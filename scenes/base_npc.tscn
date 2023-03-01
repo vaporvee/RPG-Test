@@ -91,6 +91,8 @@ height = 55.9998
 size = Vector2(54, 71)
 
 [node name="base_npc" type="CharacterBody2D"]
+collision_mask = 0
+collision_priority = 15.0
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rr6ht")

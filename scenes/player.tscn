@@ -85,7 +85,6 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38v5o"]
-radius = 10.0
 height = 54.0
 
 [node name="player" type="CharacterBody2D"]

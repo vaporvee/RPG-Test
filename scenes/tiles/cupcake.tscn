@@ -6,6 +6,7 @@
 size = Vector2(64, 14.625)
 
 [node name="dialogdebug_cupcake" type="StaticBody2D"]
+collision_priority = 20.0
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
