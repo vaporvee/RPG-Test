@@ -38,9 +38,6 @@ public partial class console : PopupPanel
         //Normal keyboard hotkey
         if (Input.IsActionJustPressed("console"))
             ToggleVisible();
-        //OS console
-        /*if (OS.ReadStringFromStdIn() != "") //not tested yet
-            OnLineEditTextSubmitted(OS.ReadStringFromStdIn());*/
     }
     private void ToggleVisible()
     {
