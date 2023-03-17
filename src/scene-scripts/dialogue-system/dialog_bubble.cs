@@ -55,8 +55,10 @@ public partial class dialog_bubble : CanvasLayer
     public void GatherDialog(string key)
     {
         dlgPointer = 0;
-        dlgLines = parsedDlg.AsGodotDictionary()[key].AsGodotArray();
-        dlgLines = dlgLines.AsGodotArray()[GD.RandRange(0, dlgLines.AsGodotArray().Count - 1)];
+        if (parsedDlg.AsGodotDictionary()[key].VariantType == Variant.Type.Array)
+            dlgLines = parsedDlg.AsGodotDictionary()[key].AsGodotArray();
+        if (dlgLines.AsGodotArray()[0].VariantType == Variant.Type.Array)
+            dlgLines = dlgLines.AsGodotArray()[GD.RandRange(0, dlgLines.AsGodotArray().Count - 1)];
         //TODO:copy a clean default array and remove already used indexes and copy from clean array when its empty
     }
     public void OnVisibilityChanged()
