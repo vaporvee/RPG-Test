@@ -65,7 +65,17 @@ public partial class dialog_bubble : CanvasLayer
     {
         if (Visible)
             ProcessMode = ProcessModeEnum.Inherit;
-        else ProcessMode = ProcessModeEnum.Disabled;
+        else if (richText != null)
+        {
+            dlgPointer = 0;
+            richText.VisibleCharacters = -1;
+            GetNode<Label>("box/name_label").Text = "???";
+            richText.Text = "";
+            if (GetParent().Name == "player") player.allowMovement = true;
+            isTalking = false;
+            forceClose = false;
+            ProcessMode = ProcessModeEnum.Disabled;
+        }
     }
     public override void _Process(double delta)
     {
@@ -96,8 +106,7 @@ public partial class dialog_bubble : CanvasLayer
             }
             dlgPointer++;
         }
-        if (dlgPointer > dlgLines.AsGodotArray().Count || forceClose)
-            CloseDialog();
+        Visible = !(dlgPointer > dlgLines.AsGodotArray().Count || forceClose);
     }
     public void UpdateDialog()
     {
@@ -157,17 +166,5 @@ public partial class dialog_bubble : CanvasLayer
                 UpdateDialog();
                 break;
         }
-    }
-
-    public void CloseDialog()
-    {
-        Visible = false;
-        dlgPointer = 0;
-        richText.VisibleCharacters = -1;
-        GetNode<Label>("box/name_label").Text = "???";
-        richText.Text = "";
-        if (GetParent().Name == "player") player.allowMovement = true;
-        isTalking = false;
-        forceClose = false;
     }
 }
