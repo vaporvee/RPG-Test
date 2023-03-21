@@ -3,13 +3,13 @@ using Godot.Collections;
 
 public partial class console : PopupPanel
 {
-    private string[] gamepadCheatcode = { "ui_up", "ui_up", "ui_down", "ui_down", "ui_left", "ui_right", "ui_left", "ui_right", "ui_cancel", "ui_accept", "cheat_start" };
-    private int gpCcIndexer = 0;
-    private InputEvent inputEvent;
-    private static RichTextLabel textblock;
-    private LineEdit line;
-    private Dictionary commandDict;
-    private string error = "Not found! :(";
+     string[] gamepadCheatcode = { "ui_up", "ui_up", "ui_down", "ui_down", "ui_left", "ui_right", "ui_left", "ui_right", "ui_cancel", "ui_accept", "cheat_start" };
+     int gpCcIndexer = 0;
+     InputEvent inputEvent;
+     private static RichTextLabel textblock;
+     LineEdit line;
+     Dictionary commandDict;
+     string error = "Not found! :(";
 
     //functions with capital letters can't be used inside the console
     public override void _Ready()

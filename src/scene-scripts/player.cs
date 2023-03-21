@@ -6,15 +6,15 @@ public partial class player : CharacterBody2D
 {
     [Export] public static float speed = 1;
     public static bool allowMovement = true;
-    public Vector2 movement;
-    public AnimatedSprite2D animatedSprite;
-    public Marker2D rotCenter;
-    public RayCast2D dialogRayCast;
+    Vector2 movement;
+    AnimatedSprite2D animatedSprite;
+    Marker2D rotCenter;
+    RayCast2D dialogRayCast;
     public static Vector2 globalPlayerPosition;
     //console cheats:
-    private static Camera2D cheatCam;
-    private static Camera2D mainCam;
-    private static CollisionShape2D collision;
+    static Camera2D cheatCam;
+    static Camera2D mainCam;
+    static CollisionShape2D collision;
 
     public override void _Ready()
     {

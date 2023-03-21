@@ -3,13 +3,13 @@ using System.Text.RegularExpressions;
 
 public partial class dialog_bubble : CanvasLayer
 {
-    public Variant parsedDlg;
-    public Variant dlgLines;
-    public int dlgPointer = 0;
-    public RichTextLabel richText;
-    public Timer typewriterTimer;
-    public string title;
-    public Area2D triggerArea;
+    Variant parsedDlg;
+    Variant dlgLines;
+    int dlgPointer = 0;
+    RichTextLabel richText;
+    Timer typewriterTimer;
+    string title;
+    Area2D triggerArea;
     public static bool forceClose;
     public static bool isTalking;
     /*TODO: 
