@@ -52,7 +52,7 @@ public partial class dialog_bubble : CanvasLayer
         Visible = true;
         isTalking = true;
     }
-    public void GatherDialog(string key)
+    void GatherDialog(string key)
     {
         dlgPointer = 0;
         if (parsedDlg.AsGodotDictionary()[key].VariantType == Variant.Type.Array)
@@ -61,7 +61,7 @@ public partial class dialog_bubble : CanvasLayer
             dlgLines = dlgLines.AsGodotArray()[GD.RandRange(0, dlgLines.AsGodotArray().Count - 1)];
         //TODO:copy a clean default array and remove already used indexes and copy from clean array when its empty
     }
-    public void OnVisibilityChanged()
+    void OnVisibilityChanged()
     {
         if (Visible)
             ProcessMode = ProcessModeEnum.Inherit;
@@ -82,7 +82,7 @@ public partial class dialog_bubble : CanvasLayer
         DialogControlls();
         AnswerBoxControlls();
     }
-    public void DialogControlls()
+    void DialogControlls()
     {
         if (Input.IsActionJustPressed("ui_cancel")) richText.VisibleCharacters = richText.Text.Length;
 
@@ -108,7 +108,7 @@ public partial class dialog_bubble : CanvasLayer
         }
         Visible = !(dlgPointer > dlgLines.AsGodotArray().Count || forceClose);
     }
-    public void UpdateDialog()
+    void UpdateDialog()
     {
         richText.Text = dlgLines.AsGodotArray()[dlgPointer].ToString();
         richText.VisibleCharacters = 0;
@@ -123,7 +123,7 @@ public partial class dialog_bubble : CanvasLayer
         }
         else typewriterTimer.Stop();
     }
-    public void MakeAnswerBox(string[] dialogOptions)
+    void MakeAnswerBox(string[] dialogOptions)
     {
         var parent = GetNode("box/panel_container/margin_container");
         if (parent.GetChildCount() == 1) parent.GetChild(0).Free();
@@ -138,7 +138,7 @@ public partial class dialog_bubble : CanvasLayer
         GetNode<PanelContainer>("box/panel_container").Visible = true;
         parent.GetChild<Button>(0).GrabFocus();
     }
-    public void AnswerBoxControlls()
+    void AnswerBoxControlls()
     {
         if (GetNode<PanelContainer>("box/panel_container").Visible == true
         && GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton() != null)
@@ -155,7 +155,7 @@ public partial class dialog_bubble : CanvasLayer
             dlgPointer++;
         }
     }
-    public void InDialogEvents(int eventID)
+    void InDialogEvents(int eventID)
     {
         switch (eventID)
         {

@@ -39,14 +39,14 @@ public partial class console : PopupPanel
         if (Input.IsActionJustPressed("console"))
             ToggleVisible();
     }
-    private void ToggleVisible()
+    void ToggleVisible()
     {
         Visible = !Visible;
         player.allowMovement = !Visible;
         line.GrabFocus();
     }
-    private void OnPopupHide() { if (dialog_bubble.isTalking == false) player.allowMovement = true; }
-    private void OnLineEditTextSubmitted(string command)
+    void OnPopupHide() { if (dialog_bubble.isTalking == false) player.allowMovement = true; }
+    void OnLineEditTextSubmitted(string command)
     {
         line.Clear();
         //repeat user input to console
@@ -80,7 +80,7 @@ public partial class console : PopupPanel
     }
 
 
-    private void help()
+    void help()
     {
         Print("==================================== Help ====================================");
         for (int i = 0; i < commandDict.Count; i++)
@@ -89,7 +89,7 @@ public partial class console : PopupPanel
             + Json.ParseString(commandDict.Values.ToString()).AsStringArray()[i]);
         }
     }
-    private void help(string key) //Optional parameters aren't optional in Call()/Callv() so i use overloads instead
+    void help(string key) //Optional parameters aren't optional in Call()/Callv() so i use overloads instead
     {
         key = key.ToLower();
         if (key.Length != 0 && commandDict.ContainsKey(key))
@@ -103,13 +103,13 @@ public partial class console : PopupPanel
             help("help");
         };
     }
-    private void consoleclear() => textblock.Clear();
-    private void speed(float multiplier)
+    void consoleclear() => textblock.Clear();
+    void speed(float multiplier)
     {
         player.speed = Mathf.Clamp(multiplier, 0.01f, 15f);
         Print("Set player speed to " + Mathf.Clamp(multiplier, 0.01f, 15f));
     }
-    private void noclip()
+    void noclip()
     {
         try { Print(player.CollisionToggle()); }
         catch
@@ -118,7 +118,7 @@ public partial class console : PopupPanel
             help("noclip");
         }
     }
-    private void stickycamera()
+    void stickycamera()
     {
         try { Print(player.CheatCam()); }
         catch
@@ -127,22 +127,22 @@ public partial class console : PopupPanel
             help("stickycamera");
         }
     }
-    private void playername(string name)
+    void playername(string name)
     {
         player_variables.PlayerName = name;
         Print("Your new name is now: " + player_variables.PlayerName);
     }
-    private void closedialogue()
+    void closedialogue()
     {
         dialog_bubble.forceClose = true;
         Print("Dialogue got closed!");
     }
-    private void reload()
+    void reload()
     {
         GetTree().ReloadCurrentScene();
         Print("Level got reloaded!");
     }
-    private void visiblecollision()
+    void visiblecollision()
     {
         GetTree().DebugCollisionsHint = !GetTree().DebugCollisionsHint;
         Print("Visible collision shapes and hitmarker now set to: " + GetTree().DebugCollisionsHint + "Use 'reload' to see changes!");

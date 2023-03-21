@@ -67,11 +67,7 @@ public partial class player : CharacterBody2D
             animatedSprite.SpeedScale = Math.Abs(movement.Y * speed * 1.3f);
         }
     }
-    public int BeginDialogue(int i)
-    {
-        return 0;
-    }
-    public void OnAnimationChanged()
+    void OnAnimationChanged()
     {
         if (animatedSprite.Animation == "move_side")
         {
