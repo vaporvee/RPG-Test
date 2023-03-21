@@ -87,18 +87,18 @@ public partial class player : CharacterBody2D
         {
             cheatCam.Enabled = true;
             mainCam.Enabled = false;
-            return "cheat_cam has been enabled\n";
+            return "cheat_cam has been enabled";
         }
         else
         {
             cheatCam.Enabled = false;
             mainCam.Enabled = true;
-            return "cheat_cam has been disabled\n";
+            return "cheat_cam has been disabled";
         }
     }
     public static string CollisionToggle()
     {
         collision.Disabled = !collision.Disabled;
-        return ("Noclip is now set to: " + collision.Disabled + "\n");
+        return ("Noclip is now set to: " + collision.Disabled);
     }
 }
