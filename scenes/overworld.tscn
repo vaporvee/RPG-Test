@@ -55,6 +55,9 @@ editor_draw_limits = true
 position = Vector2(-224, 206)
 metadata/_edit_lock_ = true
 
+[node name="dialog_trigger_area" parent="base_npc" index="2"]
+file = "res://assets/lang/en/dialogue/npcs/message_one.json"
+
 [node name="base_npc_2" parent="." instance=ExtResource("3_dxdug")]
 position = Vector2(-319, 178)
 metadata/_edit_lock_ = true
@@ -85,3 +88,5 @@ shape = SubResource("SegmentShape2D_f7wta")
 metadata/_edit_lock_ = true
 
 [editable path="player"]
+[editable path="base_npc"]
+[editable path="base_npc/dialog_trigger_area"]

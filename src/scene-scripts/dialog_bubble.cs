@@ -6,6 +6,7 @@ public partial class dialog_bubble : CanvasLayer
     Variant parsedDlg;
     Variant dlgLines;
     int dlgPointer = 0;
+    int parsedDlgPointer = 0;
     RichTextLabel richText;
     Timer typewriterTimer;
     string title;
@@ -33,21 +34,19 @@ public partial class dialog_bubble : CanvasLayer
 
         parsedDlg = Json.ParseString(FileAccess.Open(file, FileAccess.ModeFlags.Read).GetAsText()
         .Replace("{player}", "[color=cyan]" + player_variables.PlayerName + "[/color]").Replace("{title}", "[color=purple]" + title + "[/color]"));
-
-        if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() != "villager" || introducedVillager)
+        if (introducedVillager)
             GetNode<Label>("box/name_label").Text = title;
-
         player.allowMovement = false;
-
         //Get first key
-        if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "villager")
-            if (introducedVillager)
-                GatherDialog("welcome");
-            else
-                GatherDialog("intro");
-
-        else if (parsedDlg.AsGodotDictionary()["dialogType"].AsString() == "message")
+        if (introducedVillager && parsedDlg.AsGodotDictionary().ContainsKey("welcome"))
+            GatherDialog("welcome");
+        else if (parsedDlg.AsGodotDictionary().ContainsKey("intro"))
+            GatherDialog("intro");
+        else if (parsedDlg.AsGodotDictionary().ContainsKey("message"))
+        {
+            GetNode<Label>("box/name_label").Text = title;
             GatherDialog("message");
+        }
 
         Visible = true;
         isTalking = true;
@@ -55,6 +54,11 @@ public partial class dialog_bubble : CanvasLayer
     void GatherDialog(string key)
     {
         dlgPointer = 0;
+        if (parsedDlg.AsGodotDictionary()[key].VariantType == Variant.Type.String)
+        {
+            string[] oneline = { parsedDlg.AsGodotDictionary()[key].AsString() };
+            dlgLines = oneline;
+        }
         if (parsedDlg.AsGodotDictionary()[key].VariantType == Variant.Type.Array)
             dlgLines = parsedDlg.AsGodotDictionary()[key].AsGodotArray();
         if (dlgLines.AsGodotArray()[0].VariantType == Variant.Type.Array)
