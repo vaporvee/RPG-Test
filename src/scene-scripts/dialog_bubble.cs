@@ -18,8 +18,7 @@ public partial class dialog_bubble : CanvasLayer
     - add tree support (example: "story" key)
     - ability to add dialogue begin answers on the fly (special ones are colored)
     they will be in a dictionary with event IDs or Dictionary keys it also needs an array wich ones are active
-	-strings like in the "goodbye" key should be randomized without the array brackets so they are only needed for multiline texts
-	-answers should work more like dialogue for tree support*/
+	-answers should work more like gatherdialogue for tree support*/
     public override void _Ready()
     {
         richText = GetNode<RichTextLabel>("box/rich_text_label");
@@ -147,7 +146,7 @@ public partial class dialog_bubble : CanvasLayer
         if (GetNode<PanelContainer>("box/panel_container").Visible == true
         && GetNode("box/panel_container/margin_container").GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton() != null)
         {
-            GetNode<AudioStreamPlayer>("answerbtn_audio_stream").Play(); //BUG: dialogue box breaks while game console is open.
+            GetNode<AudioStreamPlayer>("answerbtn_audio_stream").Play();
             var answer = dlgLines.AsGodotArray()[dlgPointer - 1].AsGodotDictionary()[GetNode<Button>(GetNode("box/panel_container/margin_container")
             .GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton().GetPath()).Text];
             GetNode<PanelContainer>("box/panel_container").Visible = false;
