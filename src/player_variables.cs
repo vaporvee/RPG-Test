@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 public partial class player_variables : Node
 {
-    private static string _playername = "  Yan [lol]  ik";
+    private static string _playername = "Yannik";
     public static string PlayerName
     {
         get
