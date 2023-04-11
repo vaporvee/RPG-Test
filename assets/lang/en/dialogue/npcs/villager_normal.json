@@ -1,58 +1,60 @@
 {
-	"dialogType": "villager",
-	"intro": [
+	"<dialogType>": "villager",
+	"<intro>": [
 		[
 			"Hello i'm {title}. Your name must be {player}!",
 			0
 		]
 	],
-	"welcome": [
+	"<welcome>": [
 		[
 			"Oh hello, {player}... You look great!",
-			"<goto:>begindialog"
+			"<goto:0:begindialog>"
 		],
 		[
 			"Hey, {player}! Hope you have fun today!",
-			"<goto:>begindialog"
+			"<goto:0:begindialog>"
 		],
 		[
 			"Hi! What's up {player}?",
-			"<goto:>begindialog"
+			"<goto:0:begindialog>"
 		]
 	],
-	"begindialog": [
+	"<begindialog>": [
 		[
 			"What can I do for you?",
 			{
-				"I just wanna talk": "<goto:>tipp",
-				"Nevermind!": "<goto:>goodbye"
+				"<eventBeginAnswers>": true,
+				"I just wanna talk": "<goto:0:tipp>",
+				"Nevermind!": "<goto:0:goodbye>"
 			}
 		],
 		[
 			"So what do you want?",
 			{
-				"What's up": "<goto:>tipp",
-				"Nothing": "<goto:>goodbye"
+				"<eventBeginAnswers>": true,
+				"What's up": "<goto:0:tipp>",
+				"Nothing": "<goto:0:goodbye>"
 			}
 		]
 	],
-	"else": [
+	"<else>": [
 		[
 			"Do you need something else?",
 			{
-				"Can you tell me more?": "<goto:>tipp",
-				"No, thanks!": "<goto:>goodbye"
+				"Can you tell me more?": "<goto:0:tipp>",
+				"No, thanks!": "<goto:0:goodbye>"
 			}
 		],
 		[
 			"So can i help you with something else?",
 			{
-				"Tell me a bit more": "<goto:>tipp",
-				"I'm good, thank you!": "<goto:>goodbye"
+				"Tell me a bit more": "<goto:0:tipp>",
+				"I'm good, thank you!": "<goto:0:goodbye>"
 			}
 		]
 	],
-	"goodbye": [
+	"<goodbye>": [
 		[
 			"Was nice talking to you goodbye!"
 		],
@@ -60,20 +62,20 @@
 			"Have a great day, {player}!"
 		]
 	],
-	"tipp": [
+	"<tipp>": [
 		[
 			"[font s=6]░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░░\n░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░\n░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░\n░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░\n░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░\n█░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█\n█░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█\n░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░\n░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░\n░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░\n░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░\n░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░\n░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░\n░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░\n░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░[/font]",
-			"<goto:>else"
+			"<goto:0:else>"
 		],
 		[
 			"[center][font s=80][wave amp=50 freq=15][rainbow]This is cool test text[/rainbow][/wave][/font][/center]",
 			"sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,",
 			"sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
 			"Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-			"<goto:>else"
+			"<goto:0:else>"
 		]
 	],
-	"story": [
+	"<story>": [
 		[
 			"test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1",
 			"test2test2test2test2test2test2test2test2test2test2test2test2test2test2test2",

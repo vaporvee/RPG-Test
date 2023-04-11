@@ -1,8 +1,10 @@
 using Godot;
+using Godot.Collections;
 using System.Text.RegularExpressions;
 
 public partial class dialog_bubble : CanvasLayer
 {
+    [Export] Dictionary eventBeginAnswers;
     Variant parsedDlg;
     Variant dlgLines;
     int dlgPointer = 0;
@@ -18,7 +20,8 @@ public partial class dialog_bubble : CanvasLayer
     - add tree support (example: "story" key)
     - ability to add dialogue begin answers on the fly (special ones are colored)
     they will be in a dictionary with event IDs or Dictionary keys it also needs an array wich ones are active
-	-answers should work more like gatherdialogue for tree support*/
+	-answers should work more like gatherdialogue for tree support
+    - the int in <goto:0 <- should represent the parsedDlgPointer*/
     public override void _Ready()
     {
         richText = GetNode<RichTextLabel>("box/rich_text_label");
@@ -37,14 +40,14 @@ public partial class dialog_bubble : CanvasLayer
             GetNode<Label>("box/name_label").Text = title;
         player.allowMovement = false;
         //Get first key
-        if (introducedVillager && parsedDlg.AsGodotDictionary().ContainsKey("welcome"))
-            GatherDialog("welcome");
-        else if (parsedDlg.AsGodotDictionary().ContainsKey("intro"))
-            GatherDialog("intro");
-        else if (parsedDlg.AsGodotDictionary().ContainsKey("message"))
+        if (introducedVillager && parsedDlg.AsGodotDictionary().ContainsKey("<welcome>"))
+            GatherDialog("<welcome>");
+        else if (parsedDlg.AsGodotDictionary().ContainsKey("<intro>"))
+            GatherDialog("<intro>");
+        else if (parsedDlg.AsGodotDictionary().ContainsKey("<message>"))
         {
             GetNode<Label>("box/name_label").Text = title;
-            GatherDialog("message");
+            GatherDialog("<message>");
         }
 
         Visible = true;
@@ -97,11 +100,11 @@ public partial class dialog_bubble : CanvasLayer
                 //read and write the dialogue
                 if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Float)
                     InDialogEvents((int)dlgLines.AsGodotArray()[dlgPointer]);
-                else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.String && !dlgLines.AsGodotArray()[dlgPointer].AsString().StartsWith("<goto:>"))
+                else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.String && !dlgLines.AsGodotArray()[dlgPointer].AsString().StartsWith("<goto:"))
                     UpdateDialog();
-                else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.String && dlgLines.AsGodotArray()[dlgPointer].AsString().StartsWith("<goto:>"))
+                else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.String && dlgLines.AsGodotArray()[dlgPointer].AsString().StartsWith("<goto:"))
                 {
-                    GatherDialog(dlgLines.AsGodotArray()[dlgPointer].AsString().Replace("<goto:>", ""));
+                    GatherDialog(dlgLines.AsGodotArray()[dlgPointer].AsString().Replace("goto:0:", ""));
                     UpdateDialog();
                 }
                 else if (dlgLines.AsGodotArray()[dlgPointer].VariantType == Variant.Type.Dictionary)
@@ -150,9 +153,9 @@ public partial class dialog_bubble : CanvasLayer
             var answer = dlgLines.AsGodotArray()[dlgPointer - 1].AsGodotDictionary()[GetNode<Button>(GetNode("box/panel_container/margin_container")
             .GetChild(0).GetChild<Button>(0).ButtonGroup.GetPressedButton().GetPath()).Text];
             GetNode<PanelContainer>("box/panel_container").Visible = false;
-            if (answer.VariantType == Variant.Type.String && answer.AsString().StartsWith("<goto:>"))
+            if (answer.VariantType == Variant.Type.String && answer.AsString().StartsWith("<goto:"))
             {
-                GatherDialog(answer.AsString().Replace("<goto:>", ""));
+                GatherDialog(answer.AsString().Replace("goto:0:", ""));
                 UpdateDialog();
             }
             dlgPointer++;
@@ -165,7 +168,7 @@ public partial class dialog_bubble : CanvasLayer
             case 0:
                 GetNode<Label>("box/name_label").Text = title;
                 triggerArea.Set("introducedVillager", true);
-                GatherDialog("begindialog");
+                GatherDialog("<begindialog>");
                 UpdateDialog();
                 break;
         }
