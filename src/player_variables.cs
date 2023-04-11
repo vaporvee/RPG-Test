@@ -7,13 +7,11 @@ public partial class player_variables : Node
     private static string _playername = "Yannik";
     public static string PlayerName
     {
-        get { return _playername; }
-        set
+        get
         {
-            _playername = Regex.Replace(value, @"\[[^]]+\]", "");
-            _playername = Regex.Replace(_playername, @"<[^>]*>", "");
-            if (PlayerName.Length > 12)
-                _playername = PlayerName.Substring(0, 12);
+            _playername = Regex.Replace(_playername, "[^a-zA-Z0-9 ]+", "").StripEdges();
+            return Regex.Replace(_playername, @"\s+", " ");
         }
+        set { _playername = value; }
     }
 }
