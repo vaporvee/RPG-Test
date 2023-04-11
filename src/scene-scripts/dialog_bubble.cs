@@ -29,7 +29,7 @@ public partial class dialog_bubble : CanvasLayer
     }
     public void GetDialog(string file, Area2D actor)
     {
-        console.Print("Loaded dialogue from: " + file + "\nClose dialogue with 'closedialogue'");
+        console.Print("Loaded dialogue from: " + file + "\nClose dialogue with \"closedialogue\"");
         triggerArea = actor;
         title = actor.Get("title").AsString();
         bool introducedVillager = actor.Get("introducedVillager").AsBool();
