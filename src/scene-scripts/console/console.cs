@@ -3,13 +3,13 @@ using Godot.Collections;
 
 public partial class console : PopupPanel
 {
-     string[] gamepadCheatcode = { "ui_up", "ui_up", "ui_down", "ui_down", "ui_left", "ui_right", "ui_left", "ui_right", "ui_cancel", "ui_accept", "cheat_start" };
-     int gpCcIndexer = 0;
-     InputEvent inputEvent;
-     private static RichTextLabel textblock;
-     LineEdit line;
-     Dictionary commandDict;
-     string error = "Not found! :(";
+    string[] gamepadCheatcode = { "ui_up", "ui_up", "ui_down", "ui_down", "ui_left", "ui_right", "ui_left", "ui_right", "ui_cancel", "ui_accept", "cheat_start" };
+    int gpCcIndexer = 0;
+    InputEvent inputEvent;
+    private static RichTextLabel textblock;
+    LineEdit line;
+    Dictionary commandDict;
+    string error = "Not found! :(";
 
     //functions with capital letters can't be used inside the console
     public override void _Ready()
@@ -129,8 +129,15 @@ public partial class console : PopupPanel
     }
     void playername(string name)
     {
+        string tmpPlayerName = player_variables.PlayerName;
         player_variables.PlayerName = name;
-        Print("Your new name is now: " + player_variables.PlayerName);
+        if (player_variables.PlayerName == "")
+        {
+            player_variables.PlayerName = tmpPlayerName;
+            Print("The name had too much incorrect symbols and would be empty when changed.");
+        }
+        else
+            Print("Your new name is now: " + player_variables.PlayerName);
     }
     void closedialogue()
     {
