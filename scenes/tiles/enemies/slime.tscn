@@ -36,7 +36,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6mi3"]
-radius = 7.0
+radius = 6.0
 height = 40.0
 
 [node name="slime" type="CharacterBody2D" groups=["enemies"]]
@@ -48,14 +48,15 @@ floor_constant_speed = true
 script = ExtResource("1_l1742")
 
 [node name="animated_sprite_2d" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 19)
+position = Vector2(0, 24)
 sprite_frames = SubResource("SpriteFrames_bwr2v")
 frame_progress = 0.348187
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]
-position = Vector2(0, 27)
+position = Vector2(0, 33)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_e6mi3")
 
 [node name="visible_notifier_2d" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-25, 0, 50, 40)
+position = Vector2(0, 9)
+rect = Rect2(-25, 0, 50, 30)

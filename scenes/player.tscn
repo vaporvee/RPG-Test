@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/scene-scripts/player.cs" id="1_qehox"]
 [ext_resource type="Texture2D" uid="uid://olceowuycu8c" path="res://assets/textures/debug/dummy-player-atlas.png" id="2_yu1q5"]
-[ext_resource type="PackedScene" uid="uid://bkm7365u1mm3o" path="res://scenes/gui/dialog_bubble.tscn" id="3_8f573"]
+[ext_resource type="PackedScene" uid="uid://cqfthyrbb8k6v" path="res://scenes/gui/dialog_bubble.tscn" id="3_8f573"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_068kt"]
 atlas = ExtResource("2_yu1q5")
@@ -128,7 +128,7 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 35)
+position = Vector2(0, 34)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_38v5o")
 

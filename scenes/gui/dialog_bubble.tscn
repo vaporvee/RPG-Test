@@ -11,6 +11,7 @@
 [node name="dialog_bubble" type="CanvasLayer"]
 process_mode = 4
 script = ExtResource("1_xtj1q")
+eventBeginAnswers = {}
 metadata/_edit_use_anchors_ = true
 
 [node name="typewriter_audio_stream" type="AudioStreamPlayer" parent="."]
