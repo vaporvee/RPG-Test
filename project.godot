@@ -22,6 +22,7 @@ config/icon="res://assets/textures/debug/dummy-player-normal.png"
 Essential="res://src/essential.cs"
 PlayerVariables="*res://src/player_variables.cs"
 Console="*res://scenes/gui/console.tscn"
+Anticheat="*res://src/anticheat.cs"
 
 [display]
 
@@ -134,6 +135,7 @@ cheat_start={
 [internationalization]
 
 locale/translation_remaps={}
+locale/translations_pot_files=PackedStringArray()
 
 [layer_names]
 
