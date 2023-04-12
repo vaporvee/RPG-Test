@@ -1,0 +1,7 @@
+[gd_resource type="RichTextEffect" load_steps=2 format=3 uid="uid://0o1lbwcdjg28"]
+
+[ext_resource type="Script" path="res://src/gdscript/tool/bbcodeeffects/cuss.gd" id="1_ctc4u"]
+
+[resource]
+resource_name = "cuss"
+script = ExtResource("1_ctc4u")
