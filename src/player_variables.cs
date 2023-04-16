@@ -9,10 +9,10 @@ public partial class player_variables : Node
     {
         get
         {
-            _playername = Regex.Replace(_playername, @"[\[\]<>\\\*\$\@\|\~\+§%/#\^°':;!?=\-`´卐卍࿕࿖࿗࿘ꖦ‍⃠\uD83C-\uDBFF\uDC00-\uDFFF]", "").Trim('"').StripEdges(); //todo swearword censoring with bbcode effect
+            _playername = Regex.Replace(_playername, @"[卐卍࿕࿖࿗࿘ꖦ‍⃠\uD83C-\uDBFF\uDC00-\uDFFF]", "").StripEdges(); //todo swearword censoring with bbcode effect
             if (_playername.Length > 12)
                 _playername = _playername.Substring(0, 12);
-            return Regex.Replace(_playername, @"\s+", " ");
+            return _playername.Replace(@"\s+", " ").Replace(@"\", @"\\").Trim('"').Trim('\'');
         }
         set { _playername = value; }
     }
